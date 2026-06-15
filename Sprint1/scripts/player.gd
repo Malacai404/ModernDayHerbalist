@@ -16,6 +16,7 @@ var vertical_limit_deg = 45
 
 func _kill():
 	print("You died!")
+	transform.basis
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

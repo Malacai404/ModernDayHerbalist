@@ -31,6 +31,62 @@ environment = SubResource("Environment_yn3mg")
 [node name="playerCharacter" parent="." unique_id=212589539 instance=ExtResource("1_yswuw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8357573, 0, -6.687183)
 
+[node name="UI" type="Control" parent="playerCharacter" unique_id=1525925795]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -133.0
+offset_top = 24.0
+offset_right = 1783.0
+offset_bottom = 1102.0
+
+[node name="ColorRect" type="ColorRect" parent="playerCharacter/UI" unique_id=542586936]
+layout_mode = 0
+offset_left = 664.0
+offset_top = 886.0
+offset_right = 793.0
+offset_bottom = 1015.0
+color = Color(1, 1, 1, 0.49803922)
+
+[node name="ColorRect2" type="ColorRect" parent="playerCharacter/UI" unique_id=577217298]
+layout_mode = 0
+offset_left = 958.0
+offset_top = 887.0
+offset_right = 1087.0
+offset_bottom = 1016.0
+color = Color(1, 1, 1, 0.49803922)
+
+[node name="ColorRect3" type="ColorRect" parent="playerCharacter/UI" unique_id=219247075]
+layout_mode = 0
+offset_left = 811.0
+offset_top = 887.0
+offset_right = 940.0
+offset_bottom = 1016.0
+color = Color(1, 1, 1, 0.49803922)
+
+[node name="ColorRect4" type="ColorRect" parent="playerCharacter/UI" unique_id=303991794]
+layout_mode = 0
+offset_left = 1104.0
+offset_top = 886.0
+offset_right = 1233.0
+offset_bottom = 1015.0
+color = Color(1, 1, 1, 0.49803922)
+
+[node name="ColorRect5" type="ColorRect" parent="playerCharacter/UI" unique_id=180733171]
+layout_mode = 0
+offset_left = 1398.0
+offset_top = 887.0
+offset_right = 1527.0
+offset_bottom = 1016.0
+color = Color(1, 1, 1, 0.49803922)
+
+[node name="ColorRect6" type="ColorRect" parent="playerCharacter/UI" unique_id=223489725]
+layout_mode = 0
+offset_left = 1251.0
+offset_top = 887.0
+offset_right = 1380.0
+offset_bottom = 1016.0
+color = Color(1, 1, 1, 0.49803922)
+
 [node name="home" type="Node3D" parent="." unique_id=295543054]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -16.72321, 0, 4.625723)
 
