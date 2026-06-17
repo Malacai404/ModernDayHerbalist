@@ -19,3 +19,7 @@ mesh = SubResource("CapsuleMesh_i3pqv")
 
 [node name="playerCam" type="Camera3D" parent="playerHead" unique_id=1106901365]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5557114, 0)
+
+[node name="lookCast" type="RayCast3D" parent="playerHead" unique_id=670576753]
+target_position = Vector3(0, 0, -3)
+collide_with_areas = true

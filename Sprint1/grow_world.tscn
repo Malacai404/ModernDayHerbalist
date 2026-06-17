@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://player.tscn" id="1_yswuw"]
 [ext_resource type="Texture2D" uid="uid://dthx0afe83rhg" path="res://carpet.jpg" id="2_yn3mg"]
+[ext_resource type="PackedScene" uid="uid://bhexy5p6o8yv" path="res://fbxPot.fbx" id="3_gjaib"]
+[ext_resource type="PackedScene" uid="uid://dojcdvjr47cmq" path="res://2DGame/Bed.fbx" id="4_5dctk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p0tnf"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -21,6 +23,9 @@ glow_enabled = true
 albedo_texture = ExtResource("2_yn3mg")
 uv1_scale = Vector3(6.62, 8.14, 3.32)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_5dctk"]
+size = Vector3(2.1036377, 1.7626953, 2.6193848)
+
 [node name="grow_world" type="Node3D" unique_id=1431210748]
 
 [node name="environment" type="Node3D" parent="." unique_id=107467406]
@@ -34,58 +39,68 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8357573, 0, -6.687183)
 [node name="UI" type="Control" parent="playerCharacter" unique_id=1525925795]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -133.0
-offset_top = 24.0
-offset_right = 1783.0
-offset_bottom = 1102.0
+offset_left = 5.0
+offset_top = 9.0
+offset_right = 1921.0
+offset_bottom = 1087.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="playerCharacter/UI" unique_id=542586936]
 layout_mode = 0
-offset_left = 664.0
+offset_left = 583.0
 offset_top = 886.0
-offset_right = 793.0
+offset_right = 712.0
 offset_bottom = 1015.0
 color = Color(1, 1, 1, 0.49803922)
 
 [node name="ColorRect2" type="ColorRect" parent="playerCharacter/UI" unique_id=577217298]
 layout_mode = 0
-offset_left = 958.0
+offset_left = 877.0
 offset_top = 887.0
-offset_right = 1087.0
+offset_right = 1006.0
 offset_bottom = 1016.0
 color = Color(1, 1, 1, 0.49803922)
 
 [node name="ColorRect3" type="ColorRect" parent="playerCharacter/UI" unique_id=219247075]
 layout_mode = 0
-offset_left = 811.0
+offset_left = 730.0
 offset_top = 887.0
-offset_right = 940.0
+offset_right = 859.0
 offset_bottom = 1016.0
 color = Color(1, 1, 1, 0.49803922)
 
 [node name="ColorRect4" type="ColorRect" parent="playerCharacter/UI" unique_id=303991794]
 layout_mode = 0
-offset_left = 1104.0
+offset_left = 1023.0
 offset_top = 886.0
-offset_right = 1233.0
+offset_right = 1152.0
 offset_bottom = 1015.0
 color = Color(1, 1, 1, 0.49803922)
 
 [node name="ColorRect5" type="ColorRect" parent="playerCharacter/UI" unique_id=180733171]
 layout_mode = 0
-offset_left = 1398.0
+offset_left = 1317.0
 offset_top = 887.0
-offset_right = 1527.0
+offset_right = 1446.0
 offset_bottom = 1016.0
 color = Color(1, 1, 1, 0.49803922)
 
 [node name="ColorRect6" type="ColorRect" parent="playerCharacter/UI" unique_id=223489725]
 layout_mode = 0
-offset_left = 1251.0
+offset_left = 1170.0
 offset_top = 887.0
-offset_right = 1380.0
+offset_right = 1299.0
 offset_bottom = 1016.0
 color = Color(1, 1, 1, 0.49803922)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="playerCharacter/UI" unique_id=1245539310]
+layout_mode = 0
+offset_left = 831.0
+offset_top = 703.0
+offset_right = 1227.0
+offset_bottom = 781.0
+bbcode_enabled = true
+text = "[font_size=40px] Press E to \"Sleep\"[/font_size]"
 
 [node name="home" type="Node3D" parent="." unique_id=295543054]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -16.72321, 0, 4.625723)
@@ -164,6 +179,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.150417, 0.27454007, -6.2042
 use_collision = true
 size = Vector3(0.373, 11.501, 40.827362)
 
+[node name="fbxPot" parent="home" unique_id=1460775111 instance=ExtResource("3_gjaib")]
+transform = Transform3D(30.17, 0, 0, 0, 30.17, 0, 0, 0, 30.17, 30.519905, -1.0659138, -10.828505)
+
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1458211989]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.4816484, 2.779901, 2.9612834)
 omni_range = 46.857
+
+[node name="BedArea" type="Area3D" parent="." unique_id=1546811315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0543497, -0.5497315, -6.695609)
+
+[node name="BedArea" type="CollisionShape3D" parent="BedArea" unique_id=245785461]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07318115, 0.10468578, -0.11779785)
+shape = SubResource("BoxShape3D_5dctk")
+
+[node name="Bed" parent="." unique_id=1388530341 instance=ExtResource("4_5dctk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0543497, -0.5497315, -6.695609)

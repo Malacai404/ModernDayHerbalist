@@ -9,10 +9,15 @@ var current_speed = 5.0
 
 var vertical_limit_deg = 45
 
+var bed_dialogue = false
+
 
 @onready var player_mesh = $playerMesh
 @onready var player_collision = $playerCollision
 @onready var player_head = $playerHead
+
+@onready var look_cast = $playerHead/lookCast
+
 
 func _kill():
 	print("You died!")
@@ -34,6 +39,25 @@ func _unhandled_input(event):
 
 
 func _physics_process(delta):
+	if look_cast.is_colliding():
+		var collider = look_cast.get_collider()
+		# Check if the hit object is our specific Area3D
+		if collider is Area3D and collider.name == "BedArea":
+			bed_dialogue = true
+		else:
+			bed_dialogue = false
+	else:
+		bed_dialogue = false
+	
+	
+	
+	if bed_dialogue == true:
+		$UI/RichTextLabel.visible = true
+	else:
+		$UI/RichTextLabel.visible = false
+		
+	if Input.is_action_just_pressed("Interact"):
+		print("Teleporting Now!`")
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
