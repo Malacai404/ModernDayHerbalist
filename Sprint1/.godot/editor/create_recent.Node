@@ -1,6 +1,14 @@
+HTerrain
+StaticBody3D
+CollisionShape3D
+MeshInstance3D
+RemoteTransform3D
+SpotLight3D
+SubViewport
+DirectionalLight3D
+VoxelGI
 RichTextLabel
 RayCast3D
-CollisionShape3D
 Area3D
 ColorRect
 Control

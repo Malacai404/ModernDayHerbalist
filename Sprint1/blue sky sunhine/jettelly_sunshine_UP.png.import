@@ -1,0 +1,27 @@
+[remap]
+
+importer="cubemap_texture"
+type="CompressedCubemap"
+uid="uid://cjbj6oup0wo7d"
+path="res://.godot/imported/jettelly_sunshine_UP.png-3f44c8aa424d8229299033f32d304090.ccube"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://blue sky sunhine/jettelly_sunshine_UP.png"
+dest_files=["res://.godot/imported/jettelly_sunshine_UP.png-3f44c8aa424d8229299033f32d304090.ccube"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/arrangement=3

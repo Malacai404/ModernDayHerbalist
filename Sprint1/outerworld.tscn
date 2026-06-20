@@ -1,24 +1,27 @@
 [gd_scene format=3 uid="uid://cbea4ewp5rmyl"]
 
-[ext_resource type="Texture2D" uid="uid://dthx0afe83rhg" path="res://carpet.jpg" id="1_v7hye"]
+[ext_resource type="Texture2D" uid="uid://xjhue33k2xuw" path="res://panorama_image.png" id="1_ov62i"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://player.tscn" id="2_k8w1u"]
+[ext_resource type="Script" uid="uid://c6cghyt2s30in" path="res://addons/zylann.hterrain/hterrain.gd" id="2_t4xct"]
+[ext_resource type="Resource" uid="uid://cxce7ycc3c3jg" path="res://Terrain/data.hterrain" id="3_ov62i"]
+[ext_resource type="Script" uid="uid://bpgo787dxc8k3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="4_03uec"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_t4xct"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_03uec"]
+panorama = ExtResource("1_ov62i")
 
-[sub_resource type="Sky" id="Sky_ov62i"]
-sky_material = SubResource("ProceduralSkyMaterial_t4xct")
+[sub_resource type="Sky" id="Sky_d0xat"]
+sky_material = SubResource("PanoramaSkyMaterial_03uec")
 
 [sub_resource type="Environment" id="Environment_03uec"]
 background_mode = 2
-sky = SubResource("Sky_ov62i")
+sky = SubResource("Sky_d0xat")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d0xat"]
-albedo_texture = ExtResource("1_v7hye")
-uv1_scale = Vector3(6.62, 8.14, 3.32)
+[sub_resource type="Resource" id="Resource_d0xat"]
+script = ExtResource("4_03uec")
+mode = 0
+textures = [[], []]
 
 [node name="Node3D" type="Node3D" unique_id=1946225047]
 
@@ -26,80 +29,28 @@ uv1_scale = Vector3(6.62, 8.14, 3.32)
 environment = SubResource("Environment_03uec")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1074294794]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, -461.72586, 0, 0)
 shadow_enabled = true
 
-[node name="floor" type="CSGBox3D" parent="." unique_id=1814316404]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.282898, -1.1761999, -8.13419)
-material_override = SubResource("StandardMaterial3D_d0xat")
-use_collision = true
-size = Vector3(62.637, 0.164, 43.579)
-
 [node name="playerCharacter" parent="." unique_id=212589539 instance=ExtResource("2_k8w1u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8357573, 0, -6.687183)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.23349, 0)
 
-[node name="UI" type="Control" parent="playerCharacter" unique_id=267249013]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 5.0
-offset_top = 9.0
-offset_right = 1921.0
-offset_bottom = 1087.0
-mouse_filter = 2
-
-[node name="ColorRect" type="ColorRect" parent="playerCharacter/UI" unique_id=1995591652]
-layout_mode = 0
-offset_left = 583.0
-offset_top = 886.0
-offset_right = 712.0
-offset_bottom = 1015.0
-color = Color(1, 1, 1, 0.49803922)
-
-[node name="ColorRect2" type="ColorRect" parent="playerCharacter/UI" unique_id=1106128506]
-layout_mode = 0
-offset_left = 877.0
-offset_top = 887.0
-offset_right = 1006.0
-offset_bottom = 1016.0
-color = Color(1, 1, 1, 0.49803922)
-
-[node name="ColorRect3" type="ColorRect" parent="playerCharacter/UI" unique_id=191050096]
-layout_mode = 0
-offset_left = 730.0
-offset_top = 887.0
-offset_right = 859.0
-offset_bottom = 1016.0
-color = Color(1, 1, 1, 0.49803922)
-
-[node name="ColorRect4" type="ColorRect" parent="playerCharacter/UI" unique_id=708068789]
-layout_mode = 0
-offset_left = 1023.0
-offset_top = 886.0
-offset_right = 1152.0
-offset_bottom = 1015.0
-color = Color(1, 1, 1, 0.49803922)
-
-[node name="ColorRect5" type="ColorRect" parent="playerCharacter/UI" unique_id=454456861]
-layout_mode = 0
-offset_left = 1317.0
-offset_top = 887.0
-offset_right = 1446.0
-offset_bottom = 1016.0
-color = Color(1, 1, 1, 0.49803922)
-
-[node name="ColorRect6" type="ColorRect" parent="playerCharacter/UI" unique_id=1353514415]
-layout_mode = 0
-offset_left = 1170.0
-offset_top = 887.0
-offset_right = 1299.0
-offset_bottom = 1016.0
-color = Color(1, 1, 1, 0.49803922)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="playerCharacter/UI" unique_id=1355525965]
-layout_mode = 0
-offset_left = 831.0
-offset_top = 703.0
-offset_right = 1227.0
-offset_bottom = 781.0
-bbcode_enabled = true
-text = "[font_size=40px] Press E to \"Sleep\"[/font_size]"
+[node name="HTerrain" type="Node3D" parent="." unique_id=78005288]
+script = ExtResource("2_t4xct")
+centered = true
+_terrain_data = ExtResource("3_ov62i")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_d0xat")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+metadata/_custom_type_script = "uid://c6cghyt2s30in"

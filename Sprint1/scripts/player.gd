@@ -11,6 +11,8 @@ var vertical_limit_deg = 45
 
 var bed_dialogue = false
 
+var in_outerworld = false
+
 
 @onready var player_mesh = $playerMesh
 @onready var player_collision = $playerCollision
@@ -21,7 +23,6 @@ var bed_dialogue = false
 
 func _kill():
 	print("You died!")
-	transform.basis
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -58,22 +59,24 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Interact"):
 		print("Teleporting Now!`")
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if in_outerworld == false:
+		
+		if not is_on_floor():
+			velocity += get_gravity() * delta
 
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = jump_force
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = jump_force
 
 	
-	var input_dir = Input.get_vector("left", "right", "forward", "back")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * current_speed
-		velocity.z = direction.z * current_speed
-	else:
-		velocity.x = move_toward(velocity.x, 0, current_speed)
-		velocity.z = move_toward(velocity.z, 0, current_speed)
-	
+		var input_dir = Input.get_vector("left", "right", "forward", "back")
+		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * current_speed
+			velocity.z = direction.z * current_speed
+		else:
+			velocity.x = move_toward(velocity.x, 0, current_speed)
+			velocity.z = move_toward(velocity.z, 0, current_speed)
+		
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 	move_and_slide()
