@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cei5s5chmm0f5"]
+
+[ext_resource type="Script" uid="uid://d3yargrv3vrcv" path="res://scripts/scattershot.gd" id="1_mg44s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0kj8"]
+albedo_color = Color(0.52156866, 0.26666668, 1, 1)
+emission_enabled = true
+emission = Color(0.41960785, 0.105882354, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_6dodh"]
+material = SubResource("StandardMaterial3D_x0kj8")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_xhov0"]
+
+[node name="scattershot" type="Area3D" unique_id=291199433]
+transform = Transform3D(0.1699625, -0.028441966, 0.10150768, 0.03300952, 0.19725713, -9.421026e-10, -0.10011556, 0.0167536, 0.17232583, 0, 0, 0)
+script = ExtResource("1_mg44s")
+damage = null
+speed = null
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1356619584]
+mesh = SubResource("SphereMesh_6dodh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1729181944]
+shape = SubResource("SphereShape3D_xhov0")

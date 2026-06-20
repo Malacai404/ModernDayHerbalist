@@ -4,9 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://bd0jwmaxnac2x" path="res://models/apartment/apartment_plastered_wall_04_diff_4k.jpg" id="2_5ji1o"]
 [ext_resource type="Texture2D" uid="uid://dwpyuirxmklj4" path="res://models/apartment/apartment_rough-white-cement-plastered-wall-texture.png" id="3_smohq"]
 [ext_resource type="Texture2D" uid="uid://b67sctinw6pnp" path="res://models/apartment/apartment_prop_bed_baseColor.png" id="4_vr2h5"]
+[ext_resource type="Script" uid="uid://vsewreerygoe" path="res://scenes/bed_area.gd" id="5_5ji1o"]
 [ext_resource type="VoxelGIData" uid="uid://rxv8ggjohqmb" path="res://resources/grow_world.VoxelGI_data.res" id="5_lj70i"]
 [ext_resource type="Script" uid="uid://d2xvfrn46nxqe" path="res://scripts/voxel_gi.gd" id="6_km63b"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="7_w04e5"]
+[ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="9_smohq"]
+[ext_resource type="Script" uid="uid://4oc1og3hasit" path="res://scenes/grape_collector.gd" id="9_vr2h5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxs24"]
 resource_name = "Material"
@@ -546,9 +549,20 @@ data = PackedVector3Array(-6.3395, 3.7017999, -1.3916, -6.1556997, 3.6771998, -1
 [sub_resource type="BoxShape3D" id="BoxShape3D_5dctk"]
 size = Vector3(2.1036377, 1.7626953, 2.6193848)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2h5"]
+albedo_texture = ExtResource("9_smohq")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vr2h5"]
+size = Vector3(3.1375732, 2.967102, 2.4003906)
+
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_byl5l"]
 
 [node name="grow_world" type="Node3D" unique_id=1431210748]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1798939257]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_energy = 0.64
+shadow_enabled = true
 
 [node name="apartment" type="Node3D" parent="." unique_id=1265260078]
 transform = Transform3D(0.62, 0, 0, 0, 0.62, 0, 0, 0, 0.62, 0.3977062, -3.317978, 1.5588425)
@@ -672,6 +686,7 @@ shape = SubResource("ConcavePolygonShape3D_8vj5n")
 
 [node name="BedArea" type="Area3D" parent="apartment" unique_id=1546811315]
 transform = Transform3D(1.7607944, 0, 0, 0, 0.91907305, 0, 0, 0, 1.4930394, 0.65664345, 0.29643226, 7.837085)
+script = ExtResource("5_5ji1o")
 
 [node name="BedArea" type="CollisionShape3D" parent="apartment/BedArea" unique_id=245785461]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -0.2298224, 0.10468578, 0.42121124)
@@ -680,6 +695,18 @@ shape = SubResource("BoxShape3D_5dctk")
 [node name="SpotLight3D" type="SpotLight3D" parent="apartment" unique_id=1251740999]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.9437833, -9.926918)
 spot_range = 5.81
+
+[node name="CSGBox3D" type="CSGBox3D" parent="apartment" unique_id=1115538470]
+transform = Transform3D(1.6129032, 0, 0, 0, -1.6126577, -0.028149126, 0, 0.028149126, -1.6126577, 10.188569, 2.8563714, -4.7565966)
+material_override = SubResource("StandardMaterial3D_vr2h5")
+
+[node name="GrapeCollector" type="Area3D" parent="apartment" unique_id=831281431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.188569, 2.8563714, -4.7565966)
+script = ExtResource("9_vr2h5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="apartment/GrapeCollector" unique_id=940888821]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.066833496, -0.09915137, -0.10937524)
+shape = SubResource("BoxShape3D_vr2h5")
 
 [node name="environment" type="Node3D" parent="." unique_id=107467406]
 

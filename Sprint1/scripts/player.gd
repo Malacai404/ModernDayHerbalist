@@ -1,4 +1,6 @@
 extends CharacterBody3D
+class_name player
+
 
 const jump_force = 4.5
 const room_speed = 3.5
@@ -13,19 +15,82 @@ var bed_dialogue = false
 
 var in_outerworld = false
 
+@onready var cooldown_circle: TextureProgressBar = $UI/CanvasLayer/CrosshairContainer/CooldownCircle
+
+var selected_slot := 0
 
 @onready var player_mesh = $playerMesh
 @onready var player_collision = $playerCollision
 @onready var player_head = $playerHead
 
 @onready var look_cast = $playerHead/lookCast
+@onready var item_slot_1: Control = $UI/ItemSlots/ItemSlot_1
+@onready var item_slot_2: Control = $UI/ItemSlots/ItemSlot_2
+@onready var item_slot_3: Control = $UI/ItemSlots/ItemSlot_3
+@onready var item_slot_4: Control = $UI/ItemSlots/ItemSlot_4
+@onready var item_slot_5: Control = $UI/ItemSlots/ItemSlot_5
 
 
+var attack_cooldown = 0.5
+var attack_cooldown_save = 0.5
+
+@onready var Hovertext: RichTextLabel = $UI/Hovertext
+
+@onready var item_slots = [item_slot_1, item_slot_2, item_slot_3, item_slot_4, item_slot_5]
+
+var inventory = [
+	{"item": null, "count": 0},
+	{"item": null, "count": 0},
+	{"item": null, "count": 0},
+	{"item": null, "count": 0},
+	{"item": null, "count": 0}
+]
 func _kill():
 	print("You died!")
 
 func _ready():
+	inventory = PlayerData.inventory
+	selected_slot = PlayerData.selected_slot
+	update_slot_highlight()
+	_handle_inventory()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _input(event):
+	if event.is_action_pressed("leftclick"):
+		use_selected_item_left_click()
+	if event.is_action_pressed("rightclick"):
+		use_selected_item_right_click()
+	if event.is_action_pressed("slot1"):
+		select_slot(0)
+	elif(event.is_action_pressed("slot2")):
+		select_slot(1)
+	elif(event.is_action_pressed("slot3")):
+		select_slot(2)
+	elif(event.is_action_pressed("slot4")):
+		select_slot(3)
+	elif(event.is_action_pressed("slot5")):
+		select_slot(4)
+	
+
+func select_slot(index: int):
+	selected_slot = index
+	update_slot_highlight()
+
+func update_slot_highlight():
+	for i in range(item_slots.size()):
+		if i == selected_slot:
+			item_slots[i].select()
+		else:
+			item_slots[i].deselect()
+
+func _handle_inventory():
+	for i in range(item_slots.size()):
+		var slot = item_slots[i]
+		slot.set_item(
+			inventory[i]["item"],
+			inventory[i]["count"]
+		)
 
 func _unhandled_input(event):
 	# Rotate the camera and head based on mouse movement
@@ -38,30 +103,51 @@ func _unhandled_input(event):
 		player_head.rotation.x = clamp(player_head.rotation.x, deg_to_rad(-vertical_limit_deg), deg_to_rad(vertical_limit_deg))
 
 
-
+func use_selected_item_right_click():
+	if attack_cooldown <= 0:
+		var slot = inventory[selected_slot]
+		if slot["item"] != null:
+			slot["item"]._rightclick(self)
+			slot["count"] -= 1
+			attack_cooldown = slot["item"].cooldown
+			attack_cooldown_save = slot["item"].cooldown
+			if slot["count"] <= 0:
+				slot["item"] = null
+				slot["count"] = 0
+			_handle_inventory()
+func use_selected_item_left_click():
+	if attack_cooldown <= 0:
+		var slot = inventory[selected_slot]
+		if slot["item"] != null:
+			slot["item"]._leftclick(self)
+			slot["count"] -= 1
+			attack_cooldown = slot["item"].cooldown
+			attack_cooldown_save = slot["item"].cooldown
+			if slot["count"] <= 0:
+				slot["item"] = null
+				slot["count"] = 0
+			_handle_inventory()
+	
 func _physics_process(delta):
+	attack_cooldown -= delta
+	if(attack_cooldown > 0):
+		var ratio =  attack_cooldown/attack_cooldown_save
+		cooldown_circle.value = ratio * 100
+	else:
+		cooldown_circle.value = 0
 	if look_cast.is_colliding():
 		var collider = look_cast.get_collider()
-		# Check if the hit object is our specific Area3D
-		if collider is Area3D and collider.name == "BedArea":
-			bed_dialogue = true
+		if collider and collider.has_method("get_hover_text"):
+			if Input.is_action_just_pressed("Interact"):
+				collider.activate($".")
+			Hovertext.text = str(collider.get_hover_text())
+			Hovertext.show()
 		else:
-			bed_dialogue = false
+			Hovertext.hide()
 	else:
-		bed_dialogue = false
+		Hovertext.hide()
 	
-	
-	
-	if bed_dialogue == true:
-		$UI/RichTextLabel.visible = true
-	else:
-		$UI/RichTextLabel.visible = false
 		
-	if Input.is_action_just_pressed("Interact"):
-		print("Teleporting Now!`")
-		await Transition.blink(func():
-			get_tree().change_scene_to_file("res://outerworld.tscn")
-		)
 	if in_outerworld == false:
 		
 		if not is_on_floor():
@@ -83,3 +169,23 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 	move_and_slide()
+
+
+func _pickup_item(item: Item, num: int):
+	for slot in inventory:
+		if slot["item"] == item:
+			print(slot["count"])
+			if(slot["count"] < 99):
+				slot["item"] = item
+				slot["count"] += num
+				_handle_inventory()
+				return
+
+	for slot in inventory:
+		if slot["item"] == null:
+			print(slot["count"])
+			if(slot["count"] < 99):
+				slot["item"] = item
+				slot["count"] += num
+				_handle_inventory()
+				return

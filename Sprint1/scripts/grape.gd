@@ -1,0 +1,27 @@
+extends Item
+class_name Grape
+var tree = Engine.get_main_loop() as SceneTree
+@export var texture = preload("uid://cyti6cf6qhye0")
+@export var name = "Grape"
+@export var damage := 20
+@export var cooldown := 0.5
+const SCATTERSHOT = preload("uid://cei5s5chmm0f5")
+
+
+
+# Called when the node enters the scene tree for the first time.
+func _leftclick(playerobj):
+	var bullet = SCATTERSHOT.instantiate()
+	bullet.position = playerobj.position
+	bullet.rotation_degrees = playerobj.rotation_degrees
+	bullet.damage = 15
+	tree.root.add_child(bullet)
+	cooldown = 0.5
+func _rightclick(playerobj):
+	for i in range(15):
+		var bullet = SCATTERSHOT.instantiate()
+		bullet.position = playerobj.position
+		bullet.rotation_degrees = playerobj.rotation_degrees
+		bullet.damage = 7
+		tree.root.add_child(bullet)
+	cooldown = 4

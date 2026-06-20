@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://c6cghyt2s30in" path="res://addons/zylann.hterrain/hterrain.gd" id="3_nx7vo"]
 [ext_resource type="Resource" uid="uid://cxce7ycc3c3jg" path="res://terraininfo/data.hterrain" id="4_d5aem"]
 [ext_resource type="Script" uid="uid://bpgo787dxc8k3" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="5_g276e"]
+[ext_resource type="PackedScene" uid="uid://406ot5bc41ou" path="res://enemy.tscn" id="6_a4vy2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_03uec"]
 panorama = ExtResource("1_feypq")
@@ -54,3 +55,15 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://c6cghyt2s30in"
+
+[node name="enemy" parent="." unique_id=400256860 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -27.470316, 1.0368013)
+
+[node name="enemy2" parent="." unique_id=1495598386 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -27.470316, -10.020795)
+
+[node name="enemy3" parent="." unique_id=1538749417 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 5.678075, -27.470316, -10.020795)
+
+[node name="enemy4" parent="." unique_id=570784155 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -5.898885, -29.192738, -10.020795)
