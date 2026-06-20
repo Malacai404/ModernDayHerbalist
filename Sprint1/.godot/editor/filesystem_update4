@@ -5,3 +5,7 @@ res://transition.gd
 res://player.tscn
 res://scripts/player.gd
 res://grow_world.tscn
+res://outerworld.tscn
+res://scenes/grow_world.tscn
+res://scenes/outerworld.tscn
+res://autoloads/transition.tscn
