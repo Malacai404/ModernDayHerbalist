@@ -14,6 +14,10 @@ config/name="MDH_NCEA_SPRINT1"
 run/main_scene="uid://ql6fotrvhipb"
 config/features=PackedStringArray("4.6", "Forward Plus")
 
+[autoload]
+
+Transition="*uid://1l4apyw074so"
+
 [display]
 
 window/size/viewport_width=1920
@@ -22,7 +26,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/gdt_terrain/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 

@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1781932985
+::res://::1781940901
 2DPlatformer.gd::GDScript::6489152355824084495::1781687053::0::1::::<>CharacterBody2D<><>0<>0<><>::
 2d_game.gd::GDScript::1635464043165538782::1781687053::0::1::::<>Node2D<><>0<>0<><>::
 2d_game.tscn::PackedScene::2626270761179792299::1781687053::0::1::::<><><>0<>0<><>::uid://cypnnkiv58lkh::::res://2DPlatformer.gd<>uid://xkh4bbuasp7s::::res://2d_game.gd<>uid://fdwmuv37ck1g::::res://2DGame/Main Characters/Mask Dude/Fall (32x32).png<>uid://c4ra0mbfnenxe::::res://2DGame/Main Characters/Mask Dude/Idle (32x32).png<>uid://buhy7u3rjn2bb::::res://2DGame/Main Characters/Mask Dude/Jump (32x32).png<>uid://c86mxj1p05hox::::res://2DGame/Main Characters/Mask Dude/Run (32x32).png<>uid://dk0vn6ddbedly::::res://2DGame/Terrain/Terrain (16x16).png<>uid://do7pbu4m10n8e::::res://2DGame/Background/Yellow.png<>uid://bof2je4fisr7::::res://2DGame/Objects/obstacle_one.tscn<>uid://cxtdd1rhyyqnl::::res://2DGame/Objects/obstacle.gd<>uid://bsigo2e8k6m4i::::res://2DGame/Objects/obstacle_three.tscn<>uid://b5atdowfob8m1::::res://2DGame/Objects/obstacle_two.tscn
@@ -18,11 +18,12 @@ fbxPot_alpha_0.png::CompressedTexture2D::3633363294724442059::1781687054::178169
 grow_world.tscn::PackedScene::1147621574727396615::1781930997::0::1::::<><><>0<>0<><>::uid://bb4xtar6hps1c::::res://player.tscn<>uid://cmxt17q030jud::::res://Objects/apartment_carpet.jpg<>uid://rxv8ggjohqmb::::res://grow_world.VoxelGI_data.res<>uid://bd0jwmaxnac2x::::res://Objects/apartment_plastered_wall_04_diff_4k.jpg<>uid://dwpyuirxmklj4::::res://Objects/apartment_rough-white-cement-plastered-wall-texture.png<>uid://d2xvfrn46nxqe::::res://voxel_gi.gd<>uid://b67sctinw6pnp::::res://Objects/apartment_prop_bed_baseColor.png
 grow_world.VoxelGI_data.res::VoxelGIData::1242025343073731601::1781929154::0::1::::<><><>0<>0<><>::
 material.tres::StandardMaterial3D::6797886309249518224::1781924738::0::1::::<><><>0<>0<><>::uid://da2hl1x6vq7f6::::res://plastered_wall_04_diff_4k.jpg
-outerworld.tscn::PackedScene::4851339754865117619::1781932362::0::1::::<><><>0<>0<><>::uid://bb4xtar6hps1c::::res://player.tscn<>uid://c6cghyt2s30in::::res://addons/zylann.hterrain/hterrain.gd<>res://Terrain/data.hterrain<>uid://bpgo787dxc8k3::::res://addons/zylann.hterrain/hterrain_texture_set.gd
+outerworld.tscn::PackedScene::4851339754865117619::1781933290::0::1::::<><><>0<>0<><>::uid://xjhue33k2xuw::::res://panorama_image.png<>uid://bb4xtar6hps1c::::res://player.tscn<>uid://c6cghyt2s30in::::res://addons/zylann.hterrain/hterrain.gd<>uid://cxce7ycc3c3jg::::res://Terrain/data.hterrain<>uid://bpgo787dxc8k3::::res://addons/zylann.hterrain/hterrain_texture_set.gd
 panorama_image.png::CompressedTexture2D::1633383792923313938::1781932985::1781932988::1::::<><><>0<>0<>ec210da9146a438ca500ce0d4c67723a<>res://.godot/imported/panorama_image.png-dc754b58f8837ad6d82485f39c8f4d1c.s3tc.ctex::
 plastered_wall_04_diff_4k.jpg::CompressedTexture2D::7215446315696068793::1781924525::1781924556::1::::<><><>0<>0<>ad01bb9fb1fb3d1fee837093a3901a3b<>res://.godot/imported/plastered_wall_04_diff_4k.jpg-db67aff6128771338cb801a4bb041473.s3tc.ctex::
 plastered_wall_04_disp_4k.png::CompressedTexture2D::7325017182010199632::1781924525::1781924527::1::::<><><>0<>0<>6b489f16b126e694d702adf89b77cc13<>res://.godot/imported/plastered_wall_04_disp_4k.png-6f3c85c129b6dc94d154b7907991bf40.ctex::
 player.tscn::PackedScene::2517906930796827462::1781930454::0::1::::<><><>0<>0<><>::uid://bu73kav3yxf2r::::res://scripts/player.gd<>uid://c5s8tul6770lu::::res://crt.gdshader
+transition.tscn::PackedScene::1849379708633564726::1781940875::0::1::::<><><>0<>0<><>::
 voxel_gi.gd::GDScript::9103126417806174264::1781924873::0::1::::<>VoxelGI<><>0<>1<><>::
 ::res://2DGame/::1781691664
 20 Enemies.png::CompressedTexture2D::2411369546566135717::1781687053::1781691660::1::::<><><>0<>0<>a3b1fcfa580250c9d53bb2260df2ef16<>res://.godot/imported/20 Enemies.png-d9f18973f91690e9999fd05611d1f9d0.ctex::

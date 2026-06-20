@@ -59,6 +59,9 @@ func _physics_process(delta):
 		
 	if Input.is_action_just_pressed("Interact"):
 		print("Teleporting Now!`")
+		await Transition.blink(func():
+			get_tree().change_scene_to_file("res://outerworld.tscn")
+		)
 	if in_outerworld == false:
 		
 		if not is_on_floor():

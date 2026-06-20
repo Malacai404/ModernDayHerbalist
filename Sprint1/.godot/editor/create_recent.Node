@@ -1,3 +1,7 @@
+AnimationPlayer
+ColorRect
+VideoStreamPlayer
+CanvasLayer
 HTerrain
 StaticBody3D
 CollisionShape3D
@@ -9,6 +13,3 @@ DirectionalLight3D
 VoxelGI
 RichTextLabel
 RayCast3D
-Area3D
-ColorRect
-Control
