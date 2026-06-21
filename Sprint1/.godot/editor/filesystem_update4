@@ -24,3 +24,10 @@ res://objects/scattershot.tscn
 res://scripts/scattershot.gd
 res://scripts/enemy.gd
 res://enemy.tscn
+res://shaders/crt.gdshader
+res://scripts/MusicManager.gd
+res://scripts/music_player_ui.gd
+res://scripts/grow_world.gd
+res://music_player_ui.tscn
+res://scenes/outerworld.gd
+res://scripts/settingsdata.gd

@@ -1,7 +1,7 @@
 shader_type spatial;
 render_mode unshaded, depth_test_disabled, cull_disabled;
 
-uniform int pixel_size : hint_range(1, 512) = 6;
+uniform int pixel_size : hint_range(1, 800) = 6;
 uniform float curvature : hint_range(0.0, 0.25) = 0.08;     // Keep this low for clean edges
 uniform float scanline_intensity : hint_range(0.0, 1.0) = 0.5;
 uniform float vignette : hint_range(0.0, 1.0) = 0.35;

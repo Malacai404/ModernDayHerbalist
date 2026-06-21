@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://jppr07f2g8wl"]
+
+[ext_resource type="Script" uid="uid://bhncbjwt7xjfj" path="res://scripts/music_player_ui.gd" id="1_2dmms"]
+
+[node name="MusicPlayerUI" type="CanvasLayer" unique_id=1295641125]
+follow_viewport_enabled = true
+script = ExtResource("1_2dmms")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1954607852]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 28.0
+offset_top = -166.0
+offset_right = 313.0
+offset_bottom = -22.0
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=18016795]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/HBoxContainer" unique_id=1103222482]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/HBoxContainer/MarginContainer" unique_id=889130248]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/HBoxContainer" unique_id=167671782]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=43781387]
+layout_mode = 2
+text = "Track"
+
+[node name="ArtistLabel" type="Label" parent="PanelContainer/HBoxContainer/VBoxContainer" unique_id=150628926]
+layout_mode = 2
+text = "Artist"

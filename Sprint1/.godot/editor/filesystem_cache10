@@ -1,7 +1,7 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1781951560
+::res://::1782024719
 Contributions.txt::TextFile::-1::1781948911::0::1::::<><><>0<>0<><>::
-enemy.tscn::PackedScene::2088994181581926144::1781951560::0::1::::<><><>0<>0<><>::uid://djuoyf6tut6g0::::res://scripts/enemy.gd
+enemy.tscn::PackedScene::2088994181581926144::1782018862::0::1::::<><><>0<>0<><>::uid://djuoyf6tut6g0::::res://scripts/enemy.gd<>uid://dhk4fjpog5ixe::::res://models/enemy/enemy_Material.png<>uid://bj6fh15ayeuf4::::res://models/enemy/enemy_Sphere Base Color.png
 ::res://2DGame/::1781691664
 20 Enemies.png::CompressedTexture2D::2411369546566135717::1781687053::1781691660::1::::<><><>0<>0<>a3b1fcfa580250c9d53bb2260df2ef16<>res://.godot/imported/20 Enemies.png-d9f18973f91690e9999fd05611d1f9d0.ctex::
 Bed.fbx::PackedScene::8160613170871551328::1781687053::1781691664::1::::<><><>0<>0<>65280054cd1b646b7cd4d511eaa72a2d<>res://.godot/imported/Bed.fbx-9c712ed86ac0d1cc8e420dcafd129650.scn::
@@ -435,36 +435,51 @@ apartment_carpet.jpg::CompressedTexture2D::5663789939528427639::1781928991::1781
 apartment_plastered_wall_04_diff_4k.jpg::CompressedTexture2D::2649183030202090597::1781928991::1781942912::1::::<><><>0<>0<>59416de969f1e0b03bdfad6d16e5c77e<>res://.godot/imported/apartment_plastered_wall_04_diff_4k.jpg-c7d9b9f19cef058a1af71d0b3c8f6ac9.s3tc.ctex::
 apartment_prop_bed_baseColor.png::CompressedTexture2D::4629432412983008125::1781928996::1781942912::1::::<><><>0<>0<>606fc55df73ed1a6184d02a7aec8215b<>res://.godot/imported/apartment_prop_bed_baseColor.png-55be14d7cc32a5f6ff34458e2f95cc49.s3tc.ctex::
 apartment_rough-white-cement-plastered-wall-texture.png::CompressedTexture2D::8735875648641338411::1781928995::1781942912::1::::<><><>0<>0<>516a7da310b5b69ada5256991c7a909d<>res://.godot/imported/apartment_rough-white-cement-plastered-wall-texture.png-0da19f7662470d96df6854167425c42d.s3tc.ctex::
-::res://models/enemy/::1781952081
+::res://models/enemy/::1781952082
 enemy.glb::PackedScene::2125590266895646751::1781952081::1781952082::1::::<><><>0<>0<>13831beb59c405cea5b7164e957aca8c<>res://.godot/imported/enemy.glb-caab3d2ab3d3f18ddc09dd5b76a4b00b.scn::uid://dhk4fjpog5ixe::::res://models/enemy/enemy_Material.png<>uid://bj6fh15ayeuf4::::res://models/enemy/enemy_Sphere Base Color.png
 enemy_Material.png::CompressedTexture2D::7672997952373400194::1781952082::1781952082::1::::<><><>0<>0<>2ea7856ce8d6e0ec2b9a460277d9c349<>res://.godot/imported/enemy_Material.png-8b84debbafef23f6152229e8ae58360f.s3tc.ctex::
 enemy_Sphere Base Color.png::CompressedTexture2D::3082433484315900983::1781952082::1781952082::1::::<><><>0<>0<>c0ef8604cbaf82ce59bee86e98fb52f2<>res://.godot/imported/enemy_Sphere Base Color.png-3aee58146cc0d942cafb62f44aa61541.s3tc.ctex::
-::res://objects/::1781951483
-player.tscn::PackedScene::2517906930796827462::1781950980::0::1::::<><><>0<>0<><>::uid://bu73kav3yxf2r::::res://scripts/player.gd<>uid://c5s8tul6770lu::::res://shaders/crt.gdshader<>uid://dauiwei34bo23::::res://textures/radial.png<>uid://be3c7mf5qpcxg::::res://scripts/slot.gd<>uid://cyti6cf6qhye0::::res://textures/Grape.png<>uid://dpvn6tqfduxs8::::res://textures/T_Square_Edge.png
-scattershot.tscn::PackedScene::5071966997168789804::1781951483::0::1::::<><><>0<>0<><>::uid://d3yargrv3vrcv::::res://scripts/scattershot.gd
+::res://music/::1782024719
+album_three_red_hearts.jpg::CompressedTexture2D::4084114749736724096::1782024713::1782024719::1::::<><><>0<>0<>22ca32e151ce04c386a3ba211cdb172a<>res://.godot/imported/album_three_red_hearts.jpg-0a7be12c950cb3fabe60ee360054684c.ctex::
+InteriorBirdecorator.png::CompressedTexture2D::3359940139799714585::1782023818::1782023819::1::::<><><>0<>0<>1b31402e4cdcb33a14efc3b6d4580962<>res://.godot/imported/InteriorBirdecorator.png-c2be3364c6049257231996fcbe1891e2.ctex::
+Sketchbook2024Metadata.jpg::CompressedTexture2D::3999422198063932235::1782023343::1782023344::1::::<><><>0<>0<>951dd5c85b12d042c4ccfb7ae4bc7c19<>res://.godot/imported/Sketchbook2024Metadata.jpg-7f8ac6fd21d40b1f9f7ccd1ccf1efb4c.ctex::
+Sketchbook2025Metadata.jpg::CompressedTexture2D::7475875189698215235::1782023343::1782023344::1::::<><><>0<>0<>60150459c48ffab757ca0373a3acf2fb<>res://.godot/imported/Sketchbook2025Metadata.jpg-29be01bb122032327f002432347a2c4d.ctex::
+::res://music/audio/::1782024719
+Interior Birdecorator Decorate.ogg::AudioStreamOggVorbis::8590486208234092916::1782024016::1782024016::1::::<><><>0<>0<>92413d04398e1a0f71e49c7e1ee023e2<>res://.godot/imported/Interior Birdecorator Decorate.ogg-fb6e4a2c93b699ed00f7c38fc7ac2fdf.oggvorbisstr::
+LoanShark-Sketchbook 2024-07-19_L04.ogg::AudioStreamOggVorbis::397706445576390506::1782024012::1782024013::1::::<><><>0<>0<>ef37112444d06d402845195be9400b36<>res://.godot/imported/LoanShark-Sketchbook 2024-07-19_L04.ogg-071b812dc9f47cc1cf4d0e7b9b825c71.oggvorbisstr::
+Sketchbook 2024-07-04.ogg::AudioStreamOggVorbis::5071513282169115916::1782024012::1782024013::1::::<><><>0<>0<>062fd2eac6b57acfb6d924c11569a67e<>res://.godot/imported/Sketchbook 2024-07-04.ogg-fe2b600ea8cef936198bfd2e5d44aeaf.oggvorbisstr::
+Sketchbook 2024-12-21.ogg::AudioStreamOggVorbis::4738590172681833889::1782024012::1782024013::1::::<><><>0<>0<>5c8be568223df6f09c6866d9f58e9485<>res://.godot/imported/Sketchbook 2024-12-21.ogg-598264e3ba4657120c47696757c45805.oggvorbisstr::
+Sketchbook 2025-11-13.ogg::AudioStreamOggVorbis::5790879821168355097::1782024012::1782024013::1::::<><><>0<>0<>a9ced56eacf7592c9d342f1a22eaaaad<>res://.godot/imported/Sketchbook 2025-11-13.ogg-a3073b6f61a2a64b7cb0ad79c34147d2.oggvorbisstr::
+Sketchbook 2025-12-14.ogg::AudioStreamOggVorbis::5267379501552348730::1782024012::1782024013::1::::<><><>0<>0<>dadd6430617755e2e29e74b1f1cc76f6<>res://.godot/imported/Sketchbook 2025-12-14.ogg-cbed8f2e0c23e61bc7c60ca004629810.oggvorbisstr::
+Three Red Hearts Go (No Vocal).ogg::AudioStreamOggVorbis::855388449680980993::1782024012::1782024013::1::::<><><>0<>0<>4f776604c77cabddcf63288bb061953a<>res://.godot/imported/Three Red Hearts Go (No Vocal).ogg-0c87bac1c855277c448e94c70cbb1897.oggvorbisstr::
+Three Red Hearts Modern Bits.ogg::AudioStreamOggVorbis::6573007673803090856::1782024012::1782024013::1::::<><><>0<>0<>25728f97bd4085a1a2cab35e3c850ee7<>res://.godot/imported/Three Red Hearts Modern Bits.ogg-893a977dde1a859a688b45a954c3103c.oggvorbisstr::
+::res://objects/::1782024578
+player.tscn::PackedScene::2517906930796827462::1782024578::0::1::::<><><>0<>0<><>::uid://bu73kav3yxf2r::::res://scripts/player.gd<>uid://c5s8tul6770lu::::res://shaders/crt.gdshader<>uid://dauiwei34bo23::::res://textures/radial.png<>uid://be3c7mf5qpcxg::::res://scripts/slot.gd<>uid://cyti6cf6qhye0::::res://textures/Grape.png<>uid://dpvn6tqfduxs8::::res://textures/T_Square_Edge.png
+scattershot.tscn::PackedScene::5071966997168789804::1782018882::0::1::::<><><>0<>0<><>::uid://d3yargrv3vrcv::::res://scripts/scattershot.gd
 ::res://resources/::1781945824
 grow_world.VoxelGI_data.res::VoxelGIData::1242025343073731601::1781945824::0::1::::<><><>0<>0<><>::
-::res://scenes/::1781949529
+::res://scenes/::1781952230
 2d_game.tscn::PackedScene::2626270761179792299::1781942957::0::1::::<><><>0<>0<><>::uid://cypnnkiv58lkh::::res://scripts/2DPlatformer.gd<>uid://xkh4bbuasp7s::::res://scripts/2d_game.gd<>uid://fdwmuv37ck1g::::res://2DGame/Main Characters/Mask Dude/Fall (32x32).png<>uid://c4ra0mbfnenxe::::res://2DGame/Main Characters/Mask Dude/Idle (32x32).png<>uid://buhy7u3rjn2bb::::res://2DGame/Main Characters/Mask Dude/Jump (32x32).png<>uid://c86mxj1p05hox::::res://2DGame/Main Characters/Mask Dude/Run (32x32).png<>uid://dk0vn6ddbedly::::res://2DGame/Terrain/Terrain (16x16).png<>uid://do7pbu4m10n8e::::res://2DGame/Background/Yellow.png<>uid://bof2je4fisr7::::res://2DGame/Objects/obstacle_one.tscn<>uid://cxtdd1rhyyqnl::::res://2DGame/Objects/obstacle.gd<>uid://bsigo2e8k6m4i::::res://2DGame/Objects/obstacle_three.tscn<>uid://b5atdowfob8m1::::res://2DGame/Objects/obstacle_two.tscn
 bed_area.gd::GDScript::1511407570690309832::1781949529::0::1::::<>Area3D<><>0<>0<><>::
 grape_collector.gd::GDScript::2064546364564132059::1781947036::0::1::::<>Area3D<><>0<>0<><>::
 grow_world.tscn::PackedScene::1147621574727396615::1781948911::0::1::::<><><>0<>0<><>::uid://cmxt17q030jud::::res://models/apartment/apartment_carpet.jpg<>uid://bd0jwmaxnac2x::::res://models/apartment/apartment_plastered_wall_04_diff_4k.jpg<>uid://dwpyuirxmklj4::::res://models/apartment/apartment_rough-white-cement-plastered-wall-texture.png<>uid://b67sctinw6pnp::::res://models/apartment/apartment_prop_bed_baseColor.png<>uid://vsewreerygoe::::res://scenes/bed_area.gd<>uid://rxv8ggjohqmb::::res://resources/grow_world.VoxelGI_data.res<>uid://d2xvfrn46nxqe::::res://scripts/voxel_gi.gd<>uid://bb4xtar6hps1c::::res://objects/player.tscn<>uid://cyti6cf6qhye0::::res://textures/Grape.png<>uid://4oc1og3hasit::::res://scenes/grape_collector.gd
-outerworld.tscn::PackedScene::4851339754865117619::1781943063::0::1::::<><><>0<>0<><>::uid://xjhue33k2xuw::::res://textures/panorama_image.png<>uid://bb4xtar6hps1c::::res://objects/player.tscn<>uid://c6cghyt2s30in::::res://addons/zylann.hterrain/hterrain.gd<>uid://cxce7ycc3c3jg::::res://terraininfo/data.hterrain<>uid://bpgo787dxc8k3::::res://addons/zylann.hterrain/hterrain_texture_set.gd
-::res://scripts/::1781951560
+outerworld.tscn::PackedScene::4851339754865117619::1781952230::0::1::::<><><>0<>0<><>::uid://xjhue33k2xuw::::res://textures/panorama_image.png<>uid://bb4xtar6hps1c::::res://objects/player.tscn<>uid://c6cghyt2s30in::::res://addons/zylann.hterrain/hterrain.gd<>uid://cxce7ycc3c3jg::::res://terraininfo/data.hterrain<>uid://bpgo787dxc8k3::::res://addons/zylann.hterrain/hterrain_texture_set.gd<>uid://406ot5bc41ou::::res://enemy.tscn
+::res://scripts/::1782024578
 2DPlatformer.gd::GDScript::6489152355824084495::1781687053::0::1::::<>CharacterBody2D<><>0<>0<><>::
 2d_game.gd::GDScript::1635464043165538782::1781687053::0::1::::<>Node2D<><>0<>0<><>::
-grape.gd::GDScript::7237265238892809879::1781951104::0::1::::Grape<>Item<><>0<>0<><>::
+enemy.gd::GDScript::7833142407251708377::1782018789::0::1::::enemy<>CharacterBody3D<><>0<>0<><>::
+grape.gd::GDScript::7237265238892809879::1782018417::0::1::::Grape<>Item<><>0<>0<><>::
 item.gd::GDScript::4338776872626694259::1781947939::0::1::::Item<>Resource<><>0<>0<><>::
-player.gd::GDScript::3857975612066238899::1781951266::0::1::::player<>CharacterBody3D<><>0<>0<><>::
+MusicManager.gd::GDScript::7062171361485217763::1782024578::0::1::::<>Node<><>0<>0<><>::
+player.gd::GDScript::3857975612066238899::1782021043::0::1::::player<>CharacterBody3D<><>0<>0<><>::
 PlayerData.gd::GDScript::4431590480116781324::1781949436::0::1::::<>Node<><>0<>0<><>::
-enemy.gd::GDScript::7833142407251708377::1781951560::0::1::::enemy<>CharacterBody3D<><>0<>0<><>::
-scattershot.gd::GDScript::9174125439932210149::1781951522::0::1::::<>Area3D<><>0<>0<><>::
+scattershot.gd::GDScript::9174125439932210149::1782018882::0::1::::<>Area3D<><>0<>0<><>::
 slot.gd::GDScript::2725157854138654484::1781947562::0::1::::<>Control<><>0<>0<><>::
 transition.gd::GDScript::5457660128306990759::1781941359::0::1::::<>CanvasLayer<><>0<>0<><>::
 voxel_gi.gd::GDScript::9103126417806174264::1781924873::0::1::::<>VoxelGI<><>0<>1<><>::
-::res://shaders/::1781942983
+::res://shaders/::1782018936
 blink.gdshader::Shader::3120171788733057928::1781941471::0::1::::<><><>0<>0<><>::
-crt.gdshader::Shader::6917704135858135310::1781941026::0::1::::<><><>0<>0<><>::
+crt.gdshader::Shader::6917704135858135310::1782018936::0::1::::<><><>0<>0<><>::
 ::res://terraininfo/::1781948424
 color.png::CompressedTexture2D::2764829765642862529::1781932362::1781942933::1::::<><><>0<>0<>6814cc5099580c0d4b637b817561a0f9<>res://.godot/imported/color.png-cb4963ae46b860e8af689f72ac935107.ctex::
 data.hterrain::Resource::6391614803723500856::1781932362::0::1::::<><><>0<>0<><>::

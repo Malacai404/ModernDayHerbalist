@@ -18,6 +18,9 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 Transition="*uid://1l4apyw074so"
 PlayerData="*uid://b4exwa16xu1ye"
+MusicManager="*uid://c7u76vxpoc2v4"
+MusicPlayerUi="*uid://jppr07f2g8wl"
+SettingsData="*uid://bjssbymkj8vec"
 
 [display]
 
@@ -28,6 +31,10 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+
+[global_group]
+
+enemy=""
 
 [input]
 
@@ -103,6 +110,11 @@ leftclick={
 rightclick={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+menu={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 

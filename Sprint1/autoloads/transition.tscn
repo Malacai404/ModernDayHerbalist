@@ -61,6 +61,7 @@ _data = {
 }
 
 [node name="Transition" type="CanvasLayer" unique_id=1222887504]
+layer = 196
 script = ExtResource("1_ay4el")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=546205295]

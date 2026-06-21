@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://fwwfxd37cxne"
+path="res://.godot/imported/LoanShark-Sketchbook 2024-07-19_L04.ogg-071b812dc9f47cc1cf4d0e7b9b825c71.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/audio/LoanShark-Sketchbook 2024-07-19_L04.ogg"
+dest_files=["res://.godot/imported/LoanShark-Sketchbook 2024-07-19_L04.ogg-071b812dc9f47cc1cf4d0e7b9b825c71.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

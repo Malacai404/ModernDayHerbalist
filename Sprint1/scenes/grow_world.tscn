@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://ql6fotrvhipb"]
 
+[ext_resource type="Script" uid="uid://bro2k42jci1rm" path="res://scripts/grow_world.gd" id="1_lj70i"]
 [ext_resource type="Texture2D" uid="uid://cmxt17q030jud" path="res://models/apartment/apartment_carpet.jpg" id="1_qm182"]
 [ext_resource type="Texture2D" uid="uid://bd0jwmaxnac2x" path="res://models/apartment/apartment_plastered_wall_04_diff_4k.jpg" id="2_5ji1o"]
 [ext_resource type="Texture2D" uid="uid://dwpyuirxmklj4" path="res://models/apartment/apartment_rough-white-cement-plastered-wall-texture.png" id="3_smohq"]
@@ -558,6 +559,7 @@ size = Vector3(3.1375732, 2.967102, 2.4003906)
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_byl5l"]
 
 [node name="grow_world" type="Node3D" unique_id=1431210748]
+script = ExtResource("1_lj70i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1798939257]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

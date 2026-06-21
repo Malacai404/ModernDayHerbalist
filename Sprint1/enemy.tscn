@@ -86,7 +86,7 @@ shadow_mesh = SubResource("ArrayMesh_8eahr")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_epg4t"]
 
-[node name="enemy" type="CharacterBody3D" unique_id=400256860]
+[node name="enemy" type="CharacterBody3D" unique_id=400256860 groups=["enemy"]]
 transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
 script = ExtResource("1_7k104")
 

@@ -23,12 +23,17 @@ var selected_slot := 0
 @onready var player_collision = $playerCollision
 @onready var player_head = $playerHead
 
+
 @onready var look_cast = $playerHead/lookCast
 @onready var item_slot_1: Control = $UI/ItemSlots/ItemSlot_1
 @onready var item_slot_2: Control = $UI/ItemSlots/ItemSlot_2
 @onready var item_slot_3: Control = $UI/ItemSlots/ItemSlot_3
 @onready var item_slot_4: Control = $UI/ItemSlots/ItemSlot_4
 @onready var item_slot_5: Control = $UI/ItemSlots/ItemSlot_5
+
+@onready var sens_slider: HSlider = $UI/CanvasLayer/Settings/Sens/SensSlider
+@onready var volume_slider: HSlider = $UI/CanvasLayer/Settings/Sens2/VolumeSlider
+
 
 
 var attack_cooldown = 0.5
@@ -49,6 +54,8 @@ func _kill():
 	print("You died!")
 
 func _ready():
+	volume_slider.value = SettingsData.volume_settings
+	sens_slider.value = SettingsData.sens_settings
 	inventory = PlayerData.inventory
 	selected_slot = PlayerData.selected_slot
 	update_slot_highlight()
@@ -129,6 +136,14 @@ func use_selected_item_left_click():
 			_handle_inventory()
 	
 func _physics_process(delta):
+	if Input.is_action_just_pressed("menu"):
+		$UI/CanvasLayer/Settings.visible = !$UI/CanvasLayer/Settings.visible
+		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	SettingsData.volume_settings = volume_slider.value
+	SettingsData.sens_settings = sens_slider.value
 	attack_cooldown -= delta
 	if(attack_cooldown > 0):
 		var ratio =  attack_cooldown/attack_cooldown_save

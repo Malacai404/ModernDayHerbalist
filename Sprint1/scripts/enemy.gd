@@ -9,3 +9,4 @@ func damage(hurt):
 func _physics_process(delta: float) -> void:
 	if health <= 0:
 		queue_free()
+	move_and_slide()
