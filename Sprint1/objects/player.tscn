@@ -13,23 +13,15 @@
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4flbx"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i3pqv"]
-render_priority = 0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i825w"]
 shader = ExtResource("2_onrkg")
-shader_parameter/pixel_size = 800
+shader_parameter/pixel_size = 640
 shader_parameter/curvature = 0.010000000475
 shader_parameter/scanline_intensity = 0.250000011875
-shader_parameter/vignette = 0.5
+shader_parameter/vignette = 0.50000002375
 shader_parameter/noise_amount = 0.010000000475
-shader_parameter/brightness = 1.05
+shader_parameter/brightness = 1.08
 shader_parameter/corner_round = 0.0250000011875
-
-[sub_resource type="QuadMesh" id="QuadMesh_hqtel"]
-material = SubResource("ShaderMaterial_i3pqv")
-flip_faces = true
-size = Vector2(2, 2.025)
-subdivide_width = 1
-subdivide_depth = 1
 
 [node name="playerCharacter" type="CharacterBody3D" unique_id=212589539]
 script = ExtResource("1_4flbx")
@@ -49,13 +41,6 @@ current = true
 near = 0.001
 far = 4210.25
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="playerHead/playerCam" unique_id=1810636975]
-process_priority = 10
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.1673637)
-cast_shadow = 0
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_hqtel")
-
 [node name="lookCast" type="RayCast3D" parent="playerHead" unique_id=670576753]
 target_position = Vector3(0, 0, -5.75)
 collide_with_areas = true
@@ -69,7 +54,19 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="CRT" type="CanvasLayer" parent="UI" unique_id=660291907]
+
+[node name="ColorRect" type="ColorRect" parent="UI/CRT" unique_id=1451731513]
+material = SubResource("ShaderMaterial_i825w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=747844346]
+layer = 10
 
 [node name="CrosshairContainer" type="Control" parent="UI/CanvasLayer" unique_id=1369265742]
 layout_mode = 3
@@ -155,6 +152,7 @@ flip_h = true
 flip_v = true
 
 [node name="Settings" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=262605141]
+layer = 10
 visible = false
 offset = Vector2(0, 48.415)
 transform = Transform2D(1, 0, 0, 1, 0, 48.415)
@@ -208,9 +206,9 @@ offset_top = 4.0
 offset_right = 32.0
 offset_bottom = 20.0
 min_value = 0.001
-max_value = 0.01
+max_value = 0.1
 step = 0.001
-value = 0.005
+value = 0.05
 
 [node name="Sens2" type="Control" parent="UI/CanvasLayer/Settings" unique_id=687524687]
 layout_mode = 3
@@ -243,8 +241,7 @@ offset_bottom = 20.0
 min_value = -60.0
 max_value = 60.0
 
-[node name="Hovertext" type="RichTextLabel" parent="UI" unique_id=965269367]
-layout_mode = 1
+[node name="Hovertext" type="RichTextLabel" parent="UI/CanvasLayer" unique_id=965269367]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -260,8 +257,8 @@ mouse_filter = 2
 bbcode_enabled = true
 text = "[font_size=40px] Press E to \"Sleep\"[/font_size]"
 
-[node name="ItemSlots" type="Control" parent="UI" unique_id=1717896701]
-layout_mode = 1
+[node name="ItemSlots" type="Control" parent="UI/CanvasLayer" unique_id=1717896701]
+layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -273,8 +270,9 @@ offset_right = 28.0
 offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 
-[node name="ItemSlot_1" type="Control" parent="UI/ItemSlots" unique_id=1195667777]
+[node name="ItemSlot_1" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=1195667777]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -287,9 +285,10 @@ offset_right = -266.9566
 offset_bottom = -13.043518
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("3_nmc1l")
 
-[node name="ColorRect" type="ColorRect" parent="UI/ItemSlots/ItemSlot_1" unique_id=199519396]
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=199519396]
 layout_mode = 1
 offset_left = -79.0
 offset_top = -120.0
@@ -297,7 +296,7 @@ offset_right = 49.0
 offset_bottom = 8.0
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
-[node name="TextureRect" type="TextureRect" parent="UI/ItemSlots/ItemSlot_1" unique_id=158707981]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=158707981]
 texture_filter = 1
 layout_mode = 0
 offset_left = -65.0
@@ -306,7 +305,7 @@ offset_right = 34.0
 offset_bottom = 1.0
 texture = ExtResource("3_uxov2")
 
-[node name="Label" type="Label" parent="UI/ItemSlots/ItemSlot_1" unique_id=1783586550]
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=1783586550]
 layout_mode = 0
 offset_left = -43.0
 offset_top = -118.0
@@ -314,7 +313,7 @@ offset_right = 12.0
 offset_bottom = -95.0
 text = "Grapes"
 
-[node name="CountLabel" type="Label" parent="UI/ItemSlots/ItemSlot_1" unique_id=32938557]
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=32938557]
 layout_mode = 0
 offset_left = 24.0
 offset_top = -100.0
@@ -322,7 +321,7 @@ offset_right = 47.0
 offset_bottom = -77.0
 text = "17"
 
-[node name="ItemSlot_2" type="Control" parent="UI/ItemSlots" unique_id=1730034420]
+[node name="ItemSlot_2" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=1730034420]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -335,9 +334,10 @@ offset_right = -121.956604
 offset_bottom = -13.043518
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("3_nmc1l")
 
-[node name="ColorRect" type="ColorRect" parent="UI/ItemSlots/ItemSlot_2" unique_id=582056993]
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=582056993]
 layout_mode = 1
 offset_left = -79.0
 offset_top = -120.0
@@ -345,7 +345,7 @@ offset_right = 49.0
 offset_bottom = 8.0
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
-[node name="TextureRect" type="TextureRect" parent="UI/ItemSlots/ItemSlot_2" unique_id=818811265]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=818811265]
 texture_filter = 1
 layout_mode = 0
 offset_left = -65.0
@@ -354,7 +354,7 @@ offset_right = 34.0
 offset_bottom = 1.0
 texture = ExtResource("3_uxov2")
 
-[node name="Label" type="Label" parent="UI/ItemSlots/ItemSlot_2" unique_id=1291828076]
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=1291828076]
 layout_mode = 0
 offset_left = -43.0
 offset_top = -118.0
@@ -362,7 +362,7 @@ offset_right = 12.0
 offset_bottom = -95.0
 text = "Grapes"
 
-[node name="CountLabel" type="Label" parent="UI/ItemSlots/ItemSlot_2" unique_id=1980237226]
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=1980237226]
 layout_mode = 0
 offset_left = 24.0
 offset_top = -100.0
@@ -370,7 +370,7 @@ offset_right = 47.0
 offset_bottom = -77.0
 text = "17"
 
-[node name="ItemSlot_3" type="Control" parent="UI/ItemSlots" unique_id=852530861]
+[node name="ItemSlot_3" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=852530861]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -383,9 +383,10 @@ offset_right = 23.043396
 offset_bottom = -13.043518
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("3_nmc1l")
 
-[node name="ColorRect" type="ColorRect" parent="UI/ItemSlots/ItemSlot_3" unique_id=1290809676]
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=1290809676]
 layout_mode = 1
 offset_left = -79.0
 offset_top = -120.0
@@ -393,7 +394,7 @@ offset_right = 49.0
 offset_bottom = 8.0
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
-[node name="TextureRect" type="TextureRect" parent="UI/ItemSlots/ItemSlot_3" unique_id=1654770359]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=1654770359]
 texture_filter = 1
 layout_mode = 0
 offset_left = -65.0
@@ -402,7 +403,7 @@ offset_right = 34.0
 offset_bottom = 1.0
 texture = ExtResource("3_uxov2")
 
-[node name="Label" type="Label" parent="UI/ItemSlots/ItemSlot_3" unique_id=1001525171]
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=1001525171]
 layout_mode = 0
 offset_left = -43.0
 offset_top = -118.0
@@ -410,7 +411,7 @@ offset_right = 12.0
 offset_bottom = -95.0
 text = "Grapes"
 
-[node name="CountLabel" type="Label" parent="UI/ItemSlots/ItemSlot_3" unique_id=506989275]
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=506989275]
 layout_mode = 0
 offset_left = 24.0
 offset_top = -100.0
@@ -418,7 +419,7 @@ offset_right = 47.0
 offset_bottom = -77.0
 text = "17"
 
-[node name="ItemSlot_4" type="Control" parent="UI/ItemSlots" unique_id=1538681804]
+[node name="ItemSlot_4" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=1538681804]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -431,9 +432,10 @@ offset_right = 168.0434
 offset_bottom = -13.043518
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("3_nmc1l")
 
-[node name="ColorRect" type="ColorRect" parent="UI/ItemSlots/ItemSlot_4" unique_id=1235046599]
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=1235046599]
 layout_mode = 1
 offset_left = -79.0
 offset_top = -120.0
@@ -441,7 +443,7 @@ offset_right = 49.0
 offset_bottom = 8.0
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
-[node name="TextureRect" type="TextureRect" parent="UI/ItemSlots/ItemSlot_4" unique_id=1534032360]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=1534032360]
 texture_filter = 1
 layout_mode = 0
 offset_left = -65.0
@@ -450,7 +452,7 @@ offset_right = 34.0
 offset_bottom = 1.0
 texture = ExtResource("3_uxov2")
 
-[node name="Label" type="Label" parent="UI/ItemSlots/ItemSlot_4" unique_id=763717279]
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=763717279]
 layout_mode = 0
 offset_left = -43.0
 offset_top = -118.0
@@ -458,7 +460,7 @@ offset_right = 12.0
 offset_bottom = -95.0
 text = "Grapes"
 
-[node name="CountLabel" type="Label" parent="UI/ItemSlots/ItemSlot_4" unique_id=1582547869]
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=1582547869]
 layout_mode = 0
 offset_left = 24.0
 offset_top = -100.0
@@ -466,7 +468,7 @@ offset_right = 47.0
 offset_bottom = -77.0
 text = "17"
 
-[node name="ItemSlot_5" type="Control" parent="UI/ItemSlots" unique_id=2094832232]
+[node name="ItemSlot_5" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=2094832232]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -479,9 +481,10 @@ offset_right = 313.0434
 offset_bottom = -13.043518
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("3_nmc1l")
 
-[node name="ColorRect" type="ColorRect" parent="UI/ItemSlots/ItemSlot_5" unique_id=593705927]
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=593705927]
 layout_mode = 1
 offset_left = -79.0
 offset_top = -120.0
@@ -489,7 +492,7 @@ offset_right = 49.0
 offset_bottom = 8.0
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
-[node name="TextureRect" type="TextureRect" parent="UI/ItemSlots/ItemSlot_5" unique_id=1490531997]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=1490531997]
 texture_filter = 1
 layout_mode = 0
 offset_left = -65.0
@@ -498,7 +501,7 @@ offset_right = 34.0
 offset_bottom = 1.0
 texture = ExtResource("3_uxov2")
 
-[node name="Label" type="Label" parent="UI/ItemSlots/ItemSlot_5" unique_id=574397247]
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=574397247]
 layout_mode = 0
 offset_left = -43.0
 offset_top = -118.0
@@ -506,7 +509,7 @@ offset_right = 12.0
 offset_bottom = -95.0
 text = "Grapes"
 
-[node name="CountLabel" type="Label" parent="UI/ItemSlots/ItemSlot_5" unique_id=1571646808]
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=1571646808]
 layout_mode = 0
 offset_left = 24.0
 offset_top = -100.0

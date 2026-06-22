@@ -9,7 +9,7 @@ const world_speed = 7.5
 var mouse_sensitivity = 0.005
 var current_speed = 5.0
 
-var vertical_limit_deg = 45
+var vertical_limit_deg = 60
 
 var bed_dialogue = false
 
@@ -25,11 +25,11 @@ var selected_slot := 0
 
 
 @onready var look_cast = $playerHead/lookCast
-@onready var item_slot_1: Control = $UI/ItemSlots/ItemSlot_1
-@onready var item_slot_2: Control = $UI/ItemSlots/ItemSlot_2
-@onready var item_slot_3: Control = $UI/ItemSlots/ItemSlot_3
-@onready var item_slot_4: Control = $UI/ItemSlots/ItemSlot_4
-@onready var item_slot_5: Control = $UI/ItemSlots/ItemSlot_5
+@onready var item_slot_1: Control = $UI/CanvasLayer/ItemSlots/ItemSlot_1
+@onready var item_slot_2: Control = $UI/CanvasLayer/ItemSlots/ItemSlot_2
+@onready var item_slot_3: Control = $UI/CanvasLayer/ItemSlots/ItemSlot_3
+@onready var item_slot_4: Control = $UI/CanvasLayer/ItemSlots/ItemSlot_4
+@onready var item_slot_5: Control = $UI/CanvasLayer/ItemSlots/ItemSlot_5
 
 @onready var sens_slider: HSlider = $UI/CanvasLayer/Settings/Sens/SensSlider
 @onready var volume_slider: HSlider = $UI/CanvasLayer/Settings/Sens2/VolumeSlider
@@ -39,7 +39,8 @@ var selected_slot := 0
 var attack_cooldown = 0.5
 var attack_cooldown_save = 0.5
 
-@onready var Hovertext: RichTextLabel = $UI/Hovertext
+@onready var hovertext: RichTextLabel = $UI/CanvasLayer/Hovertext
+
 
 @onready var item_slots = [item_slot_1, item_slot_2, item_slot_3, item_slot_4, item_slot_5]
 
@@ -55,7 +56,7 @@ func _kill():
 
 func _ready():
 	volume_slider.value = SettingsData.volume_settings
-	sens_slider.value = SettingsData.sens_settings
+	sens_slider.value = SettingsData.sens_settings  * 10
 	inventory = PlayerData.inventory
 	selected_slot = PlayerData.selected_slot
 	update_slot_highlight()
@@ -143,7 +144,8 @@ func _physics_process(delta):
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SettingsData.volume_settings = volume_slider.value
-	SettingsData.sens_settings = sens_slider.value
+	SettingsData.sens_settings = sens_slider.value / 10
+	mouse_sensitivity = sens_slider.value / 10
 	attack_cooldown -= delta
 	if(attack_cooldown > 0):
 		var ratio =  attack_cooldown/attack_cooldown_save
@@ -155,12 +157,12 @@ func _physics_process(delta):
 		if collider and collider.has_method("get_hover_text"):
 			if Input.is_action_just_pressed("Interact"):
 				collider.activate($".")
-			Hovertext.text = str(collider.get_hover_text())
-			Hovertext.show()
+			hovertext.text = str(collider.get_hover_text())
+			hovertext.show()
 		else:
-			Hovertext.hide()
+			hovertext.hide()
 	else:
-		Hovertext.hide()
+		hovertext.hide()
 	
 		
 	if in_outerworld == false:

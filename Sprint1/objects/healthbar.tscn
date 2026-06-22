@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://3k4tpluy8syc"]
+
+[ext_resource type="Script" uid="uid://d35ssq4ku1801" path="res://scripts/healthbar.gd" id="1_176uk"]
+[ext_resource type="Texture2D" uid="uid://cx55rt1iedtm2" path="res://textures/squarewhite.png" id="1_a076a"]
+[ext_resource type="Texture2D" uid="uid://w20bk7dnos6h" path="res://textures/squarered.png" id="2_176uk"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_ipdrq"]
+viewport_path = NodePath("SubViewport")
+
+[node name="healthbar" type="Node3D" unique_id=1901726005]
+script = ExtResource("1_176uk")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=534175901]
+size = Vector2i(128, 16)
+render_target_update_mode = 4
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="SubViewport" unique_id=1435823377]
+clip_contents = true
+custom_minimum_size = Vector2(128, 16)
+offset_right = 40.0
+offset_bottom = 40.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_a076a")
+texture_progress = ExtResource("2_176uk")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=706385745]
+billboard = 1
+texture = SubResource("ViewportTexture_ipdrq")

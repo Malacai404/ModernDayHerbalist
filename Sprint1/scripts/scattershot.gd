@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 	var direction = -global_transform.basis.z.normalized()
 	position += direction * speed * delta
 	for i in get_overlapping_bodies():
-		print(i)
 		if i.is_in_group("enemy"):
 			if i.has_method("damage"):
 				i.damage(damage)

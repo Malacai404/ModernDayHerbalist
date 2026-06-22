@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://i3mrnq0n7eyn"]
+
+[ext_resource type="Script" uid="uid://bymivxliqh025" path="res://scripts/bloodparticle.gd" id="1_ei72w"]
+[ext_resource type="AudioStream" uid="uid://b5mrehb8nrch4" path="res://audio/explosion.wav" id="2_54a6t"]
+
+[sub_resource type="Gradient" id="Gradient_qq0lc"]
+colors = PackedColorArray(0.6189329, 1.732707e-06, 3.85046e-07, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ei72w"]
+gradient = SubResource("Gradient_qq0lc")
+
+[sub_resource type="Curve" id="Curve_3a2cy"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 2.067416), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ag543"]
+curve = SubResource("Curve_3a2cy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p6ut1"]
+lifetime_randomness = 1.0
+spread = 180.0
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+gravity = Vector3(0, -4.92, 0)
+damping_min = 4.0
+damping_max = 4.0
+scale_curve = SubResource("CurveTexture_ag543")
+color = Color(1, 0, 0, 1)
+color_ramp = SubResource("GradientTexture1D_ei72w")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wcat3"]
+albedo_color = Color(0.61229926, 1.504086e-06, 5.7756904e-07, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uc777"]
+material = SubResource("StandardMaterial3D_wcat3")
+radius = 0.1
+height = 0.2
+
+[node name="bloodparticle" type="GPUParticles3D" unique_id=1389976122]
+amount = 75
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_p6ut1")
+draw_pass_1 = SubResource("SphereMesh_uc777")
+script = ExtResource("1_ei72w")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=1506883515]
+stream = ExtResource("2_54a6t")
+autoplay = true

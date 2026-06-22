@@ -1,0 +1,525 @@
+[gd_scene format=3 uid="uid://bb4xtar6hps1c"]
+
+[ext_resource type="Script" uid="uid://bu73kav3yxf2r" path="res://scripts/player.gd" id="1_4flbx"]
+[ext_resource type="Shader" uid="uid://c5s8tul6770lu" path="res://shaders/crt.gdshader" id="2_onrkg"]
+[ext_resource type="Texture2D" uid="uid://dauiwei34bo23" path="res://textures/radial.png" id="3_f46kd"]
+[ext_resource type="Script" uid="uid://be3c7mf5qpcxg" path="res://scripts/slot.gd" id="3_nmc1l"]
+[ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="3_uxov2"]
+[ext_resource type="Texture2D" uid="uid://dpvn6tqfduxs8" path="res://textures/T_Square_Edge.png" id="4_3rerk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_i3pqv"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4flbx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3rerk"]
+shader = ExtResource("2_onrkg")
+shader_parameter/pixel_size = 800
+shader_parameter/curvature = 0.0
+shader_parameter/scanline_intensity = 0.250000011875
+shader_parameter/vignette = 0.50000002375
+shader_parameter/noise_amount = 0.010000000475
+shader_parameter/brightness = 1.05000002379593
+shader_parameter/corner_round = 0.0250000011875
+
+[node name="playerCharacter" type="CharacterBody3D" unique_id=212589539]
+script = ExtResource("1_4flbx")
+
+[node name="WorldViewportContainer" type="SubViewportContainer" parent="." unique_id=425401039]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldViewport" type="SubViewport" parent="WorldViewportContainer" unique_id=394405489]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="playerCollision" type="CollisionShape3D" parent="." unique_id=1729200339]
+shape = SubResource("CapsuleShape3D_onrkg")
+
+[node name="playerMesh" type="MeshInstance3D" parent="." unique_id=933354265]
+mesh = SubResource("CapsuleMesh_i3pqv")
+
+[node name="playerHead" type="Node3D" parent="." unique_id=1955611300]
+
+[node name="playerCam" type="Camera3D" parent="playerHead" unique_id=1106901365]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5557114, 0)
+attributes = SubResource("CameraAttributesPractical_4flbx")
+current = true
+near = 0.001
+far = 4210.25
+
+[node name="lookCast" type="RayCast3D" parent="playerHead" unique_id=670576753]
+target_position = Vector3(0, 0, -5.75)
+collide_with_areas = true
+
+[node name="UI" type="Control" parent="." unique_id=305016091]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CRT" type="CanvasLayer" parent="UI" unique_id=660291907]
+
+[node name="ColorRect" type="ColorRect" parent="UI/CRT" unique_id=1451731513]
+material = SubResource("ShaderMaterial_3rerk")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=747844346]
+layer = 10
+
+[node name="CrosshairContainer" type="Control" parent="UI/CanvasLayer" unique_id=1369265742]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.09, 0.09)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="CooldownCircle" type="TextureProgressBar" parent="UI/CanvasLayer/CrosshairContainer" unique_id=168955728]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -419.99988
+offset_top = -431.111
+offset_right = 380.00012
+offset_bottom = 368.889
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+fill_mode = 4
+texture_progress = ExtResource("3_f46kd")
+
+[node name="Reticle" type="Control" parent="UI/CanvasLayer" unique_id=1920380007]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.02, 0.02)
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/Reticle" unique_id=540337390]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 384.0
+offset_bottom = 384.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3rerk")
+
+[node name="TextureRect2" type="TextureRect" parent="UI/CanvasLayer/Reticle" unique_id=2095203639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -463.0
+offset_top = -464.0
+offset_right = 49.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_3rerk")
+flip_h = true
+flip_v = true
+
+[node name="Settings" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=262605141]
+layer = 10
+visible = false
+offset = Vector2(0, 48.415)
+transform = Transform2D(1, 0, 0, 1, 0, 48.415)
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/Settings" unique_id=1729847182]
+offset_left = 125.0
+offset_top = 94.0
+offset_right = 165.0
+offset_bottom = 134.0
+scale = Vector2(34.148956, 18.718847)
+color = Color(0.288518, 0.28851798, 0.28851798, 1)
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/Settings" unique_id=51221743]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.5
+offset_top = 120.0
+offset_right = 126.5
+offset_bottom = 216.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 70
+text = "Settings"
+
+[node name="Sens" type="Control" parent="UI/CanvasLayer/Settings" unique_id=2022239020]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 723.0
+offset_top = 307.585
+offset_right = 763.0
+offset_bottom = 347.585
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="UI/CanvasLayer/Settings/Sens" unique_id=1391036711]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 41.0
+offset_top = -7.0
+offset_right = 105.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Sens"
+
+[node name="SensSlider" type="HSlider" parent="UI/CanvasLayer/Settings/Sens" unique_id=1334543375]
+layout_mode = 0
+offset_left = -212.0
+offset_top = 4.0
+offset_right = 32.0
+offset_bottom = 20.0
+min_value = 0.001
+max_value = 0.1
+step = 0.001
+value = 0.05
+
+[node name="Sens2" type="Control" parent="UI/CanvasLayer/Settings" unique_id=687524687]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 723.0
+offset_top = 364.585
+offset_right = 763.0
+offset_bottom = 404.585
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="UI/CanvasLayer/Settings/Sens2" unique_id=347950411]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 31.0
+offset_top = -7.0
+offset_right = 206.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "Music Volume"
+
+[node name="VolumeSlider" type="HSlider" parent="UI/CanvasLayer/Settings/Sens2" unique_id=440736683]
+layout_mode = 0
+offset_left = -212.0
+offset_top = 4.0
+offset_right = 32.0
+offset_bottom = 20.0
+min_value = -60.0
+max_value = 60.0
+
+[node name="Hovertext" type="RichTextLabel" parent="UI/CanvasLayer" unique_id=965269367]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = 68.0
+offset_right = 198.0
+offset_bottom = 146.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font_size=40px] Press E to \"Sleep\"[/font_size]"
+
+[node name="ItemSlots" type="Control" parent="UI/CanvasLayer" unique_id=1717896701]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -22.0
+offset_right = 28.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ItemSlot_1" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=1195667777]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -306.9566
+offset_top = -53.043518
+offset_right = -266.9566
+offset_bottom = -13.043518
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_nmc1l")
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=199519396]
+layout_mode = 1
+offset_left = -79.0
+offset_top = -120.0
+offset_right = 49.0
+offset_bottom = 8.0
+color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=158707981]
+texture_filter = 1
+layout_mode = 0
+offset_left = -65.0
+offset_top = -98.0
+offset_right = 34.0
+offset_bottom = 1.0
+texture = ExtResource("3_uxov2")
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=1783586550]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -118.0
+offset_right = 12.0
+offset_bottom = -95.0
+text = "Grapes"
+
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=32938557]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -100.0
+offset_right = 47.0
+offset_bottom = -77.0
+text = "17"
+
+[node name="ItemSlot_2" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=1730034420]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -161.9566
+offset_top = -53.043518
+offset_right = -121.956604
+offset_bottom = -13.043518
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_nmc1l")
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=582056993]
+layout_mode = 1
+offset_left = -79.0
+offset_top = -120.0
+offset_right = 49.0
+offset_bottom = 8.0
+color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=818811265]
+texture_filter = 1
+layout_mode = 0
+offset_left = -65.0
+offset_top = -98.0
+offset_right = 34.0
+offset_bottom = 1.0
+texture = ExtResource("3_uxov2")
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=1291828076]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -118.0
+offset_right = 12.0
+offset_bottom = -95.0
+text = "Grapes"
+
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=1980237226]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -100.0
+offset_right = 47.0
+offset_bottom = -77.0
+text = "17"
+
+[node name="ItemSlot_3" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=852530861]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.956604
+offset_top = -53.043518
+offset_right = 23.043396
+offset_bottom = -13.043518
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_nmc1l")
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=1290809676]
+layout_mode = 1
+offset_left = -79.0
+offset_top = -120.0
+offset_right = 49.0
+offset_bottom = 8.0
+color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=1654770359]
+texture_filter = 1
+layout_mode = 0
+offset_left = -65.0
+offset_top = -98.0
+offset_right = 34.0
+offset_bottom = 1.0
+texture = ExtResource("3_uxov2")
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=1001525171]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -118.0
+offset_right = 12.0
+offset_bottom = -95.0
+text = "Grapes"
+
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_3" unique_id=506989275]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -100.0
+offset_right = 47.0
+offset_bottom = -77.0
+text = "17"
+
+[node name="ItemSlot_4" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=1538681804]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 128.0434
+offset_top = -53.043518
+offset_right = 168.0434
+offset_bottom = -13.043518
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_nmc1l")
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=1235046599]
+layout_mode = 1
+offset_left = -79.0
+offset_top = -120.0
+offset_right = 49.0
+offset_bottom = 8.0
+color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=1534032360]
+texture_filter = 1
+layout_mode = 0
+offset_left = -65.0
+offset_top = -98.0
+offset_right = 34.0
+offset_bottom = 1.0
+texture = ExtResource("3_uxov2")
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=763717279]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -118.0
+offset_right = 12.0
+offset_bottom = -95.0
+text = "Grapes"
+
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_4" unique_id=1582547869]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -100.0
+offset_right = 47.0
+offset_bottom = -77.0
+text = "17"
+
+[node name="ItemSlot_5" type="Control" parent="UI/CanvasLayer/ItemSlots" unique_id=2094832232]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 273.0434
+offset_top = -53.043518
+offset_right = 313.0434
+offset_bottom = -13.043518
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_nmc1l")
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=593705927]
+layout_mode = 1
+offset_left = -79.0
+offset_top = -120.0
+offset_right = 49.0
+offset_bottom = 8.0
+color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=1490531997]
+texture_filter = 1
+layout_mode = 0
+offset_left = -65.0
+offset_top = -98.0
+offset_right = 34.0
+offset_bottom = 1.0
+texture = ExtResource("3_uxov2")
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=574397247]
+layout_mode = 0
+offset_left = -43.0
+offset_top = -118.0
+offset_right = 12.0
+offset_bottom = -95.0
+text = "Grapes"
+
+[node name="CountLabel" type="Label" parent="UI/CanvasLayer/ItemSlots/ItemSlot_5" unique_id=1571646808]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -100.0
+offset_right = 47.0
+offset_bottom = -77.0
+text = "17"
