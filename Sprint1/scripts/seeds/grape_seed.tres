@@ -1,3 +1,9 @@
-[gd_resource type="Resource" format=3 uid="uid://cnsong8w6cwex"]
+[gd_resource type="Resource" script_class="seed" format=3 uid="uid://cnsong8w6cwex"]
+
+[ext_resource type="Texture2D" uid="uid://8xa5a3wmy201" path="res://textures/grape_seed.png" id="1_pi0dg"]
+[ext_resource type="Script" uid="uid://cwe1ubw51liq8" path="res://scripts/seed.gd" id="2_gsxx5"]
 
 [resource]
+script = ExtResource("2_gsxx5")
+item_name = "Grape"
+icon = ExtResource("1_pi0dg")

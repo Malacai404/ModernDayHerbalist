@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://bd0jwmaxnac2x" path="res://models/apartment/apartment_plastered_wall_04_diff_4k.jpg" id="2_5ji1o"]
 [ext_resource type="Texture2D" uid="uid://dwpyuirxmklj4" path="res://models/apartment/apartment_rough-white-cement-plastered-wall-texture.png" id="3_smohq"]
 [ext_resource type="Texture2D" uid="uid://b67sctinw6pnp" path="res://models/apartment/apartment_prop_bed_baseColor.png" id="4_vr2h5"]
-[ext_resource type="Script" uid="uid://vsewreerygoe" path="res://scenes/bed_area.gd" id="5_5ji1o"]
+[ext_resource type="Script" uid="uid://vsewreerygoe" path="res://scripts/bed_area.gd" id="5_5ji1o"]
 [ext_resource type="VoxelGIData" uid="uid://rxv8ggjohqmb" path="res://resources/grow_world.VoxelGI_data.res" id="5_lj70i"]
 [ext_resource type="Script" uid="uid://d2xvfrn46nxqe" path="res://scripts/voxel_gi.gd" id="6_km63b"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="7_w04e5"]
 [ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="9_smohq"]
-[ext_resource type="Script" uid="uid://4oc1og3hasit" path="res://scenes/grape_collector.gd" id="9_vr2h5"]
+[ext_resource type="Script" uid="uid://4oc1og3hasit" path="res://scripts/grape_collector.gd" id="9_vr2h5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxs24"]
 resource_name = "Material"

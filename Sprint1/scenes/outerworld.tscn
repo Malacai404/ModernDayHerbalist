@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cbea4ewp5rmyl"]
 
 [ext_resource type="Texture2D" uid="uid://xjhue33k2xuw" path="res://textures/panorama_image.png" id="1_feypq"]
-[ext_resource type="Script" uid="uid://dah32l2nn2ky8" path="res://scenes/outerworld.gd" id="1_nx7vo"]
+[ext_resource type="Script" uid="uid://dah32l2nn2ky8" path="res://scripts/outerworld.gd" id="1_nx7vo"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="2_a4vy2"]
 [ext_resource type="Script" uid="uid://c6cghyt2s30in" path="res://addons/zylann.hterrain/hterrain.gd" id="3_nx7vo"]
 [ext_resource type="Resource" uid="uid://cxce7ycc3c3jg" path="res://terraininfo/data.hterrain" id="4_d5aem"]

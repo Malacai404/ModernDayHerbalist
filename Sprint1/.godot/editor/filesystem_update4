@@ -3,3 +3,5 @@ res://shaders/blink.gdshader
 res://shaders/crt.gdshader
 res://objects/crt_gui.gdshader
 res://scripts/grape_seed.gd
+res://scripts/seeds/grape_seed.tres
+res://scenes/outerworld.tscn
