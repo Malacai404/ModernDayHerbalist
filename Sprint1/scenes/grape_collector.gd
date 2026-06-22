@@ -6,5 +6,5 @@ var grape = Grape.new()
 func get_hover_text():
 	return "[font_size=20px]Press E to collect a grape![/font_size]"
 	
-func activate(player):
-	player._pickup_item(grape, 9)
+func activate(playerobj):
+	playerobj._pickup_item(grape, 9)

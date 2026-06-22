@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://be3c7mf5qpcxg" path="res://scripts/slot.gd" id="3_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="3_uxov2"]
 [ext_resource type="Texture2D" uid="uid://dpvn6tqfduxs8" path="res://textures/T_Square_Edge.png" id="4_3rerk"]
+[ext_resource type="Script" uid="uid://bbbp4pf5px740" path="res://scripts/seed_slot.gd" id="7_i825w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -22,6 +23,9 @@ shader_parameter/vignette = 0.50000002375
 shader_parameter/noise_amount = 0.010000000475
 shader_parameter/brightness = 1.08
 shader_parameter/corner_round = 0.0250000011875
+
+[sub_resource type="LabelSettings" id="LabelSettings_3rfka"]
+font_size = 46
 
 [node name="playerCharacter" type="CharacterBody3D" unique_id=212589539]
 script = ExtResource("1_4flbx")
@@ -516,3 +520,1318 @@ offset_top = -100.0
 offset_right = 47.0
 offset_bottom = -77.0
 text = "17"
+
+[node name="SeedMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=569305613]
+layer = 11
+
+[node name="background" type="ColorRect" parent="UI/CanvasLayer/SeedMenu" unique_id=1981532274]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -421.0
+offset_right = 652.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.26657522, 0.2665752, 0.2665752, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/SeedMenu/background" unique_id=1545555814]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 84.0
+offset_bottom = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer" unique_id=1419870887]
+layout_mode = 2
+theme_override_constants/h_separation = 144
+theme_override_constants/v_separation = 164
+columns = 9
+
+[node name="SeedSlot1" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=846426398]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" unique_id=1103369510]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" unique_id=408164392]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" unique_id=1451852079]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" unique_id=1283611148]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot2" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=872799514]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1087855827]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=562604434]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1318936136]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1381955182]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot3" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=256810291]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=524236636]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=1313172006]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=461013332]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=398063328]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot4" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=49710220]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=1839928168]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=595383737]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=54753057]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=306207176]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot5" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1027843685]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1780228315]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1058670898]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=977153216]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=695372762]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot6" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=137707054]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=56860750]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=530010166]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=396037271]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=3840893]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot7" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1473277027]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=1636701461]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=573670679]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=1968760567]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=140112884]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot8" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=354893885]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=500938740]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=277419820]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=2123138358]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=1981136574]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot9" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=611701013]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=115351438]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=997447592]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1321735909]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1643659183]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot10" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1182780496]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=2040443472]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1804338217]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=265732893]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1058902474]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot11" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1845717083]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=48517394]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=831384219]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=1877245648]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=408738404]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot12" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1255084607]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=1531869106]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=74445826]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=1396928326]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=420775918]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot13" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=360942326]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=1971737182]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=1520350409]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=568097907]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=759725309]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot14" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=644640131]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=920818588]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=412764769]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=1497613276]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=960043068]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot15" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=697792391]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1565120492]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1665666502]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1701792232]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=280961996]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot16" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1523941595]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=875768393]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=963200225]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1027315989]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1041282005]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot17" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=2129689342]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1850067399]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=69229187]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1275379663]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=54380783]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot18" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1058072517]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=883416748]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1562732867]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1793525771]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=504825583]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot19" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1583503272]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=564037876]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1796991377]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1077706505]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=968788090]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot20" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=551408854]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1638043859]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1017023465]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1232453028]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=591278933]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot21" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=328258227]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=503096037]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=141338496]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=106163771]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=874369019]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot22" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1996911031]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=1685792139]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=713583886]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=156850239]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=687574588]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot23" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=502320023]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1949566688]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1467011175]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1411611758]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1697346688]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot24" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=61165578]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=845075259]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=1659110106]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=927449161]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=545949205]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot25" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1740952167]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1223391681]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=546629081]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=2104610715]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1615127228]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot26" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1320453797]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=362150236]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=1652396259]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=75874495]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=238595322]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot27" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1736200278]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=2089715049]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=1082361968]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=395105135]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=719731435]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot28" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1307982249]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=971739363]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1501519870]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1529361342]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=132303010]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot29" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=285901904]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=116081200]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=370383033]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=164092289]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=1837406359]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot30" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=557978640]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=500956906]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=1405521750]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=349000594]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=572090113]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot31" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1596542787]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1888295943]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1816321613]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=855663301]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=416894258]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot32" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=936013968]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=1619941126]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=72377173]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=1265142660]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=215860820]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot33" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=614792319]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=300599910]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=171981202]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=1811052662]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=1307328374]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot34" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=782373459]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=2098216992]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=788945675]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=571622199]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=1338553610]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot35" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1430855817]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=2638042]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=1615866708]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=481811288]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=625647107]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="SeedSlot36" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=343454363]
+layout_mode = 2
+script = ExtResource("7_i825w")
+
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1060000497]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 148.0
+color = Color(0.13682577, 0.13682574, 0.13682571, 1)
+
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=2012603491]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 94.0
+offset_bottom = 26.0
+text = "Seed Name"
+horizontal_alignment = 1
+
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1772206654]
+layout_mode = 0
+offset_left = 101.0
+offset_top = 3.0
+offset_right = 124.0
+offset_bottom = 26.0
+text = "99"
+horizontal_alignment = 1
+
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1396699696]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 27.0
+offset_right = 122.0
+offset_bottom = 143.0
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/SeedMenu/background" unique_id=1270285665]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 16.0
+offset_right = 129.0
+offset_bottom = 80.0
+grow_horizontal = 2
+pivot_offset = Vector2(20, 0)
+text = "Seed Pouch"
+label_settings = SubResource("LabelSettings_3rfka")
+horizontal_alignment = 1
+vertical_alignment = 1

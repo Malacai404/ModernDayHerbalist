@@ -51,6 +51,14 @@ var inventory = [
 	{"item": null, "count": 0},
 	{"item": null, "count": 0}
 ]
+
+var seedpouch = [
+	{"item": null, "count": 0},
+	{"item": null, "count": 0},
+	{"item": null, "count": 0},
+	{"item": null, "count": 0},
+	{"item": null, "count": 0}
+]
 func _kill():
 	print("You died!")
 
