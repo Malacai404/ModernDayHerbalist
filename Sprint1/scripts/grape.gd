@@ -26,6 +26,6 @@ func _rightclick(playerobj):
 		bullet.rotation.x = playerobj.player_head.rotation.x
 		bullet.rotation.y = playerobj.rotation.y
 		bullet.largescatter = true
-		bullet.damage = 7
+		bullet.damage = 10
 		tree.root.add_child(bullet)
 	cooldown = 4

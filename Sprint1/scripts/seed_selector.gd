@@ -23,7 +23,22 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _set_pot(seed_slot: Control):
-	pots[pot_id]._plant(seed_slot.seedid)
+	var slot_index = slots.find(seed_slot)
+	if slot_index == -1:
+		return
+
+	var pouch_entry = seed_pouch[slot_index]
+	if pouch_entry["itemid"] == -1 or pouch_entry["count"] <= 0:
+		return
+
+	pots[pot_id]._plant(pouch_entry["itemid"])
+
+	pouch_entry["count"] -= 1
+	if pouch_entry["count"] <= 0:
+		pouch_entry["itemid"] = -1
+		pouch_entry["count"] = 0
+	player_character.seedpouch = seed_pouch
+
 	_close_seed_slots()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -32,8 +47,6 @@ func _open_seed_slots(pot_temp: int):
 	for i in slots:
 		if seed_pouch[b]["itemid"] != -1:
 			i.set_item(SeedData._get_seed(seed_pouch[b]["itemid"]), seed_pouch[b]["count"])
-			seed_pouch[b]["count"] =  seed_pouch[b]["count"] - 1
-			player_character.seedpouch = seed_pouch
 		else:
 			i.set_item(null, 0)
 		b += 1

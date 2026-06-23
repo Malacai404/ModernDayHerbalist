@@ -1,12 +1,13 @@
-extends Node3D
+extends RichTextLabel
 
-signal scene_change
+var removetime = 1.7
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	MusicManager.play_playlist("grow_world")
-	PotData._load_pots()
-	Daycycle._daypassed()
+	pass # Replace with function body.
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	removetime -= delta
+	if removetime <= 0:
+		queue_free()

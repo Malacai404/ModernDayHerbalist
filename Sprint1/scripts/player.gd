@@ -22,6 +22,7 @@ var selected_slot := 0
 @onready var player_mesh = $playerMesh
 @onready var player_collision = $playerCollision
 @onready var player_head = $playerHead
+@onready var item_addition_container: VBoxContainer = $UI/CanvasLayer/ItemAdditionContainer
 
 @onready var seedslots = $UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer.get_children()
 
@@ -100,6 +101,7 @@ func _ready():
 	volume_slider.value = SettingsData.volume_settings
 	sens_slider.value = SettingsData.sens_settings  * 10
 	inventory = PlayerData.inventory
+	seedpouch = PlayerData.seedpouch
 	selected_slot = PlayerData.selected_slot
 	update_slot_highlight()
 	_handle_inventory()
@@ -243,6 +245,7 @@ func _physics_process(delta):
 
 
 func _pickup_item(item: Item, num: int):
+	item_addition_container._item_collected(item.name, num)
 	for slot in inventory:
 		if slot["item"] != null and item != null:
 			if slot["item"].name == item.name:
@@ -260,3 +263,17 @@ func _pickup_item(item: Item, num: int):
 				slot["count"] += num
 				_handle_inventory()
 				return
+				
+func _collect_seed(seedid: int, num: int):
+	item_addition_container._item_collected(SeedData._get_seed(seedid).name, num)
+	var b = find_seed_index(seedid)
+	if b != -1:
+		seedpouch[b]["count"] += num
+	else:
+		b = find_seed_index(-1)
+		seedpouch[b]["count"] += num
+func find_seed_index(target_itemid: int) -> int:
+	for i in range(seedpouch.size()):
+		if seedpouch[i]["itemid"] == target_itemid:
+			return i
+	return -1

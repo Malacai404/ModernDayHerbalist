@@ -3,7 +3,7 @@ extends Node3D
 
 var pots = []
 var pot_ids = [0,1,2,3,4]
-var growth_stages = [-1, -1, -1, -1, -1]
+var growth_stages = [-1, -1, 0, 0, 0]
 var growth_times = [1,1,1,1,1]
 var plantids = [-1,-1,-1,-1,-1]
 
@@ -29,7 +29,6 @@ func uppi(potid: int, plantid: int):
 	print(plantids)
 
 func _ready():
-	Transition.scene_change.connect(_load_pots)
 	if has_pot_host():
 		pots = get_tree().current_scene.get_node("pot_host").get_children()
 		var b = 0

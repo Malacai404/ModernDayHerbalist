@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://be3c7mf5qpcxg" path="res://scripts/slot.gd" id="3_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="3_uxov2"]
 [ext_resource type="Texture2D" uid="uid://dpvn6tqfduxs8" path="res://textures/T_Square_Edge.png" id="4_3rerk"]
+[ext_resource type="Script" uid="uid://cu7optnurylkp" path="res://scripts/item_addition_container.gd" id="5_i8sra"]
 [ext_resource type="Script" uid="uid://qmsa2bfabk4k" path="res://scripts/seed_selector.gd" id="7_3rfka"]
 [ext_resource type="Script" uid="uid://bbbp4pf5px740" path="res://scripts/seed_slot.gd" id="7_i825w"]
 
@@ -247,6 +248,21 @@ offset_right = 32.0
 offset_bottom = 20.0
 min_value = -60.0
 max_value = 60.0
+
+[node name="ItemAdditionContainer" type="VBoxContainer" parent="UI/CanvasLayer" unique_id=1593217411]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -639.0
+offset_right = -12.0
+offset_bottom = -26.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 2
+script = ExtResource("5_i8sra")
 
 [node name="Hovertext" type="RichTextLabel" parent="UI/CanvasLayer" unique_id=965269367]
 anchors_preset = 8

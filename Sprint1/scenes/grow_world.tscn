@@ -10,8 +10,6 @@
 [ext_resource type="VoxelGIData" uid="uid://rxv8ggjohqmb" path="res://resources/grow_world.VoxelGI_data.res" id="5_lj70i"]
 [ext_resource type="Script" uid="uid://d2xvfrn46nxqe" path="res://scripts/voxel_gi.gd" id="6_km63b"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="7_w04e5"]
-[ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="9_smohq"]
-[ext_resource type="Script" uid="uid://4oc1og3hasit" path="res://scripts/grape_collector.gd" id="9_vr2h5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxs24"]
 resource_name = "Material"
@@ -551,13 +549,6 @@ data = PackedVector3Array(-6.3395, 3.7017999, -1.3916, -6.1556997, 3.6771998, -1
 [sub_resource type="BoxShape3D" id="BoxShape3D_5dctk"]
 size = Vector3(2.1036377, 1.7626953, 2.9766846)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vr2h5"]
-transparency = 1
-albedo_texture = ExtResource("9_smohq")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_vr2h5"]
-size = Vector3(3.1375732, 2.967102, 2.4003906)
-
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_byl5l"]
 
 [node name="grow_world" type="Node3D" unique_id=1431210748]
@@ -720,18 +711,6 @@ shape = SubResource("BoxShape3D_5dctk")
 [node name="SpotLight3D" type="SpotLight3D" parent="apartment" unique_id=1251740999]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7.9437833, -9.926918)
 spot_range = 5.81
-
-[node name="CSGBox3D" type="CSGBox3D" parent="apartment" unique_id=1115538470]
-transform = Transform3D(1.6129032, 0, 0, 0, -1.6126577, -0.028149126, 0, 0.028149126, -1.6126577, 10.188569, 2.8563714, -9.993421)
-material_override = SubResource("StandardMaterial3D_vr2h5")
-
-[node name="GrapeCollector" type="Area3D" parent="apartment" unique_id=831281431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.188569, 2.8563714, -9.993421)
-script = ExtResource("9_vr2h5")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="apartment/GrapeCollector" unique_id=940888821]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.066833496, -0.09915137, -0.10937524)
-shape = SubResource("BoxShape3D_vr2h5")
 
 [node name="environment" type="Node3D" parent="." unique_id=107467406]
 

@@ -20,9 +20,7 @@ func blink(action: Callable):
 	$AnimationPlayer.play("close_eyes")
 	await $AnimationPlayer.animation_finished
 
-	emit_signal("scene_change")
 	action.call()
-
 	await get_tree().process_frame
 
 	$AnimationPlayer.play("open_eyes")
