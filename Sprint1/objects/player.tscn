@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://be3c7mf5qpcxg" path="res://scripts/slot.gd" id="3_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="3_uxov2"]
 [ext_resource type="Texture2D" uid="uid://dpvn6tqfduxs8" path="res://textures/T_Square_Edge.png" id="4_3rerk"]
+[ext_resource type="Script" uid="uid://qmsa2bfabk4k" path="res://scripts/seed_selector.gd" id="7_3rfka"]
 [ext_resource type="Script" uid="uid://bbbp4pf5px740" path="res://scripts/seed_slot.gd" id="7_i825w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
@@ -23,6 +24,8 @@ shader_parameter/vignette = 0.50000002375
 shader_parameter/noise_amount = 0.010000000475
 shader_parameter/brightness = 1.08
 shader_parameter/corner_round = 0.0250000011875
+
+[sub_resource type="Theme" id="Theme_3rfka"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3rfka"]
 font_size = 46
@@ -523,6 +526,8 @@ text = "17"
 
 [node name="SeedMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=569305613]
 layer = 11
+visible = false
+script = ExtResource("7_3rfka")
 
 [node name="background" type="ColorRect" parent="UI/CanvasLayer/SeedMenu" unique_id=1981532274]
 anchors_preset = 8
@@ -595,17 +600,43 @@ offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot2" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=872799514]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" unique_id=210483024]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot2" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1232974777]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1087855827]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1821662190]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=562604434]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=305594371]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -614,7 +645,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1318936136]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=2033655376]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -623,24 +654,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1381955182]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=1905677124]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot3" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=256810291]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" unique_id=348618448]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot3" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=307625094]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=524236636]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=1265860228]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=1313172006]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=416862527]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -649,7 +706,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=461013332]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=856645136]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -658,24 +715,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=398063328]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=960177264]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot4" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=49710220]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" unique_id=118939719]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot4" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1046164577]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=1839928168]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=1951427998]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=595383737]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=813240693]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -684,7 +767,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=54753057]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=261172220]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -693,24 +776,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=306207176]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=599703586]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot5" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1027843685]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" unique_id=1447281373]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot5" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=42456047]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1780228315]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1136742710]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1058670898]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1207554702]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -719,7 +828,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=977153216]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1197703191]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -728,24 +837,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=695372762]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=68284642]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot6" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=137707054]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" unique_id=1361280815]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot6" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=165596823]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=56860750]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=182114399]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=530010166]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=1515189292]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -754,7 +889,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=396037271]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=1201242293]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -763,24 +898,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=3840893]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=57042172]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot7" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1473277027]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" unique_id=1552881720]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot7" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=76765942]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=1636701461]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=1506266989]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=573670679]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=1062289477]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -789,7 +950,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=1968760567]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=372159874]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -798,24 +959,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=140112884]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=99521210]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot8" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=354893885]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" unique_id=50347989]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot8" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1188371300]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=500938740]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=1079520611]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=277419820]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=1383564888]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -824,7 +1011,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=2123138358]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=673105862]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -833,24 +1020,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=1981136574]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=1543923781]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot9" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=611701013]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" unique_id=1466969762]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot9" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=472869596]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=115351438]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1178979225]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=997447592]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1856897868]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -859,7 +1072,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1321735909]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=2032531147]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -868,24 +1081,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1643659183]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=478331418]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot10" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1182780496]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" unique_id=1155196877]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot10" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1845515678]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=2040443472]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1418276654]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1804338217]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1306037657]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -894,7 +1133,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=265732893]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1767412559]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -903,24 +1142,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1058902474]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=723829250]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot11" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1845717083]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" unique_id=1569226737]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot11" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=744208644]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=48517394]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=2003377710]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=831384219]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=514679734]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -929,7 +1194,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=1877245648]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=808997666]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -938,24 +1203,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=408738404]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=1864580370]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot12" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1255084607]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" unique_id=1051737216]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot12" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1743821964]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=1531869106]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=752415005]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=74445826]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=865865504]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -964,7 +1255,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=1396928326]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=1589636718]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -973,24 +1264,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=420775918]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=1022311887]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot13" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=360942326]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" unique_id=461451445]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot13" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=766376161]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=1971737182]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=2025141281]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=1520350409]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=945035027]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -999,7 +1316,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=568097907]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=1629580326]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1008,24 +1325,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=759725309]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=1040954850]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot14" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=644640131]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" unique_id=190669364]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot14" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=538206446]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=920818588]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=1360211993]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=412764769]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=320438516]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1034,7 +1377,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=1497613276]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=1905291213]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1043,24 +1386,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=960043068]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=1901551249]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot15" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=697792391]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" unique_id=156613889]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot15" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=946647881]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1565120492]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1981401864]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1665666502]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=407628885]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1069,7 +1438,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1701792232]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1714355015]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1078,24 +1447,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=280961996]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=123920853]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot16" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1523941595]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" unique_id=1518105519]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot16" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=96554628]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=875768393]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1701017847]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=963200225]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=2085266267]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1104,7 +1499,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1027315989]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=345243588]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1113,24 +1508,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1041282005]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1239534423]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot17" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=2129689342]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" unique_id=1990740085]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot17" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1556474551]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1850067399]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=386455512]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=69229187]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1546836995]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1139,7 +1560,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1275379663]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1389994675]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1148,24 +1569,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=54380783]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=796119048]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot18" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1058072517]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" unique_id=1723980149]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot18" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=59621559]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=883416748]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1823974143]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1562732867]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1967227818]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1174,7 +1621,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1793525771]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1739252353]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1183,24 +1630,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=504825583]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1039883881]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot19" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1583503272]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" unique_id=1785011327]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot19" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=2059080621]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=564037876]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1852360653]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1796991377]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=673428959]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1209,7 +1682,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1077706505]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=465434089]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1218,24 +1691,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=968788090]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1560094929]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot20" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=551408854]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" unique_id=1957601946]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot20" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1891942469]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1638043859]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1244888278]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1017023465]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1148688070]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1244,7 +1743,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1232453028]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1458399296]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1253,24 +1752,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=591278933]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1226572688]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot21" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=328258227]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" unique_id=1968487408]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot21" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1419719584]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=503096037]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=802224000]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=141338496]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=485123479]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1279,7 +1804,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=106163771]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=1866534866]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1288,24 +1813,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=874369019]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=2127021718]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot22" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1996911031]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" unique_id=755281486]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot22" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=379340401]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=1685792139]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=1312255663]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=713583886]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=1893092715]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1314,7 +1865,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=156850239]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=1013496220]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1323,24 +1874,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=687574588]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=1593913816]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot23" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=502320023]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" unique_id=2002218031]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot23" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=153777947]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1949566688]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1524466565]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1467011175]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1591273632]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1349,7 +1926,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1411611758]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1663732465]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1358,24 +1935,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1697346688]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=1143518148]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot24" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=61165578]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" unique_id=851370368]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot24" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1479925925]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=845075259]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=211173358]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=1659110106]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=1841290035]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1384,7 +1987,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=927449161]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=1547827663]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1393,24 +1996,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=545949205]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=1196000951]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot25" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1740952167]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" unique_id=1724082234]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot25" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1888130763]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1223391681]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1899065402]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=546629081]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1013083588]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1419,7 +2048,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=2104610715]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=2015990478]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1428,24 +2057,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1615127228]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=2118372068]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot26" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1320453797]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" unique_id=1798817595]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot26" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=958150232]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=362150236]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=1387668792]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=1652396259]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=1232217276]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1454,7 +2109,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=75874495]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=129410500]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1463,24 +2118,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=238595322]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=185798032]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot27" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1736200278]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" unique_id=1125816101]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot27" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=358611979]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=2089715049]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=533011612]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=1082361968]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=521295390]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1489,7 +2170,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=395105135]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=1651985978]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1498,24 +2179,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=719731435]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=637146052]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot28" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1307982249]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" unique_id=1749239018]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot28" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1339706082]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=971739363]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1467167963]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1501519870]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1526194195]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1524,7 +2231,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1529361342]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=1484925967]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1533,24 +2240,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=132303010]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=378910882]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot29" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=285901904]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" unique_id=273540963]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot29" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=151489710]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=116081200]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=1919057176]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=370383033]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=552536312]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1559,7 +2292,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=164092289]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=1277406214]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1568,24 +2301,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=1837406359]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=2064134218]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot30" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=557978640]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" unique_id=1382357270]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot30" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=183034103]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=500956906]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=295780326]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=1405521750]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=1262380335]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1594,7 +2353,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=349000594]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=797398200]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1603,24 +2362,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=572090113]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=1359811777]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot31" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1596542787]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" unique_id=1620274644]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot31" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=100916777]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1888295943]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=470463451]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1816321613]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1329816602]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1629,7 +2414,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=855663301]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1961704222]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1638,24 +2423,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=416894258]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1066655485]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot32" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=936013968]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" unique_id=1274690636]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot32" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=739779448]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=1619941126]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=977475544]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=72377173]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=1773923585]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1664,7 +2475,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=1265142660]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=203837477]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1673,24 +2484,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=215860820]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=811157805]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot33" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=614792319]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" unique_id=110869774]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot33" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1211374856]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=300599910]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=892049188]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=171981202]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=1367630978]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1699,7 +2536,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=1811052662]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=764509670]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1708,24 +2545,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=1307328374]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=325511875]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot34" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=782373459]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" unique_id=1373860809]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot34" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=639074907]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=2098216992]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=707141342]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=788945675]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=335046241]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1734,7 +2597,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=571622199]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=359131301]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1743,24 +2606,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=1338553610]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=662059823]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot35" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=1430855817]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" unique_id=1658218408]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot35" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=891221331]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=2638042]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=522953131]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=1615866708]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=1577533155]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1769,7 +2658,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=481811288]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=2122781640]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1778,24 +2667,50 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=625647107]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=150417938]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
 
-[node name="SeedSlot36" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=343454363]
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" unique_id=400922374]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+
+[node name="SeedSlot36" type="Control" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer" unique_id=298542372]
 layout_mode = 2
 script = ExtResource("7_i825w")
 
-[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1060000497]
+[node name="SeedBackground" type="ColorRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=174614759]
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 148.0
 color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 
-[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=2012603491]
+[node name="SeedName" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1354983502]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 3.0
@@ -1804,7 +2719,7 @@ offset_bottom = 26.0
 text = "Seed Name"
 horizontal_alignment = 1
 
-[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1772206654]
+[node name="SeedCount" type="Label" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=196164593]
 layout_mode = 0
 offset_left = 101.0
 offset_top = 3.0
@@ -1813,12 +2728,38 @@ offset_bottom = 26.0
 text = "99"
 horizontal_alignment = 1
 
-[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1396699696]
+[node name="SeedIcon" type="TextureRect" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=2117147704]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 27.0
 offset_right = 122.0
 offset_bottom = 143.0
+
+[node name="Button" type="Button" parent="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" unique_id=1619267740]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = 128.0
+offset_bottom = 148.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_3rfka")
+theme_override_colors/font_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+theme_override_colors/font_outline_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_focus_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0.4)
 
 [node name="Label" type="Label" parent="UI/CanvasLayer/SeedMenu/background" unique_id=1270285665]
 layout_mode = 1
@@ -1835,3 +2776,40 @@ text = "Seed Pouch"
 label_settings = SubResource("LabelSettings_3rfka")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot4" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot5" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot6" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot7" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot8" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot9" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot10" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot11" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot12" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot13" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot14" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot15" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot16" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot17" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot18" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot19" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot20" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot21" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot22" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot23" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot24" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot25" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot26" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot27" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot28" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot29" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot30" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot31" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot32" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot33" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" method="_on_button_pressed"]

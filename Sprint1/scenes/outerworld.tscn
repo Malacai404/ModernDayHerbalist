@@ -34,6 +34,24 @@ polygons = [PackedInt32Array(3, 2, 4), PackedInt32Array(4, 2, 8), PackedInt32Arr
 [node name="outerworld" type="Node3D" unique_id=1946225047]
 script = ExtResource("1_nx7vo")
 
+[node name="enemies" type="Node3D" parent="." unique_id=1106203213]
+
+[node name="enemy" parent="enemies" unique_id=400256860 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -27.470316, 1.0368013)
+player_path = NodePath("../../playerCharacter")
+
+[node name="enemy2" parent="enemies" unique_id=1495598386 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -27.470316, -10.020795)
+player_path = NodePath("../../playerCharacter")
+
+[node name="enemy3" parent="enemies" unique_id=1538749417 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 5.678075, -27.470316, -10.020795)
+player_path = NodePath("../../playerCharacter")
+
+[node name="enemy4" parent="enemies" unique_id=570784155 instance=ExtResource("6_a4vy2")]
+transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -5.898885, -29.192738, -10.020795)
+player_path = NodePath("../../playerCharacter")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1465787061]
 environment = SubResource("Environment_03uec")
 
@@ -63,22 +81,6 @@ shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
 metadata/_custom_type_script = "uid://c6cghyt2s30in"
-
-[node name="enemy" parent="." unique_id=400256860 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -27.470316, 1.0368013)
-player_path = NodePath("../playerCharacter")
-
-[node name="enemy2" parent="." unique_id=1495598386 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -27.470316, -10.020795)
-player_path = NodePath("../playerCharacter")
-
-[node name="enemy3" parent="." unique_id=1538749417 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 5.678075, -27.470316, -10.020795)
-player_path = NodePath("../playerCharacter")
-
-[node name="enemy4" parent="." unique_id=570784155 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -5.898885, -29.192738, -10.020795)
-player_path = NodePath("../playerCharacter")
 
 [node name="tree" parent="." unique_id=1566715744 instance=ExtResource("8_g276e")]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.1181641, -29.209496, -23.539398)

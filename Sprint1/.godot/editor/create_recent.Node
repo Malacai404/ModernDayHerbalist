@@ -1,3 +1,7 @@
+Node3D
+CollisionShape3D
+Area3D
+Button
 TextureRect
 Label
 ColorRect
@@ -6,10 +10,5 @@ GridContainer
 MarginContainer
 CanvasLayer
 Sprite3D
-Node3D
 SubViewport
 SubViewportContainer
-TextureProgressBar
-ProgressBar
-AudioStreamPlayer3D
-GPUParticles3D

@@ -21,11 +21,15 @@ PlayerData="*uid://b4exwa16xu1ye"
 MusicManager="*uid://c7u76vxpoc2v4"
 MusicPlayerUi="*uid://jppr07f2g8wl"
 SettingsData="*uid://bjssbymkj8vec"
+SeedData="*uid://ckdpcnxaj4sty"
+Daycycle="*uid://b1pjtikb3qep8"
+PotData="*uid://gsfugou3ydex"
 
 [display]
 
 window/size/viewport_width=1600
 window/size/viewport_height=1000
+window/size/mode=2
 window/stretch/mode="viewport"
 
 [editor_plugins]

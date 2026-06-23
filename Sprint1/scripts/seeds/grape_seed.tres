@@ -5,5 +5,6 @@
 
 [resource]
 script = ExtResource("2_gsxx5")
-item_name = "Grape"
-icon = ExtResource("1_pi0dg")
+name = "Grape Seed"
+texture = ExtResource("1_pi0dg")
+growthtime = 1

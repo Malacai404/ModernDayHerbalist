@@ -23,6 +23,7 @@ var selected_slot := 0
 @onready var player_collision = $playerCollision
 @onready var player_head = $playerHead
 
+@onready var seedslots = $UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer.get_children()
 
 @onready var look_cast = $playerHead/lookCast
 @onready var item_slot_1: Control = $UI/CanvasLayer/ItemSlots/ItemSlot_1
@@ -34,6 +35,7 @@ var selected_slot := 0
 @onready var sens_slider: HSlider = $UI/CanvasLayer/Settings/Sens/SensSlider
 @onready var volume_slider: HSlider = $UI/CanvasLayer/Settings/Sens2/VolumeSlider
 
+@onready var seed_menu = $UI/CanvasLayer/SeedMenu
 
 
 var attack_cooldown = 0.5
@@ -53,11 +55,43 @@ var inventory = [
 ]
 
 var seedpouch = [
-	{"item": null, "count": 0},
-	{"item": null, "count": 0},
-	{"item": null, "count": 0},
-	{"item": null, "count": 0},
-	{"item": null, "count": 0}
+	{"itemid": 0, "count": 10},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0},
+	{"itemid": -1, "count": 0}
 ]
 func _kill():
 	print("You died!")
@@ -88,6 +122,18 @@ func _input(event):
 	elif(event.is_action_pressed("slot5")):
 		select_slot(4)
 	
+	
+func _open_seedslots(pot_id: int):
+	if(seed_menu.visible == true):
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		seed_menu._close_seed_slots()
+	else:
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		seed_menu.seed_pouch = seedpouch
+		seed_menu._open_seed_slots(pot_id)
+
+
+
 
 func select_slot(index: int):
 	selected_slot = index
@@ -198,17 +244,17 @@ func _physics_process(delta):
 
 func _pickup_item(item: Item, num: int):
 	for slot in inventory:
-		if slot["item"] == item:
-			print(slot["count"])
-			if(slot["count"] < 99):
-				slot["item"] = item
-				slot["count"] += num
-				_handle_inventory()
-				return
+		if slot["item"] != null and item != null:
+			if slot["item"].name == item.name:
+			
+				if(slot["count"] < 99):
+					slot["item"] = item
+					slot["count"] += num
+					_handle_inventory()
+					return
 
 	for slot in inventory:
 		if slot["item"] == null:
-			print(slot["count"])
 			if(slot["count"] < 99):
 				slot["item"] = item
 				slot["count"] += num

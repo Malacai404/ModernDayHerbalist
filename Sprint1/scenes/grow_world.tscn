@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bro2k42jci1rm" path="res://scripts/grow_world.gd" id="1_lj70i"]
 [ext_resource type="Texture2D" uid="uid://cmxt17q030jud" path="res://models/apartment/apartment_carpet.jpg" id="1_qm182"]
 [ext_resource type="Texture2D" uid="uid://bd0jwmaxnac2x" path="res://models/apartment/apartment_plastered_wall_04_diff_4k.jpg" id="2_5ji1o"]
+[ext_resource type="PackedScene" uid="uid://di0enmx65mtaa" path="res://objects/plantpot.tscn" id="2_km63b"]
 [ext_resource type="Texture2D" uid="uid://dwpyuirxmklj4" path="res://models/apartment/apartment_rough-white-cement-plastered-wall-texture.png" id="3_smohq"]
 [ext_resource type="Texture2D" uid="uid://b67sctinw6pnp" path="res://models/apartment/apartment_prop_bed_baseColor.png" id="4_vr2h5"]
 [ext_resource type="Script" uid="uid://vsewreerygoe" path="res://scripts/bed_area.gd" id="5_5ji1o"]
@@ -562,6 +563,27 @@ size = Vector3(3.1375732, 2.967102, 2.4003906)
 [node name="grow_world" type="Node3D" unique_id=1431210748]
 script = ExtResource("1_lj70i")
 
+[node name="pot_host" type="Node3D" parent="." unique_id=439307911]
+
+[node name="plantpot" parent="pot_host" unique_id=2143621956 instance=ExtResource("2_km63b")]
+transform = Transform3D(-0.024778493, 0, -0.7095675, 0, 0.71, 0, 0.7095675, 0, -0.024778493, 7.771093, -2.9287672, 6.506402)
+
+[node name="plantpot2" parent="pot_host" unique_id=1901883973 instance=ExtResource("2_km63b")]
+transform = Transform3D(-0.024778493, 0, -0.7095675, 0, 0.71, 0, 0.7095675, 0, -0.024778493, 7.771093, -2.9287672, 4.153016)
+pot_id = 1
+
+[node name="plantpot3" parent="pot_host" unique_id=628492010 instance=ExtResource("2_km63b")]
+transform = Transform3D(-0.024778493, 0, -0.7095675, 0, 0.71, 0, 0.7095675, 0, -0.024778493, 7.771093, -2.9287672, 1.7140179)
+pot_id = 2
+
+[node name="plantpot4" parent="pot_host" unique_id=248803445 instance=ExtResource("2_km63b")]
+transform = Transform3D(-0.024778493, 0, -0.7095675, 0, 0.71, 0, 0.7095675, 0, -0.024778493, 7.771093, -2.9287672, -0.3005309)
+pot_id = 3
+
+[node name="plantpot5" parent="pot_host" unique_id=2006260804 instance=ExtResource("2_km63b")]
+transform = Transform3D(-0.024778493, 0, -0.7095675, 0, 0.71, 0, 0.7095675, 0, -0.024778493, 7.771093, -2.9287672, -2.557455)
+pot_id = 4
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1798939257]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 light_energy = 0.64
@@ -700,11 +722,11 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7
 spot_range = 5.81
 
 [node name="CSGBox3D" type="CSGBox3D" parent="apartment" unique_id=1115538470]
-transform = Transform3D(1.6129032, 0, 0, 0, -1.6126577, -0.028149126, 0, 0.028149126, -1.6126577, 10.188569, 2.8563714, -4.7565966)
+transform = Transform3D(1.6129032, 0, 0, 0, -1.6126577, -0.028149126, 0, 0.028149126, -1.6126577, 10.188569, 2.8563714, -9.993421)
 material_override = SubResource("StandardMaterial3D_vr2h5")
 
 [node name="GrapeCollector" type="Area3D" parent="apartment" unique_id=831281431]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.188569, 2.8563714, -4.7565966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.188569, 2.8563714, -9.993421)
 script = ExtResource("9_vr2h5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="apartment/GrapeCollector" unique_id=940888821]
