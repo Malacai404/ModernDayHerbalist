@@ -16,6 +16,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 
 [autoload]
 
+ShopData="*uid://crk8tmn3tnke2"
 Transition="*uid://1l4apyw074so"
 PlayerData="*uid://b4exwa16xu1ye"
 MusicManager="*uid://c7u76vxpoc2v4"
@@ -24,6 +25,7 @@ SettingsData="*uid://bjssbymkj8vec"
 SeedData="*uid://ckdpcnxaj4sty"
 Daycycle="*uid://b1pjtikb3qep8"
 PotData="*uid://gsfugou3ydex"
+DialogueManager="*uid://c3rodes2l3gxb"
 
 [display]
 
@@ -34,7 +36,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
 
 [global_group]
 
@@ -121,6 +123,10 @@ menu={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://dialogue/Chris.dialogue", "res://dialogue/Mama.dialogue", "res://dialogue/Tony.dialogue", "res://dialogue/Johnpork.dialogue")
 
 [physics]
 

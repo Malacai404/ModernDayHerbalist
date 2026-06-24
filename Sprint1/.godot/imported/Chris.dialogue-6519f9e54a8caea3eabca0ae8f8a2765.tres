@@ -1,0 +1,107 @@
+[gd_resource type="Resource" script_class="DialogueResource" format=3]
+
+[ext_resource type="Script" uid="uid://dbs4435dsf3ry" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_mxeqw"]
+
+[resource]
+script = ExtResource("1_mxeqw")
+using_states = PackedStringArray()
+titles = {
+"start": "1"
+}
+character_names = PackedStringArray("Chris (Dealer)")
+first_title = "0"
+lines = {
+"0": {
+&"id": "0",
+&"next_id": "1",
+&"type": "title"
+},
+"1": {
+&"character": "Chris (Dealer)",
+&"id": "1",
+&"next_id": "2",
+&"text": "[[Yo bro|Hey bro|Sup my g]], wat u want?",
+&"type": "dialogue"
+},
+"2": {
+&"id": "2",
+&"next_id": "3",
+&"responses": PackedStringArray("2", "5", "7"),
+&"text": "I wanna grab some stuff from you",
+&"type": "response"
+},
+"3": {
+&"character": "Chris (Dealer)",
+&"id": "3",
+&"next_id": "4",
+&"text": "Sounds good, what do u want?",
+&"type": "dialogue"
+},
+"4": {
+&"id": "4",
+&"mutation": {
+&"expression": Array[Dictionary]([{
+&"i": 3,
+&"type": &"variable",
+&"value": "ShopData"
+}, {
+&"i": 11,
+&"type": &"dot"
+}, {
+&"function": "open_shop",
+&"i": 12,
+&"type": &"function",
+&"value": Array[Array]([Array[Dictionary]([{
+&"i": 22,
+&"type": &"parens_close"
+}])])
+}]),
+&"is_blocking": true
+},
+&"next_id": "8",
+&"type": "mutation"
+},
+"5": {
+&"id": "5",
+&"next_id": "6",
+&"text": "How do I sell my stuff?",
+&"type": "response"
+},
+"6": {
+&"character": "Chris (Dealer)",
+&"id": "6",
+&"next_id": "8",
+&"text": "Put it in the slot at the door bro.",
+&"type": "dialogue"
+},
+"7": {
+&"id": "7",
+&"next_id": "end",
+&"text": "Nevermind",
+&"type": "response"
+},
+"8": {
+&"id": "8",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+},
+"9": {
+&"id": "9",
+&"is_snippet": false,
+&"next_id": "end",
+&"next_id_after": "",
+&"type": "goto"
+}
+}
+raw_text = "~ start
+Chris (Dealer): [[Yo bro|Hey bro|Sup my g]], wat u want?
+- I wanna grab some stuff from you
+	Chris (Dealer): Sounds good, what do u want?
+	do ShopData.open_shop()
+- How do I sell my stuff?
+	Chris (Dealer): Put it in the slot at the door bro.
+- Nevermind => END
+=> END"
+metadata/dialogue_manager_version = "3.10.4"

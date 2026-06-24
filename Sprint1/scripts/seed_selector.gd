@@ -19,7 +19,14 @@ func _ready():
 	is_grow_world = has_pot_host()
 	if is_grow_world == true:
 		pots = get_tree().current_scene.get_node("pot_host").get_children()
-	
+	seed_pouch = player_character.seedpouch
+	var b = 0
+	for i in slots:
+		if seed_pouch[b]["itemid"] != -1:
+			i.set_item(SeedData._get_seed(seed_pouch[b]["itemid"]), seed_pouch[b]["count"])
+		else:
+			i.set_item(null, 0)
+		b += 1
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _set_pot(seed_slot: Control):
@@ -37,12 +44,13 @@ func _set_pot(seed_slot: Control):
 	if pouch_entry["count"] <= 0:
 		pouch_entry["itemid"] = -1
 		pouch_entry["count"] = 0
-	player_character.seedpouch = seed_pouch
-
+	player_character.seedpouch = seed_pouch 
 	_close_seed_slots()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _open_seed_slots(pot_temp: int):
+	seed_pouch = player_character.seedpouch
+	player_character.in_seed_menu = true
 	var b = 0
 	for i in slots:
 		if seed_pouch[b]["itemid"] != -1:
@@ -54,6 +62,7 @@ func _open_seed_slots(pot_temp: int):
 	visible = true
 	
 func _close_seed_slots():
+	player_character.in_seed_menu = false
 	pot_id = -1
 	
 	visible = false

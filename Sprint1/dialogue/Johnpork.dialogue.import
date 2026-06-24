@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dkl5en2tu4ty6"
+path="res://.godot/imported/Johnpork.dialogue-a65438d76ac19bb9db8f08d92382a783.tres"
+
+[deps]
+
+source_file="res://dialogue/Johnpork.dialogue"
+dest_files=["res://.godot/imported/Johnpork.dialogue-a65438d76ac19bb9db8f08d92382a783.tres"]
+
+[params]
+
+defaults=true

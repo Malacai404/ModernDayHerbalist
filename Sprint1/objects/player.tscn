@@ -6,9 +6,14 @@
 [ext_resource type="Script" uid="uid://be3c7mf5qpcxg" path="res://scripts/slot.gd" id="3_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="3_uxov2"]
 [ext_resource type="Texture2D" uid="uid://dpvn6tqfduxs8" path="res://textures/T_Square_Edge.png" id="4_3rerk"]
+[ext_resource type="Script" uid="uid://chvu1ncn8jysn" path="res://scripts/phone_menu.gd" id="5_42cpl"]
 [ext_resource type="Script" uid="uid://cu7optnurylkp" path="res://scripts/item_addition_container.gd" id="5_i8sra"]
+[ext_resource type="FontFile" uid="uid://b44hyo3qoqxas" path="res://font/Pixellari.ttf" id="6_42cpl"]
 [ext_resource type="Script" uid="uid://qmsa2bfabk4k" path="res://scripts/seed_selector.gd" id="7_3rfka"]
 [ext_resource type="Script" uid="uid://bbbp4pf5px740" path="res://scripts/seed_slot.gd" id="7_i825w"]
+[ext_resource type="Texture2D" uid="uid://fidbyqt4rt2w" path="res://textures/tony.png" id="8_mqnmn"]
+[ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="8_vqq2l"]
+[ext_resource type="Theme" uid="uid://w3tinovh7m4s" path="res://main_theme.tres" id="9_r673r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -25,6 +30,18 @@ shader_parameter/vignette = 0.50000002375
 shader_parameter/noise_amount = 0.010000000475
 shader_parameter/brightness = 1.08
 shader_parameter/corner_round = 0.0250000011875
+
+[sub_resource type="LabelSettings" id="LabelSettings_vqq2l"]
+font = ExtResource("6_42cpl")
+font_size = 37
+
+[sub_resource type="LabelSettings" id="LabelSettings_r673r"]
+font = ExtResource("6_42cpl")
+font_size = 33
+
+[sub_resource type="Theme" id="Theme_r673r"]
+default_font = ExtResource("6_42cpl")
+default_font_size = 30
 
 [sub_resource type="Theme" id="Theme_3rfka"]
 
@@ -83,10 +100,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 4.0
+offset_right = 44.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.09, 0.09)
@@ -118,10 +134,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = 4.0
+offset_right = 44.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.02, 0.02)
@@ -249,6 +264,219 @@ offset_bottom = 20.0
 min_value = -60.0
 max_value = 60.0
 
+[node name="PhoneMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=1671101504]
+layer = 18
+offset = Vector2(0, 48.415)
+transform = Transform2D(1, 0, 0, 1, 0, 48.415)
+script = ExtResource("5_42cpl")
+
+[node name="IntialMenu" type="Control" parent="UI/CanvasLayer/PhoneMenu" unique_id=843987778]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PhoneBG" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu" unique_id=836544504]
+layout_mode = 0
+offset_left = 79.00003
+offset_top = 654.585
+offset_right = 121.43178
+offset_bottom = 668.04736
+scale = Vector2(34.148956, 18.718847)
+mouse_filter = 1
+color = Color(0.288518, 0.28851798, 0.28851798, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu" unique_id=1561451064]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = 614.585
+offset_right = 1508.0
+offset_bottom = 867.585
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer" unique_id=654741525]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer" unique_id=583891663]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer" unique_id=1598866707]
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 2
+color = Color(0.18179765, 0.18179768, 0.18179768, 1)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/ColorRect" unique_id=2006042567]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 0
+offset_left = -1.1000061
+offset_top = 2.0
+offset_right = 232.0
+offset_bottom = 237.0
+texture = ExtResource("8_mqnmn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer" unique_id=1958473104]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=393183491]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = " Schmegma Smith"
+label_settings = SubResource("LabelSettings_vqq2l")
+
+[node name="Label2" type="Label" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=70900986]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = " Who should I call?"
+label_settings = SubResource("LabelSettings_r673r")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=794379338]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="GridContainer" type="GridContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=985300184]
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 22
+columns = 2
+
+[node name="Button" type="Button" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=2146674972]
+custom_minimum_size = Vector2(276.02, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Tony 'Da' Man (Loan Shark)"
+
+[node name="Button2" type="Button" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=1120848625]
+custom_minimum_size = Vector2(276.02, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Chris (Dealer)"
+
+[node name="Button3" type="Button" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=874460686]
+custom_minimum_size = Vector2(276.02, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Mama"
+
+[node name="Button4" type="Button" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer" unique_id=2065800628]
+custom_minimum_size = Vector2(276.02, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+focus_mode = 0
+text = "Old Friend"
+
+[node name="Conversation" type="Control" parent="UI/CanvasLayer/PhoneMenu" unique_id=396368917]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PhoneBG" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/Conversation" unique_id=829524013]
+layout_mode = 0
+offset_left = 79.00003
+offset_top = 654.585
+offset_right = 121.43178
+offset_bottom = 668.04736
+scale = Vector2(34.148956, 18.718847)
+mouse_filter = 1
+color = Color(0.288518, 0.28851798, 0.28851798, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation" unique_id=218648655]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 59.0
+offset_top = 614.585
+offset_right = 1508.0
+offset_bottom = 867.585
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer" unique_id=1177833902]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer" unique_id=473823842]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer" unique_id=1408165508]
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 2
+color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+
+[node name="SelectedCharacter" type="TextureRect" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/ColorRect" unique_id=144082054]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 234.1
+offset_bottom = 237.0
+texture = ExtResource("8_mqnmn")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer" unique_id=2088938201]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterName" type="Label" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=659507769]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = " Character name"
+label_settings = SubResource("LabelSettings_vqq2l")
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer" unique_id=1319686373]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DialogueLabel" type="RichTextLabel" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1059005129]
+layout_mode = 2
+theme = SubResource("Theme_r673r")
+bbcode_enabled = true
+text = "[font_size=30]blind jews"
+script = ExtResource("8_vqq2l")
+skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
+metadata/_custom_type_script = "uid://g32um0mltv5d"
+
+[node name="ResponsesContainer" type="VBoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1164991725]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/ResponsesContainer" unique_id=764615543]
+custom_minimum_size = Vector2(0, 45.06)
+layout_mode = 2
+theme = ExtResource("9_r673r")
+
 [node name="ItemAdditionContainer" type="VBoxContainer" parent="UI/CanvasLayer" unique_id=1593217411]
 anchors_preset = 3
 anchor_left = 1.0
@@ -317,6 +545,7 @@ offset_left = -79.0
 offset_top = -120.0
 offset_right = 49.0
 offset_bottom = 8.0
+mouse_filter = 2
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
 [node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_1" unique_id=158707981]
@@ -366,6 +595,7 @@ offset_left = -79.0
 offset_top = -120.0
 offset_right = 49.0
 offset_bottom = 8.0
+mouse_filter = 1
 color = Color(0.31764707, 0.31764707, 0.31764707, 0.54509807)
 
 [node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/ItemSlots/ItemSlot_2" unique_id=818811265]
@@ -2793,6 +3023,10 @@ label_settings = SubResource("LabelSettings_3rfka")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button" to="UI/CanvasLayer/PhoneMenu" method="_talktony"]
+[connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button2" to="UI/CanvasLayer/PhoneMenu" method="_talkchris"]
+[connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button3" to="UI/CanvasLayer/PhoneMenu" method="_talkmama"]
+[connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button4" to="UI/CanvasLayer/PhoneMenu" method="_talkpork"]
 [connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot1" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot2" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot3" method="_on_button_pressed"]

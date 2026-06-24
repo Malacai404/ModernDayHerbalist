@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dk43o81bj0oee"
+path="res://.godot/imported/Chris.dialogue-6519f9e54a8caea3eabca0ae8f8a2765.tres"
+
+[deps]
+
+source_file="res://dialogue/Chris.dialogue"
+dest_files=["res://.godot/imported/Chris.dialogue-6519f9e54a8caea3eabca0ae8f8a2765.tres"]
+
+[params]
+
+defaults=true

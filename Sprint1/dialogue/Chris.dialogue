@@ -1,0 +1,9 @@
+~ start
+Chris (Dealer): [[Yo bro|Hey bro|Sup my g]], wat u want?
+- I wanna grab some stuff from you
+	Chris (Dealer): Sounds good, what do u want?
+	do ShopData.open_shop()
+- How do I sell my stuff?
+	Chris (Dealer): Put it in the slot at the door bro.
+- Nevermind => END
+=> END

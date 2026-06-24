@@ -62,7 +62,6 @@ func play_specific_song(song_title: String):
 				play_current_song()
 				return
 				
-	print("Warning: Song title '" + song_title + "' not found in any playlist.")
 
 func _on_song_finished():
 	current_song_index = (current_song_index + 1) % current_playlist.size()

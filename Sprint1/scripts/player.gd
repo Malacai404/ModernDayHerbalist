@@ -11,7 +11,15 @@ var current_speed = 5.0
 
 var vertical_limit_deg = 60
 
+
+var interact_delay = 0
+const interact_delay_saved = 0.3
+var has_interacted = false
+
 var bed_dialogue = false
+
+var in_settings_menu = false
+var in_seed_menu = false
 
 var in_outerworld = false
 
@@ -39,7 +47,7 @@ var selected_slot := 0
 @onready var seed_menu = $UI/CanvasLayer/SeedMenu
 
 
-var attack_cooldown = 0.5
+var attack_cooldown = 0
 var attack_cooldown_save = 0.5
 
 @onready var hovertext: RichTextLabel = $UI/CanvasLayer/Hovertext
@@ -109,6 +117,8 @@ func _ready():
 
 
 func _input(event):
+	if in_settings_menu or in_seed_menu:
+		return
 	if event.is_action_pressed("leftclick"):
 		use_selected_item_left_click()
 	if event.is_action_pressed("rightclick"):
@@ -157,6 +167,8 @@ func _handle_inventory():
 		)
 
 func _unhandled_input(event):
+	if in_settings_menu or in_seed_menu:
+		return
 	# Rotate the camera and head based on mouse movement
 	if event is InputEventMouseMotion:
 		# Horizontal rotation (turn the player)
@@ -193,15 +205,22 @@ func use_selected_item_left_click():
 			_handle_inventory()
 	
 func _physics_process(delta):
-	if Input.is_action_just_pressed("menu"):
+	interact_delay -= delta
+	if Input.is_action_just_pressed("menu") and in_seed_menu == false:
 		$UI/CanvasLayer/Settings.visible = !$UI/CanvasLayer/Settings.visible
+		in_settings_menu = !in_settings_menu
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		else:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if Input.is_action_just_pressed("Interact") and in_seed_menu == true:
+		seed_menu._close_seed_slots()
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	SettingsData.volume_settings = volume_slider.value
 	SettingsData.sens_settings = sens_slider.value / 10
 	mouse_sensitivity = sens_slider.value / 10
+	if in_settings_menu or in_seed_menu:
+		return
 	attack_cooldown -= delta
 	if(attack_cooldown > 0):
 		var ratio =  attack_cooldown/attack_cooldown_save
@@ -211,8 +230,9 @@ func _physics_process(delta):
 	if look_cast.is_colliding():
 		var collider = look_cast.get_collider()
 		if collider and collider.has_method("get_hover_text"):
-			if Input.is_action_just_pressed("Interact"):
+			if Input.is_action_just_pressed("Interact") and interact_delay <= 0:
 				collider.activate($".")
+				interact_delay = interact_delay_saved
 			hovertext.text = str(collider.get_hover_text())
 			hovertext.show()
 		else:
@@ -266,12 +286,17 @@ func _pickup_item(item: Item, num: int):
 				
 func _collect_seed(seedid: int, num: int):
 	item_addition_container._item_collected(SeedData._get_seed(seedid).name, num)
-	var b = find_seed_index(seedid)
+	var b = find_seed_index(0)
 	if b != -1:
 		seedpouch[b]["count"] += num
+		if seedpouch[b]["count"] > 99:
+			seedpouch[b]["count"] = 99
 	else:
 		b = find_seed_index(-1)
 		seedpouch[b]["count"] += num
+		if seedpouch[b]["count"] > 99:
+			seedpouch[b]["count"] = 99
+	seed_menu.seed_pouch = seedpouch
 func find_seed_index(target_itemid: int) -> int:
 	for i in range(seedpouch.size()):
 		if seedpouch[i]["itemid"] == target_itemid:

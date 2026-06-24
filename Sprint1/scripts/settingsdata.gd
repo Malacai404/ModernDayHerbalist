@@ -1,7 +1,7 @@
 extends Node
 
 var sens_settings = 0.005
-var volume_settings = 0
+var volume_settings = -30
 
 
 # Called when the node enters the scene tree for the first time.

@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dru5p64mjbibq"
+path="res://.godot/imported/Tony.dialogue-671924324087b2a24fb46ac61a3483ba.tres"
+
+[deps]
+
+source_file="res://dialogue/Tony.dialogue"
+dest_files=["res://.godot/imported/Tony.dialogue-671924324087b2a24fb46ac61a3483ba.tres"]
+
+[params]
+
+defaults=true

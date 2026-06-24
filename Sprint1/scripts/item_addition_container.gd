@@ -1,6 +1,7 @@
 extends VBoxContainer
 
-const ITEM_ADDITION = preload("uid://bnhx8qp4uiaqv")
+const ITEM_ADDITION = preload("res://objects/item_addition.tscn")
+
 
 var items_collected = [""]
 
