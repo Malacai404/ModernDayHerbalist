@@ -8,7 +8,7 @@ using_states = PackedStringArray()
 titles = {
 "start": "1"
 }
-character_names = PackedStringArray("Pig Named John")
+character_names = PackedStringArray("John")
 first_title = "0"
 lines = {
 "0": {
@@ -17,35 +17,56 @@ lines = {
 &"type": "title"
 },
 "1": {
-&"character": "Pig Named John",
+&"character": "John",
 &"id": "1",
 &"next_id": "2",
-&"text": "John Pork? I haven't heard that name in years.",
+&"text": "Quit [wave]porkin' around[/wave] ba ba haha [wave]snort[/wave]",
 &"type": "dialogue"
 },
 "2": {
-&"character": "Pig Named John",
+&"character": "John",
 &"id": "2",
 &"next_id": "3",
-&"text": "Pick up the damn phone when im calling.",
+&"text": "John Pork? I haven't heard that name in years.",
 &"type": "dialogue"
 },
 "3": {
-&"character": "Pig Named John",
+&"character": "John",
 &"id": "3",
 &"next_id": "4",
-&"text": "Calling me",
+&"text": "Pick up the damn phone when im calling.",
 &"type": "dialogue"
 },
 "4": {
+&"character": "John",
 &"id": "4",
+&"next_id": "5",
+&"text": "Ok, enough porkin' around, time to get to business",
+&"type": "dialogue"
+},
+"5": {
+&"character": "John",
+&"id": "5",
+&"next_id": "6",
+&"text": "Callin' me? That doesn't happen often, just don't call at 3 AM, that's my beauty sleep",
+&"type": "dialogue"
+},
+"6": {
+&"character": "John",
+&"id": "6",
+&"next_id": "7",
+&"text": "Ok, so hypothetically, if I was to call you while your [wave]dying grandma[/wave] as saying her last words, would you hang up on her to answer me? Not convinced? What if I had the cure to cancer?",
+&"type": "dialogue"
+},
+"7": {
+&"id": "7",
 &"is_snippet": false,
 &"next_id": "end",
 &"next_id_after": "",
 &"type": "goto"
 },
-"5": {
-&"id": "5",
+"8": {
+&"id": "8",
 &"is_snippet": false,
 &"next_id": "end",
 &"next_id_after": "",
@@ -53,8 +74,11 @@ lines = {
 }
 }
 raw_text = "~ start
-Pig Named John: John Pork? I haven't heard that name in years.
-Pig Named John: Pick up the damn phone when im calling.
-Pig Named John: Calling me
+John: Quit [wave]porkin' around[/wave] ba ba haha [wave]snort[/wave]
+John: John Pork? I haven't heard that name in years.
+John: Pick up the damn phone when im calling.
+John: Ok, enough porkin' around, time to get to business
+John: Callin' me? That doesn't happen often, just don't call at 3 AM, that's my beauty sleep
+John: Ok, so hypothetically, if I was to call you while your [wave]dying grandma[/wave] as saying her last words, would you hang up on her to answer me? Not convinced? What if I had the cure to cancer?
 => END"
 metadata/dialogue_manager_version = "3.10.4"

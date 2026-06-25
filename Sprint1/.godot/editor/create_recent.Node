@@ -1,3 +1,7 @@
+Panel
+CanvasLayer
+CollisionShape3D
+Area3D
 Button
 VBoxContainer
 Container
@@ -9,6 +13,3 @@ GridContainer
 ColorRect
 Label
 TextureRect
-HBoxContainer
-BoxContainer
-AnimationPlayer

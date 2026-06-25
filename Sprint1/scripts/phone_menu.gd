@@ -10,6 +10,7 @@ extends CanvasLayer
 @onready var intial_menu = $IntialMenu
 
 @onready var conversation = $Conversation
+@onready var player_character = $"../../.."
 
 
 const MAIN_THEME = preload("uid://w3tinovh7m4s")
@@ -23,7 +24,7 @@ const PORTRAITS: Dictionary = {
 	"Chris (Dealer)": "res://textures/chris.png",
 	"Tony 'Da' Man (Loan Shark)": "res://textures/tony.png",
 	"Mama": "res://textures/mama.png",
-	"John Pork": "res://textures/johnpork.png",
+	"John": "res://textures/johnpork.png",
 }
 
 const CHRIS = preload("uid://dk43o81bj0oee")
@@ -33,6 +34,7 @@ const TONY = preload("uid://dru5p64mjbibq")
 
 
 func _phone_pickup():
+	player_character.in_phone_menu = true
 	intial_menu.visible = true
 	conversation.visible = false
 	
@@ -70,14 +72,18 @@ func _unhandled_input(event: InputEvent) -> void:
 func next(cue: String) -> void:
 	if cue == "" or cue == "end":
 		is_active = false
-		queue_free()
+		conversation.visible = false
+		player_character.in_phone_menu = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
 
 	dialogue_line = await DialogueManager.get_next_dialogue_line(resource, cue)
 
 	if dialogue_line == null:
 		is_active = false
-		queue_free()
+		conversation.visible = false
+		player_character.in_phone_menu = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		return
 
 	if dialogue_line.type == "dialogue":

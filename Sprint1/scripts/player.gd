@@ -20,12 +20,17 @@ var bed_dialogue = false
 
 var in_settings_menu = false
 var in_seed_menu = false
+var in_phone_menu = false
 
 var in_outerworld = false
 
 @onready var cooldown_circle: TextureProgressBar = $UI/CanvasLayer/CrosshairContainer/CooldownCircle
 
 var selected_slot := 0
+
+
+
+@onready var phone_menu = $UI/CanvasLayer/PhoneMenu
 
 @onready var player_mesh = $playerMesh
 @onready var player_collision = $playerCollision
@@ -117,7 +122,7 @@ func _ready():
 
 
 func _input(event):
-	if in_settings_menu or in_seed_menu:
+	if in_settings_menu or in_seed_menu or in_phone_menu:
 		return
 	if event.is_action_pressed("leftclick"):
 		use_selected_item_left_click()
@@ -167,7 +172,7 @@ func _handle_inventory():
 		)
 
 func _unhandled_input(event):
-	if in_settings_menu or in_seed_menu:
+	if in_settings_menu or in_seed_menu or in_phone_menu:
 		return
 	# Rotate the camera and head based on mouse movement
 	if event is InputEventMouseMotion:
@@ -178,6 +183,10 @@ func _unhandled_input(event):
 		player_head.rotate_x(-event.relative.y * mouse_sensitivity)
 		player_head.rotation.x = clamp(player_head.rotation.x, deg_to_rad(-vertical_limit_deg), deg_to_rad(vertical_limit_deg))
 
+
+func _phone_active():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	phone_menu._phone_pickup()
 
 func use_selected_item_right_click():
 	if attack_cooldown <= 0:
@@ -219,7 +228,7 @@ func _physics_process(delta):
 	SettingsData.volume_settings = volume_slider.value
 	SettingsData.sens_settings = sens_slider.value / 10
 	mouse_sensitivity = sens_slider.value / 10
-	if in_settings_menu or in_seed_menu:
+	if in_settings_menu or in_seed_menu or in_phone_menu:
 		return
 	attack_cooldown -= delta
 	if(attack_cooldown > 0):

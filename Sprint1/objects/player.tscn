@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://fidbyqt4rt2w" path="res://textures/tony.png" id="8_mqnmn"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="8_vqq2l"]
 [ext_resource type="Theme" uid="uid://w3tinovh7m4s" path="res://main_theme.tres" id="9_r673r"]
+[ext_resource type="Texture2D" uid="uid://decxbg4qofpgt" path="res://textures/chrisbody.png" id="15_mqnmn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
 
@@ -48,6 +49,18 @@ default_font_size = 30
 [sub_resource type="LabelSettings" id="LabelSettings_3rfka"]
 font_size = 46
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5esnd"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+
+[sub_resource type="Theme" id="Theme_w1o2u"]
+Panel/styles/panel = SubResource("StyleBoxFlat_5esnd")
+
 [node name="playerCharacter" type="CharacterBody3D" unique_id=212589539]
 script = ExtResource("1_4flbx")
 
@@ -58,9 +71,9 @@ shape = SubResource("CapsuleShape3D_onrkg")
 mesh = SubResource("CapsuleMesh_i3pqv")
 
 [node name="playerHead" type="Node3D" parent="." unique_id=1955611300]
+transform = Transform3D(0.99981135, -0.019424293, 0, 0.019424293, 0.99981135, 0, 0, 0, 1, 0, 0.6417241, 0)
 
 [node name="playerCam" type="Camera3D" parent="playerHead" unique_id=1106901365]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5557114, 0)
 attributes = SubResource("CameraAttributesPractical_4flbx")
 current = true
 near = 0.001
@@ -271,6 +284,7 @@ transform = Transform2D(1, 0, 0, 1, 0, 48.415)
 script = ExtResource("5_42cpl")
 
 [node name="IntialMenu" type="Control" parent="UI/CanvasLayer/PhoneMenu" unique_id=843987778]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -3022,6 +3036,22 @@ text = "Seed Pouch"
 label_settings = SubResource("LabelSettings_3rfka")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ShopMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=1255037140]
+layer = 11
+
+[node name="Panel" type="Panel" parent="UI/CanvasLayer/ShopMenu" unique_id=1823167928]
+offset_left = 53.0
+offset_top = 55.0
+offset_right = 1551.0
+offset_bottom = 1001.0
+theme = SubResource("Theme_w1o2u")
+
+[node name="Chrisbody" type="Sprite2D" parent="UI/CanvasLayer/ShopMenu" unique_id=1100915929]
+texture_filter = 1
+position = Vector2(1353, 726)
+scale = Vector2(6.9125, 6.9125)
+texture = ExtResource("15_mqnmn")
 
 [connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button" to="UI/CanvasLayer/PhoneMenu" method="_talktony"]
 [connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button2" to="UI/CanvasLayer/PhoneMenu" method="_talkchris"]

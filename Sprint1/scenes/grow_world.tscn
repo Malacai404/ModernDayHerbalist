@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ch80l60qnl7jx" path="res://models/wallphone/old_wall_mounted_telephone_0.jpg" id="8_w04e5"]
 [ext_resource type="Texture2D" uid="uid://bq337813rmg1s" path="res://models/wallphone/old_wall_mounted_telephone_1.png" id="9_xoh7w"]
 [ext_resource type="Texture2D" uid="uid://beuxkspsfh0rm" path="res://models/wallphone/old_wall_mounted_telephone_2.png" id="10_vriwe"]
+[ext_resource type="Script" uid="uid://dexg0enxe7pek" path="res://scripts/phone.gd" id="11_xoh7w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxs24"]
 resource_name = "Material"
@@ -600,6 +601,9 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lde8f")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_w04e5"]
+size = Vector3(14.91, 21.36, 14.79)
+
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_byl5l"]
 
 [node name="grow_world" type="Node3D" unique_id=1431210748]
@@ -764,8 +768,16 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 7
 spot_range = 5.81
 
 [node name="phoneMesh" type="MeshInstance3D" parent="apartment" unique_id=237557880]
-transform = Transform3D(-3.934025e-09, 0, -0.09, 0, 0.09, 0, 0.09, 0, -3.934025e-09, -11.190544, 2.9340906, 3.8559518)
+transform = Transform3D(-3.0597973e-09, 0, -0.07, 0, 0.07, 0, 0.07, 0, -3.0597973e-09, -11.190544, 1.9868298, 4.2096663)
 mesh = SubResource("ArrayMesh_0b33l")
+
+[node name="PhoneArea" type="Area3D" parent="apartment/phoneMesh" unique_id=1223405912]
+transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, 3.5527137e-15, 0, 1, 0, 10.618954, 0)
+script = ExtResource("11_xoh7w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="apartment/phoneMesh/PhoneArea" unique_id=510443373]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9379425, 0, 0)
+shape = SubResource("BoxShape3D_w04e5")
 
 [node name="environment" type="Node3D" parent="." unique_id=107467406]
 
