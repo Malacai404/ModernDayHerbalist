@@ -128,10 +128,6 @@ menu={
 ]
 }
 
-[internationalization]
-
-locale/translations_pot_files=PackedStringArray("res://dialogue/Chris.dialogue", "res://dialogue/Mama.dialogue", "res://dialogue/Tony.dialogue", "res://dialogue/Johnpork.dialogue")
-
 [physics]
 
 3d/physics_engine="Jolt Physics"

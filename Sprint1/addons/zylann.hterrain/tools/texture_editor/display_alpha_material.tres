@@ -1,9 +1,0 @@
-[gd_resource type="ShaderMaterial" format=2]
-
-[ext_resource type="Shader" uid="uid://xyrq8c55viru" path="res://addons/zylann.hterrain/tools/texture_editor/display_alpha.gdshader" id="1"]
-
-[resource]
-
-render_priority = 0
-shader = ExtResource( 1 )
-
