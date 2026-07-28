@@ -1,7 +1,9 @@
 extends Node
 
+var shop_open = false
+
 func open_shop():
-	print("The shop is open")
+	shop_open = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

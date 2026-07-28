@@ -49,7 +49,10 @@ var selected_slot := 0
 @onready var sens_slider: HSlider = $UI/CanvasLayer/Settings/Sens/SensSlider
 @onready var volume_slider: HSlider = $UI/CanvasLayer/Settings/Sens2/VolumeSlider
 
+
+
 @onready var seed_menu = $UI/CanvasLayer/SeedMenu
+@onready var shop_menu: CanvasLayer = $UI/CanvasLayer/shopMenu
 
 
 var attack_cooldown = 0
@@ -57,6 +60,7 @@ var attack_cooldown_save = 0.5
 
 @onready var hovertext: RichTextLabel = $UI/CanvasLayer/Hovertext
 
+@onready var shop_animator: AnimationPlayer = $UI/CanvasLayer/shopMenu/shopAnimator
 
 @onready var item_slots = [item_slot_1, item_slot_2, item_slot_3, item_slot_4, item_slot_5]
 
@@ -70,7 +74,7 @@ var inventory = [
 
 var seedpouch = [
 	{"itemid": 0, "count": 10},
-	{"itemid": -1, "count": 0},
+	{"itemid": 1, "count": 5},
 	{"itemid": -1, "count": 0},
 	{"itemid": -1, "count": 0},
 	{"itemid": -1, "count": 0},
@@ -111,6 +115,7 @@ func _kill():
 	print("You died!")
 
 func _ready():
+	shop_menu.visible = false
 	volume_slider.value = SettingsData.volume_settings
 	sens_slider.value = SettingsData.sens_settings  * 10
 	inventory = PlayerData.inventory
@@ -122,7 +127,7 @@ func _ready():
 
 
 func _input(event):
-	if in_settings_menu or in_seed_menu or in_phone_menu:
+	if _in_menu():
 		return
 	if event.is_action_pressed("leftclick"):
 		use_selected_item_left_click()
@@ -172,7 +177,7 @@ func _handle_inventory():
 		)
 
 func _unhandled_input(event):
-	if in_settings_menu or in_seed_menu or in_phone_menu:
+	if _in_menu():
 		return
 	# Rotate the camera and head based on mouse movement
 	if event is InputEventMouseMotion:
@@ -213,8 +218,21 @@ func use_selected_item_left_click():
 				slot["count"] = 0
 			_handle_inventory()
 	
-func _physics_process(delta):
-	interact_delay -= delta
+	
+
+func _close_shop():
+	ShopData.shop_open = false
+func _manage_shop_state():
+	if ShopData.shop_open == true and shop_menu.visible == false:
+		shop_menu.visible = true
+		shop_animator.play("shop_in")
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	elif ShopData.shop_open == false and shop_menu.visible == true:
+		shop_animator.play("shop_out")
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _manage_menu_state():
 	if Input.is_action_just_pressed("menu") and in_seed_menu == false:
 		$UI/CanvasLayer/Settings.visible = !$UI/CanvasLayer/Settings.visible
 		in_settings_menu = !in_settings_menu
@@ -224,13 +242,33 @@ func _physics_process(delta):
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if Input.is_action_just_pressed("Interact") and in_seed_menu == true:
 		seed_menu._close_seed_slots()
+		interact_delay = interact_delay_saved
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		
+func _manage_settings():
 	SettingsData.volume_settings = volume_slider.value
 	SettingsData.sens_settings = sens_slider.value / 10
 	mouse_sensitivity = sens_slider.value / 10
-	if in_settings_menu or in_seed_menu or in_phone_menu:
-		return
+	
+	
+func _in_menu():
+	if in_settings_menu or in_seed_menu or in_phone_menu or ShopData.shop_open == true:
+		return true
+	else:
+		return false
+func _physics_process(delta):
+	_manage_shop_state()
+	_manage_settings()
+	_manage_menu_state()
+	
 	attack_cooldown -= delta
+	interact_delay -= delta
+	
+	
+	
+	if _in_menu():
+		return
+	
 	if(attack_cooldown > 0):
 		var ratio =  attack_cooldown/attack_cooldown_save
 		cooldown_circle.value = ratio * 100
@@ -294,20 +332,51 @@ func _pickup_item(item: Item, num: int):
 				return
 				
 func _collect_seed(seedid: int, num: int):
+	print("Found at:", find_seed_index(seedid))
 	item_addition_container._item_collected(SeedData._get_seed(seedid).name, num)
-	var b = find_seed_index(0)
-	if b != -1:
-		seedpouch[b]["count"] += num
-		if seedpouch[b]["count"] > 99:
-			seedpouch[b]["count"] = 99
+
+	var slot_index = find_seed_index(seedid)
+
+	if slot_index != -1:
+		seedpouch[slot_index]["count"] += num
+		if seedpouch[slot_index]["count"] > 99:
+			seedpouch[slot_index]["count"] = 99
+
 	else:
-		b = find_seed_index(-1)
-		seedpouch[b]["count"] += num
-		if seedpouch[b]["count"] > 99:
-			seedpouch[b]["count"] = 99
+		var empty_index = find_empty_seed_slot()
+
+		if empty_index != -1:
+			seedpouch[empty_index]["itemid"] = seedid
+			seedpouch[empty_index]["count"] = num
+		else:
+			print("No space for seed!")
+
+	_enforce_single_seed_slots()
+
 	seed_menu.seed_pouch = seedpouch
+			
+func _enforce_single_seed_slots():
+	var seen = {}
+
+	for i in range(seedpouch.size()):
+		var id = seedpouch[i]["itemid"]
+
+		if id == -1:
+			continue
+
+		if seen.has(id):
+			seedpouch[i]["itemid"] = -1
+			seedpouch[i]["count"] = 0
+		else:
+			seen[id] = i
+			
 func find_seed_index(target_itemid: int) -> int:
 	for i in range(seedpouch.size()):
 		if seedpouch[i]["itemid"] == target_itemid:
+			return i
+	return -1
+func find_empty_seed_slot() -> int:
+	for i in range(seedpouch.size()):
+		if seedpouch[i]["itemid"] == -1:
 			return i
 	return -1

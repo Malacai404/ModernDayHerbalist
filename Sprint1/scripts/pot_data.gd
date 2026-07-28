@@ -3,9 +3,9 @@ extends Node3D
 
 var pots = []
 var pot_ids = [0,1,2,3,4]
-var growth_stages = [-1, -1, 0, 0, 0]
+var growth_stages = [-1, -1, 0, 1, 0]
 var growth_times = [1,1,1,1,1]
-var plantids = [0,0,0,0,0]
+var plantids = [0,0,1,2,0]
 
 
 
@@ -27,6 +27,15 @@ func _ready():
 			i.growthstage = growth_stages[b]
 			i.plantid = plantids[b]
 			b += 1
+
+func _save_pots():
+	if has_pot_host():
+		pots = get_tree().current_scene.get_node("pot_host").get_children()
+		for i in pots:
+			var id = i.pot_id
+			growth_times[id] = i.growthtime
+			growth_stages[id] = i.growthstage
+			plantids[id] = i.plantid
 
 func _load_pots():
 	if has_pot_host():

@@ -10,8 +10,8 @@ var inventory = [
 	{"item": null, "count": 0}
 ]
 var seedpouch = [
-	{"itemid": 0, "count": 10},
-	{"itemid": -1, "count": 0},
+	{"itemid": 0, "count": 5},
+	{"itemid": 1, "count": 5},
 	{"itemid": -1, "count": 0},
 	{"itemid": -1, "count": 0},
 	{"itemid": -1, "count": 0},

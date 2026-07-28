@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://bbbp4pf5px740" path="res://scripts/seed_slot.gd" id="7_i825w"]
 [ext_resource type="Texture2D" uid="uid://fidbyqt4rt2w" path="res://textures/tony.png" id="8_mqnmn"]
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="8_vqq2l"]
-[ext_resource type="Theme" uid="uid://w3tinovh7m4s" path="res://main_theme.tres" id="9_r673r"]
+[ext_resource type="Texture2D" uid="uid://cyra2olqtx61j" path="res://textures/arrow.png" id="15_5esnd"]
 [ext_resource type="Texture2D" uid="uid://decxbg4qofpgt" path="res://textures/chrisbody.png" id="15_mqnmn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
@@ -31,6 +31,36 @@ shader_parameter/vignette = 0.50000002375
 shader_parameter/noise_amount = 0.010000000475
 shader_parameter/brightness = 1.08
 shader_parameter/corner_round = 0.0250000011875
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r673r"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_cvcf6"]
+Panel/styles/panel = SubResource("StyleBoxFlat_r673r")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqnmn"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.8, 0.8666667, 0.8862745, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+corner_detail = 5
+
+[sub_resource type="Theme" id="Theme_vuoe6"]
+Panel/styles/panel = SubResource("StyleBoxFlat_mqnmn")
 
 [sub_resource type="LabelSettings" id="LabelSettings_vqq2l"]
 font = ExtResource("6_42cpl")
@@ -60,6 +90,86 @@ corner_radius_top_right = 30
 
 [sub_resource type="Theme" id="Theme_w1o2u"]
 Panel/styles/panel = SubResource("StyleBoxFlat_5esnd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_vuoe6"]
+font = ExtResource("6_42cpl")
+font_size = 51
+
+[sub_resource type="Animation" id="Animation_w1o2u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/shopMenu:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 984.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/shopMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_s4hvt"]
+resource_name = "shop_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/shopMenu:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 984.5), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2sux5"]
+resource_name = "shop_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/shopMenu:offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 984.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CanvasLayer/shopMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iqfnf"]
+_data = {
+&"RESET": SubResource("Animation_w1o2u"),
+&"shop_in": SubResource("Animation_s4hvt"),
+&"shop_out": SubResource("Animation_2sux5")
+}
 
 [node name="playerCharacter" type="CharacterBody3D" unique_id=212589539]
 script = ExtResource("1_4flbx")
@@ -102,6 +212,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+color = Color(0.8, 0.8666667, 0.8862745, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UI" unique_id=747844346]
 layer = 10
@@ -290,15 +401,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PhoneBG" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu" unique_id=836544504]
-layout_mode = 0
-offset_left = 79.00003
-offset_top = 654.585
-offset_right = 121.43178
-offset_bottom = 668.04736
-scale = Vector2(34.148956, 18.718847)
-mouse_filter = 1
-color = Color(0.288518, 0.28851798, 0.28851798, 1)
+[node name="Panel" type="Panel" parent="UI/CanvasLayer/PhoneMenu/IntialMenu" unique_id=1253250268]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 608.585
+offset_right = 1519.0
+offset_bottom = 874.585
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_cvcf6")
 
 [node name="BoxContainer" type="BoxContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu" unique_id=1561451064]
 layout_mode = 1
@@ -325,18 +441,18 @@ theme_override_constants/margin_bottom = 8
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer" unique_id=583891663]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer" unique_id=1598866707]
+[node name="Panel" type="Panel" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer" unique_id=1824895255]
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 2
-color = Color(0.18179765, 0.18179768, 0.18179768, 1)
+theme = SubResource("Theme_vuoe6")
 
-[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/ColorRect" unique_id=2006042567]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/Panel" unique_id=2006042567]
 texture_filter = 1
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 0
-offset_left = -1.1000061
+offset_left = 2.899994
 offset_top = 2.0
-offset_right = 232.0
+offset_right = 236.0
 offset_bottom = 237.0
 texture = ExtResource("8_mqnmn")
 
@@ -406,15 +522,20 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PhoneBG" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/Conversation" unique_id=829524013]
-layout_mode = 0
-offset_left = 79.00003
-offset_top = 654.585
-offset_right = 121.43178
-offset_bottom = 668.04736
-scale = Vector2(34.148956, 18.718847)
-mouse_filter = 1
-color = Color(0.288518, 0.28851798, 0.28851798, 1)
+[node name="Panel" type="Panel" parent="UI/CanvasLayer/PhoneMenu/Conversation" unique_id=1235776558]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 54.0
+offset_top = 608.585
+offset_right = 1519.0
+offset_bottom = 874.585
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_cvcf6")
 
 [node name="BoxContainer" type="BoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation" unique_id=218648655]
 layout_mode = 1
@@ -441,18 +562,18 @@ theme_override_constants/margin_bottom = 8
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer" unique_id=473823842]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer" unique_id=1408165508]
+[node name="Panel" type="Panel" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer" unique_id=1713470562]
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 2
-color = Color(0.43134022, 0.43134025, 0.43134025, 1)
+theme = SubResource("Theme_vuoe6")
 
-[node name="SelectedCharacter" type="TextureRect" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/ColorRect" unique_id=144082054]
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/Panel" unique_id=2114631029]
 texture_filter = 1
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 0
-offset_left = 1.0
-offset_top = -1.0
-offset_right = 234.1
+offset_left = 2.899994
+offset_top = 2.0
+offset_right = 236.0
 offset_bottom = 237.0
 texture = ExtResource("8_mqnmn")
 
@@ -478,18 +599,12 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme = SubResource("Theme_r673r")
 bbcode_enabled = true
-text = "[font_size=30]blind jews"
 script = ExtResource("8_vqq2l")
 skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex")
 metadata/_custom_type_script = "uid://g32um0mltv5d"
 
 [node name="ResponsesContainer" type="VBoxContainer" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer" unique_id=1164991725]
 layout_mode = 2
-
-[node name="Button" type="Button" parent="UI/CanvasLayer/PhoneMenu/Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/ResponsesContainer" unique_id=764615543]
-custom_minimum_size = Vector2(0, 45.06)
-layout_mode = 2
-theme = ExtResource("9_r673r")
 
 [node name="ItemAdditionContainer" type="VBoxContainer" parent="UI/CanvasLayer" unique_id=1593217411]
 anchors_preset = 3
@@ -3037,21 +3152,692 @@ label_settings = SubResource("LabelSettings_3rfka")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ShopMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=1255037140]
+[node name="shopMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=1255037140]
 layer = 11
+offset = Vector2(0, 984.5)
+transform = Transform2D(1, 0, 0, 1, 0, 984.5)
 
-[node name="Panel" type="Panel" parent="UI/CanvasLayer/ShopMenu" unique_id=1823167928]
+[node name="shopPanel" type="Panel" parent="UI/CanvasLayer/shopMenu" unique_id=1823167928]
 offset_left = 53.0
 offset_top = 55.0
 offset_right = 1551.0
 offset_bottom = 1001.0
 theme = SubResource("Theme_w1o2u")
 
-[node name="Chrisbody" type="Sprite2D" parent="UI/CanvasLayer/ShopMenu" unique_id=1100915929]
+[node name="shopSlots" type="Control" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=1012726620]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="shopSlot_1" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=545093714]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 65.0
+offset_top = 86.0
+offset_right = 298.1
+offset_bottom = 319.1
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_1" unique_id=589979788]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_1" unique_id=1519612745]
 texture_filter = 1
-position = Vector2(1353, 726)
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_1" unique_id=927127243]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_2" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1049744069]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 325.0
+offset_top = 86.0
+offset_right = 558.1
+offset_bottom = 319.1
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_2" unique_id=1623253124]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_2" unique_id=1717902117]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_2" unique_id=674041532]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_3" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=2033647584]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 585.0
+offset_top = 86.0
+offset_right = 818.1
+offset_bottom = 319.1
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_3" unique_id=1252742088]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_3" unique_id=548136695]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_3" unique_id=1539257926]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_4" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1154269127]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 65.0
+offset_top = 474.0
+offset_right = 298.1
+offset_bottom = 707.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_4" unique_id=1095694]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_4" unique_id=36999864]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_4" unique_id=1359228611]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_5" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=661369048]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 474.0
+offset_right = 493.1
+offset_bottom = 707.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_5" unique_id=403380107]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_5" unique_id=928469320]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_5" unique_id=490360917]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_6" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=664547711]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 455.0
+offset_top = 474.0
+offset_right = 688.1
+offset_bottom = 707.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_6" unique_id=1289331785]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_6" unique_id=171371020]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_6" unique_id=235256449]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_7" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1342860493]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 650.0
+offset_top = 474.0
+offset_right = 883.1
+offset_bottom = 707.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_7" unique_id=408733956]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_7" unique_id=1170417744]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_7" unique_id=385731656]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_8" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1912337521]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 845.0
+offset_top = 474.0
+offset_right = 1078.1
+offset_bottom = 707.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_8" unique_id=1435074159]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_8" unique_id=1256691900]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_8" unique_id=2126349093]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_9" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=811394617]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 65.0
+offset_top = 714.0
+offset_right = 298.1
+offset_bottom = 947.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_9" unique_id=1726680372]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_9" unique_id=210838060]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_9" unique_id=1464828383]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_10" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1689838595]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 260.0
+offset_top = 714.0
+offset_right = 493.1
+offset_bottom = 947.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_10" unique_id=1991486955]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_10" unique_id=965763843]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_10" unique_id=939945478]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_11" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1476545768]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 455.0
+offset_top = 714.0
+offset_right = 688.1
+offset_bottom = 947.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_11" unique_id=305247231]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_11" unique_id=770682185]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_11" unique_id=2113276926]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_12" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=234675117]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 650.0
+offset_top = 714.0
+offset_right = 883.1
+offset_bottom = 947.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_12" unique_id=228563103]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_12" unique_id=1055854723]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_12" unique_id=1634607999]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="shopSlot_13" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=284110844]
+custom_minimum_size = Vector2(233.1, 233.1)
+layout_mode = 0
+offset_left = 845.0
+offset_top = 714.0
+offset_right = 1078.1
+offset_bottom = 947.1
+scale = Vector2(0.75, 0.75)
+theme = SubResource("Theme_vuoe6")
+
+[node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_13" unique_id=1519704001]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_13" unique_id=1751277936]
+texture_filter = 1
+custom_minimum_size = Vector2(233.1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_mqnmn")
+
+[node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_13" unique_id=1341261977]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.55001
+offset_top = 11.899994
+offset_right = 62.449966
+offset_bottom = 63.899994
+grow_horizontal = 2
+grow_vertical = 0
+text = "$9.99"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="chrisSprite" type="Sprite2D" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=1100915929]
+texture_filter = 1
+position = Vector2(1300, 671)
 scale = Vector2(6.9125, 6.9125)
 texture = ExtResource("15_mqnmn")
+
+[node name="dealLabel" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=60869]
+layout_mode = 0
+offset_left = 229.0
+offset_top = 24.0
+offset_right = 598.0
+offset_bottom = 94.0
+text = "Hot Deals!!"
+label_settings = SubResource("LabelSettings_vuoe6")
+horizontal_alignment = 1
+
+[node name="otherLabel" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=134668659]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 402.0
+offset_right = 434.0
+offset_bottom = 472.0
+text = "Other Stuff"
+label_settings = SubResource("LabelSettings_vuoe6")
+
+[node name="walletLabel" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=462345764]
+layout_mode = 0
+offset_left = 1110.0
+offset_top = 33.0
+offset_right = 1479.0
+offset_bottom = 103.0
+text = "Wallet: $120.00"
+label_settings = SubResource("LabelSettings_vuoe6")
+
+[node name="leaveButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=703672327]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -30.0
+offset_top = 9.5
+offset_right = 9.0
+offset_bottom = 39.0
+grow_horizontal = 2
+scale = Vector2(1.58, 1.58)
+
+[node name="TextureRect" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/leaveButton" unique_id=2045544272]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+texture = ExtResource("15_5esnd")
+
+[node name="shopAnimator" type="AnimationPlayer" parent="UI/CanvasLayer/shopMenu" unique_id=1883376578]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_iqfnf")
 
 [connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button" to="UI/CanvasLayer/PhoneMenu" method="_talktony"]
 [connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button2" to="UI/CanvasLayer/PhoneMenu" method="_talkchris"]
@@ -3093,3 +3879,4 @@ texture = ExtResource("15_mqnmn")
 [connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot34" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot35" method="_on_button_pressed"]
 [connection signal="pressed" from="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36/Button" to="UI/CanvasLayer/SeedMenu/background/MarginContainer/GridContainer/SeedSlot36" method="_on_button_pressed"]
+[connection signal="pressed" from="UI/CanvasLayer/shopMenu/shopPanel/leaveButton" to="." method="_close_shop"]

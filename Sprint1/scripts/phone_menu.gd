@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @onready var dialogue_label: DialogueLabel = $Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/DialogueLabel
 @onready var character_label = $Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/CharacterName
-@onready var portrait_rect: TextureRect = $Conversation/BoxContainer/MarginContainer/HBoxContainer/ColorRect/SelectedCharacter
+@onready var portrait_rect: TextureRect = $Conversation/BoxContainer/MarginContainer/HBoxContainer/Panel/TextureRect
 
 
 @onready var responses_container: VBoxContainer = $Conversation/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/ResponsesContainer
@@ -27,10 +27,10 @@ const PORTRAITS: Dictionary = {
 	"John": "res://textures/johnpork.png",
 }
 
-const CHRIS = preload("uid://dk43o81bj0oee")
-const JOHNPORK = preload("uid://dkl5en2tu4ty6")
-const MAMA = preload("uid://cvfyiqlcyfkfc")
-const TONY = preload("uid://dru5p64mjbibq")
+const CHRIS = preload("res://dialogue/Chris.dialogue")
+const JOHNPORK = preload("res://dialogue/Johnpork.dialogue")
+const MAMA = preload("res://dialogue/Mama.dialogue")
+const TONY = preload("res://dialogue/Tony.dialogue")
 
 
 func _phone_pickup():

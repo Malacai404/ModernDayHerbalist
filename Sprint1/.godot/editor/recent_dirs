@@ -1,6 +1,8 @@
-res://
+res://objects/
+res://shaders/
+res://terraininfo/
 res://scripts/
+res://terrain_data/
+res://
 res://dialogue/
 res://scripts/seeds/
-res://shaders/
-res://objects/

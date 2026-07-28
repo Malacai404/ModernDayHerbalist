@@ -52,21 +52,18 @@ func activate(playerobj):
 	if growthstage == -1:
 		playerobj._open_seedslots(pot_id)
 	elif(growthstage >= growthtime):
+		print(plantid)
 		playerobj._pickup_item(SeedData._get_plant(plantid), 3)
 		playerobj._collect_seed(plantid, randi_range(1,3))
 		growthstage = -1
 
 func _plant(plantid_temp: int):
 	if growthstage == -1:
-		PotData.uppi(pot_id, plantid_temp)
 		plantid = plantid_temp
 		growthtime = SeedData._get_seed(plantid_temp).growthtime
-		PotData.upgtd(pot_id, growthtime)
 		growthstage = 0        
-		PotData.upgd(pot_id, 0)
 		
 		
 func _on_day_passed() -> void:
 	if growthstage >= 0:  
 		growthstage += 1
-		PotData.upgd(pot_id, growthstage)

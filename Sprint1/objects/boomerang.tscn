@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://doh2jlcf3n2a7"]
+
+[ext_resource type="Script" uid="uid://bcjj3xpkto6xg" path="res://scripts/boomerang.gd" id="1_2uunm"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vuoe6"]
+radius = 0.3906303
+
+[sub_resource type="Animation" id="Animation_h8sng"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 6.265732, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1xksk"]
+resource_name = "rotate"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.265732, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6gidp"]
+_data = {
+&"RESET": SubResource("Animation_h8sng"),
+&"rotate": SubResource("Animation_1xksk")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvcf6"]
+albedo_color = Color(1, 1, 0.23137255, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vuoe6"]
+material = SubResource("StandardMaterial3D_cvcf6")
+radius = 0.10595703
+height = 0.5615845
+
+[node name="boomerang" type="Area3D" unique_id=144157507]
+script = ExtResource("1_2uunm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1856577195]
+transform = Transform3D(-4.3711385e-08, -1, 0, 0.99999994, -4.371139e-08, 0, 0, 0, 0.99999994, 0.006795436, 0.036825374, -0.09070492)
+shape = SubResource("SphereShape3D_vuoe6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1312553192]
+libraries/ = SubResource("AnimationLibrary_6gidp")
+autoplay = &"rotate"
+
+[node name="mesh" type="Node3D" parent="." unique_id=379341781]
+transform = Transform3D(0.9998477, 0, -0.017452609, 0, 1, 0, 0.017452609, 0, 0.9998477, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh" unique_id=597762288]
+transform = Transform3D(-3.6659454e-08, -0.83867055, -0.54463905, 1, -4.371139e-08, 0, -2.380693e-08, -0.54463905, 0.83867055, -0.14923891, -7.877068e-09, -0.123722136)
+mesh = SubResource("CapsuleMesh_vuoe6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="mesh" unique_id=1224712670]
+transform = Transform3D(-3.6659454e-08, -0.83867055, 0.54463905, 1, -4.371139e-08, 0, 2.380693e-08, 0.54463905, 0.83867055, 0.14761801, -7.877068e-09, -0.123722136)
+mesh = SubResource("CapsuleMesh_vuoe6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

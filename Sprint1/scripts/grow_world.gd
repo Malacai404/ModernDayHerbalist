@@ -4,6 +4,7 @@ signal scene_change
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	MusicManager.play_playlist("grow_world")
+	print("LoadingPots")
 	PotData._load_pots()
 	Daycycle._daypassed()
 

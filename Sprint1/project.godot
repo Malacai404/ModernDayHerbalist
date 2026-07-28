@@ -12,7 +12,7 @@ config_version=5
 
 config/name="MDH_NCEA_SPRINT1"
 run/main_scene="uid://ql6fotrvhipb"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 
 [autoload]
 
@@ -27,6 +27,10 @@ Daycycle="*uid://b1pjtikb3qep8"
 PotData="*uid://gsfugou3ydex"
 DialogueManager="*uid://c3rodes2l3gxb"
 
+[dialogue_manager]
+
+editor/advanced/custom_test_scene_path="res://apple/dialogue_manager/test_scene.tscn"
+
 [display]
 
 window/size/viewport_width=1600
@@ -36,7 +40,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [global_group]
 

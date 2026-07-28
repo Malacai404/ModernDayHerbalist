@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" format=2]
 
-[ext_resource path="res://addons/zylann.hterrain/tools/texture_editor/display_color.gdshader" type="Shader" id=1]
+[ext_resource type="Shader" uid="uid://bu6c31ikc26bm" path="res://addons/zylann.hterrain/tools/texture_editor/display_color.gdshader" id="1"]
 
 [resource]
 shader = ExtResource( 1 )

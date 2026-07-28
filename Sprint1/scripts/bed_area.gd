@@ -9,5 +9,6 @@ func activate(playerobj):
 	PlayerData.inventory = playerobj.inventory
 	PlayerData.selected_slot = playerobj.selected_slot
 	PlayerData.seedpouch = playerobj.seedpouch
+	PotData._save_pots()
 	await Transition.blink(func():
 		get_tree().change_scene_to_file("res://scenes/outerworld.tscn"))
