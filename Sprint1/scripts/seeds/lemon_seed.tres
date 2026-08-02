@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="seed" format=3 uid="uid://b47nqw3us0lsk"]
+
+[ext_resource type="Script" uid="uid://cwe1ubw51liq8" path="res://scripts/seed.gd" id="1_vnynq"]
+[ext_resource type="Texture2D" uid="uid://bdmpqy4o2suyi" path="res://textures/lemon.png" id="2_vnynq"]
+
+[resource]
+script = ExtResource("1_vnynq")
+name = "Lemon Seed"
+texture = ExtResource("2_vnynq")
+seed_id = 3
+growthtime = 1

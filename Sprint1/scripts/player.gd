@@ -129,10 +129,6 @@ func _ready():
 func _input(event):
 	if _in_menu():
 		return
-	if event.is_action_pressed("leftclick"):
-		use_selected_item_left_click()
-	if event.is_action_pressed("rightclick"):
-		use_selected_item_right_click()
 	if event.is_action_pressed("slot1"):
 		select_slot(0)
 	elif(event.is_action_pressed("slot2")):
@@ -218,7 +214,11 @@ func use_selected_item_left_click():
 				slot["count"] = 0
 			_handle_inventory()
 	
-	
+func _manage_input():
+	if Input.is_action_pressed("leftclick"):
+		use_selected_item_left_click()
+	if Input.is_action_pressed("rightclick"):
+		use_selected_item_right_click()
 
 func _close_shop():
 	ShopData.shop_open = false
@@ -268,7 +268,7 @@ func _physics_process(delta):
 	
 	if _in_menu():
 		return
-	
+	_manage_input()
 	if(attack_cooldown > 0):
 		var ratio =  attack_cooldown/attack_cooldown_save
 		cooldown_circle.value = ratio * 100

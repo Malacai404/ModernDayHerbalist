@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="seed" format=3 uid="uid://dio5lel8oxjrk"]
+
+[ext_resource type="Script" uid="uid://cwe1ubw51liq8" path="res://scripts/seed.gd" id="1_doo03"]
+[ext_resource type="Texture2D" uid="uid://bsf28ksabwada" path="res://textures/pineapple_seeds.png" id="2_doo03"]
+
+[resource]
+script = ExtResource("1_doo03")
+name = "Pineapple Seed"
+texture = ExtResource("2_doo03")
+seed_id = 4
+growthtime = 1

@@ -1,13 +1,12 @@
-Node3D
-AnimationPlayer
 MeshInstance3D
 CollisionShape3D
 Area3D
+Node3D
+AnimationPlayer
 TextureRect
 Button
 Control
 Label
-Terrain3D
 Panel
 CanvasLayer
 VBoxContainer
