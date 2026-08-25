@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bb4xtar6hps1c"]
 
 [ext_resource type="Script" uid="uid://bu73kav3yxf2r" path="res://scripts/player.gd" id="1_4flbx"]
-[ext_resource type="Shader" uid="uid://c5s8tul6770lu" path="res://shaders/crt.gdshader" id="2_onrkg"]
+[ext_resource type="Shader" uid="uid://dypp2nxi3jhe6" path="res://objects/noise.gdshader" id="2_mqnmn"]
 [ext_resource type="Texture2D" uid="uid://dauiwei34bo23" path="res://textures/radial.png" id="3_f46kd"]
 [ext_resource type="Script" uid="uid://be3c7mf5qpcxg" path="res://scripts/slot.gd" id="3_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cyti6cf6qhye0" path="res://textures/Grape.png" id="3_uxov2"]
@@ -23,14 +23,13 @@
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4flbx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i825w"]
-shader = ExtResource("2_onrkg")
-shader_parameter/pixel_size = 640
-shader_parameter/curvature = 0.010000000475
-shader_parameter/scanline_intensity = 0.250000011875
-shader_parameter/vignette = 0.50000002375
-shader_parameter/noise_amount = 0.010000000475
-shader_parameter/brightness = 1.08
-shader_parameter/corner_round = 0.0250000011875
+shader = ExtResource("2_mqnmn")
+shader_parameter/noise_scale = 112.7200053067
+shader_parameter/density_curve = 5.0
+shader_parameter/noise_color = Color(1, 1, 1, 1)
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/animate = true
+shader_parameter/anim_speed = 4.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r673r"]
 content_margin_left = 0.0
