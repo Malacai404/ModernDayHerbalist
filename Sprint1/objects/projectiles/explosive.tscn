@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://t1tpph777nr3"]
+
+[ext_resource type="Script" uid="uid://bfjxu5fcc1o47" path="res://scripts/explosive.gd" id="1_677mg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_1qrry"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iw535"]
+albedo_color = Color(0.6893666, 0.12067608, 0.22890505, 1)
+emission_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_hs6cj"]
+material = SubResource("StandardMaterial3D_iw535")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvcf6"]
+albedo_color = Color(0.35065663, 0.18821079, 0.022521172, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_vuoe6"]
+material = SubResource("StandardMaterial3D_cvcf6")
+radius = 0.047851563
+height = 0.32513428
+
+[node name="explosive" type="Area3D" unique_id=110766262]
+script = ExtResource("1_677mg")
+speed = null
+app_gravity = null
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=106068962]
+shape = SubResource("SphereShape3D_1qrry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=885070055]
+mesh = SubResource("SphereMesh_hs6cj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1885754619]
+transform = Transform3D(0.9617883, 0.27379417, 0, -0.27379417, 0.9617883, 0, 0, 0, 1, -0.0034551919, 0.511322, 0)
+mesh = SubResource("CapsuleMesh_vuoe6")

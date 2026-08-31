@@ -1,0 +1,106 @@
+[gd_scene format=3 uid="uid://if44dxx3w5u6"]
+
+[ext_resource type="Shader" uid="uid://il8mx7lgx83x" path="res://shaders/explosion.gdshader" id="1_15jot"]
+[ext_resource type="Script" uid="uid://bvphvd0k027lv" path="res://scripts/explosion.gd" id="1_dgoop"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvcf6"]
+render_priority = 0
+shader = ExtResource("1_15jot")
+shader_parameter/progress = 1.0
+shader_parameter/noise_scale = 1.53
+shader_parameter/speed = 1.5
+shader_parameter/glow = 4.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vuoe6"]
+material = SubResource("ShaderMaterial_cvcf6")
+
+[sub_resource type="Animation" id="Animation_15jot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(4.44, 4.44, 4.44)]
+}
+
+[sub_resource type="Animation" id="Animation_dgoop"]
+resource_name = "explode"
+length = 1.3499999999999999
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.2333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_delete"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:mesh:material:shader_parameter/progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.95),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.93),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(4.44, 4.44, 4.44)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m0kxi"]
+_data = {
+&"RESET": SubResource("Animation_15jot"),
+&"explode": SubResource("Animation_dgoop")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vuoe6"]
+
+[node name="explosion" type="Area3D" unique_id=774099743]
+script = ExtResource("1_dgoop")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1077127921]
+mesh = SubResource("SphereMesh_vuoe6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=152948819]
+libraries/ = SubResource("AnimationLibrary_m0kxi")
+autoplay = &"explode"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1330943325]
+transform = Transform3D(4.44, 0, 0, 0, 4.44, 0, 0, 0, 4.44, 0, 0, 0)
+shape = SubResource("SphereShape3D_vuoe6")

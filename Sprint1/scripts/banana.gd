@@ -5,7 +5,7 @@ var tree = Engine.get_main_loop() as SceneTree
 @export var name = "Banana"
 @export var damage := 20
 @export var cooldown := 0.5
-const boomerang = preload("res://objects/boomerang.tscn")
+const boomerang = preload("res://objects/projectiles/boomerang.tscn")
 
 
 # Called when the node enters the scene tree for the first time.

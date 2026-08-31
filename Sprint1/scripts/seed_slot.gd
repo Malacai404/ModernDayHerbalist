@@ -26,8 +26,8 @@ func set_item(item, amount):
 		item_name.text = ""
 		count.text = ""
 		return
-	icon.texture = item.texture
-	item_name.text = item.name
+	icon.texture = item.texture if "texture" in item else null
+	item_name.text = str(item.name) if "name" in item else ""
 	count.text = "" + str(amount)
 
 

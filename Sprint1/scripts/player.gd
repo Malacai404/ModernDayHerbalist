@@ -1,7 +1,6 @@
 extends CharacterBody3D
 class_name player
 
-
 const jump_force = 4.5
 const room_speed = 3.5
 const world_speed = 7.5
@@ -10,7 +9,6 @@ var mouse_sensitivity = 0.005
 var current_speed = 5.0
 
 var vertical_limit_deg = 60
-
 
 var interact_delay = 0
 const interact_delay_saved = 0.3
@@ -27,8 +25,6 @@ var in_outerworld = false
 @onready var cooldown_circle: TextureProgressBar = $UI/CanvasLayer/CrosshairContainer/CooldownCircle
 
 var selected_slot := 0
-
-
 
 @onready var phone_menu = $UI/CanvasLayer/PhoneMenu
 
@@ -49,11 +45,8 @@ var selected_slot := 0
 @onready var sens_slider: HSlider = $UI/CanvasLayer/Settings/Sens/SensSlider
 @onready var volume_slider: HSlider = $UI/CanvasLayer/Settings/Sens2/VolumeSlider
 
-
-
 @onready var seed_menu = $UI/CanvasLayer/SeedMenu
 @onready var shop_menu: CanvasLayer = $UI/CanvasLayer/shopMenu
-
 
 var attack_cooldown = 0
 var attack_cooldown_save = 0.5
@@ -125,7 +118,6 @@ func _ready():
 	_handle_inventory()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-
 func _input(event):
 	if _in_menu():
 		return
@@ -139,8 +131,7 @@ func _input(event):
 		select_slot(3)
 	elif(event.is_action_pressed("slot5")):
 		select_slot(4)
-	
-	
+
 func _open_seedslots(pot_id: int):
 	if(seed_menu.visible == true):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -149,9 +140,6 @@ func _open_seedslots(pot_id: int):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		seed_menu.seed_pouch = seedpouch
 		seed_menu._open_seed_slots(pot_id)
-
-
-
 
 func select_slot(index: int):
 	selected_slot = index
@@ -175,15 +163,11 @@ func _handle_inventory():
 func _unhandled_input(event):
 	if _in_menu():
 		return
-	# Rotate the camera and head based on mouse movement
 	if event is InputEventMouseMotion:
-		# Horizontal rotation (turn the player)
 		rotate_y(-event.relative.x * mouse_sensitivity)
-		
-		# Vertical rotation (tilt the camera)
+
 		player_head.rotate_x(-event.relative.y * mouse_sensitivity)
 		player_head.rotation.x = clamp(player_head.rotation.x, deg_to_rad(-vertical_limit_deg), deg_to_rad(vertical_limit_deg))
-
 
 func _phone_active():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -213,7 +197,7 @@ func use_selected_item_left_click():
 				slot["item"] = null
 				slot["count"] = 0
 			_handle_inventory()
-	
+
 func _manage_input():
 	if Input.is_action_pressed("leftclick"):
 		use_selected_item_left_click()
@@ -221,16 +205,37 @@ func _manage_input():
 		use_selected_item_right_click()
 
 func _close_shop():
-	ShopData.shop_open = false
+	ShopData.close_shop()
 func _manage_shop_state():
 	if ShopData.shop_open == true and shop_menu.visible == false:
 		shop_menu.visible = true
 		shop_animator.play("shop_in")
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		var ctrl = shop_menu.get_node_or_null("ShopController") as ShopController
+		if ctrl == null:
+			ctrl = get_node_or_null("UI/CanvasLayer/shopMenu/ShopController") as ShopController
+		if ctrl: ctrl.refresh_stock(true)
+		_update_wallet_label()
 	elif ShopData.shop_open == false and shop_menu.visible == true:
 		shop_animator.play("shop_out")
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+var _wallet_connected := false
+
+func _update_wallet_label():
+	var lbl = shop_menu.get_node_or_null("shopPanel/walletLabel") as Label
+	if lbl: lbl.text = "Wallet: $%d" % ShopData.money
+	if not _wallet_connected:
+		ShopData.money_changed.connect(_on_money_changed)
+		_wallet_connected = true
+	var ctrl = shop_menu.get_node_or_null("ShopController") as ShopController
+	if ctrl: ctrl._apply_to_ui()
+
+func _on_money_changed(_new_amount: int):
+	var lbl = shop_menu.get_node_or_null("shopPanel/walletLabel") as Label
+	if lbl: lbl.text = "Wallet: $%d" % ShopData.money
+	var ctrl2 = shop_menu.get_node_or_null("ShopController") as ShopController
+	if ctrl2: ctrl2._apply_to_ui()
 
 func _manage_menu_state():
 	if Input.is_action_just_pressed("menu") and in_seed_menu == false:
@@ -244,13 +249,12 @@ func _manage_menu_state():
 		seed_menu._close_seed_slots()
 		interact_delay = interact_delay_saved
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-		
+
 func _manage_settings():
 	SettingsData.volume_settings = volume_slider.value
 	SettingsData.sens_settings = sens_slider.value / 10
 	mouse_sensitivity = sens_slider.value / 10
-	
-	
+
 func _in_menu():
 	if in_settings_menu or in_seed_menu or in_phone_menu or ShopData.shop_open == true:
 		return true
@@ -260,12 +264,10 @@ func _physics_process(delta):
 	_manage_shop_state()
 	_manage_settings()
 	_manage_menu_state()
-	
+
 	attack_cooldown -= delta
 	interact_delay -= delta
-	
-	
-	
+
 	if _in_menu():
 		return
 	_manage_input()
@@ -286,17 +288,15 @@ func _physics_process(delta):
 			hovertext.hide()
 	else:
 		hovertext.hide()
-	
-		
+
 	if in_outerworld == false:
-		
+
 		if not is_on_floor():
 			velocity += get_gravity() * delta
 
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			velocity.y = jump_force
 
-	
 		var input_dir = Input.get_vector("left", "right", "forward", "back")
 		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		if direction:
@@ -305,18 +305,17 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, current_speed)
 			velocity.z = move_toward(velocity.z, 0, current_speed)
-		
+
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 	move_and_slide()
 
-
 func _pickup_item(item: Item, num: int):
-	item_addition_container._item_collected(item.name, num)
+	item_addition_container._item_collected(item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name")), num)
 	for slot in inventory:
 		if slot["item"] != null and item != null:
-			if slot["item"].name == item.name:
-			
+			if (slot["item"].get_display_name() if slot["item"].has_method("get_display_name") else str(slot["item"].get("name") or slot["item"].get("item_name"))) == (item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name"))):
+
 				if(slot["count"] < 99):
 					slot["item"] = item
 					slot["count"] += num
@@ -330,7 +329,7 @@ func _pickup_item(item: Item, num: int):
 				slot["count"] += num
 				_handle_inventory()
 				return
-				
+
 func _collect_seed(seedid: int, num: int):
 	print("Found at:", find_seed_index(seedid))
 	item_addition_container._item_collected(SeedData._get_seed(seedid).name, num)
@@ -354,7 +353,7 @@ func _collect_seed(seedid: int, num: int):
 	_enforce_single_seed_slots()
 
 	seed_menu.seed_pouch = seedpouch
-			
+
 func _enforce_single_seed_slots():
 	var seen = {}
 
@@ -369,7 +368,7 @@ func _enforce_single_seed_slots():
 			seedpouch[i]["count"] = 0
 		else:
 			seen[id] = i
-			
+
 func find_seed_index(target_itemid: int) -> int:
 	for i in range(seedpouch.size()):
 		if seedpouch[i]["itemid"] == target_itemid:

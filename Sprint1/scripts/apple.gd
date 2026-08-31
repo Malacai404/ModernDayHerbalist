@@ -5,7 +5,7 @@ var tree = Engine.get_main_loop() as SceneTree
 @export var name = "Apple"
 @export var damage := 20
 @export var cooldown := 0.5
-const bullet_scene = preload("res://objects/explosive.tscn")
+const bullet_scene = preload("res://objects/projectiles/explosive.tscn")
 
 
 

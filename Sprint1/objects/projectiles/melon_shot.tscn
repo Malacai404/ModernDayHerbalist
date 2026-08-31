@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://capyx5500a4y4"]
+
+[ext_resource type="Script" uid="uid://b5fbkr6rle1v8" path="res://scripts/melon_shot.gd" id="1_ik7s5"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vuoe6"]
+radius = 0.08479711
+
+[sub_resource type="SphereMesh" id="SphereMesh_cvcf6"]
+radius = 0.1
+height = 0.2
+
+[node name="melon_shot" type="Area3D" unique_id=142633927]
+script = ExtResource("1_ik7s5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=779918176]
+shape = SubResource("SphereShape3D_vuoe6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1441052046]
+mesh = SubResource("SphereMesh_cvcf6")
