@@ -1,6 +1,6 @@
 extends Item
 class_name Plum
-@export var texture = preload("res://textures/Grape.png")
+@export var texture = preload("res://textures/plum.png")
 @export var name = "Plum"
 var tree = Engine.get_main_loop() as SceneTree
 @export var damage := 12

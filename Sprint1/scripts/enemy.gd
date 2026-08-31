@@ -1,7 +1,8 @@
 extends CharacterBody3D
 class_name enemy
 
-var health = 30
+var max_health := 30
+var health := 30
 
 @export var speed: float = 4.0
 @export var acceleration: float = 10.0
@@ -17,9 +18,12 @@ var player: Node3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready() -> void:
+	max_health = health
 	if has_node(player_path):
 		player = get_node(player_path) as Node3D
 
+	if healthbar:
+		healthbar.update_health(health, max_health)
 	set_physics_process(false)
 	await NavigationServer3D.map_changed
 	set_physics_process(true)
@@ -142,7 +146,7 @@ func _notify_loot(kind: String, id: int, amount: int):
 	print("[loot] %s x%d (id %d)" % [kind, amount, id])
 
 func _physics_process(delta: float) -> void:
-	if healthbar: healthbar.update_health(health, 30)
+	if healthbar: healthbar.update_health(health, max_health)
 	if health <= 0:
 		_die()
 		return
@@ -169,7 +173,10 @@ func _physics_process(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, target_velocity.x, acceleration * delta)
 	velocity.z = move_toward(velocity.z, target_velocity.z, acceleration * delta)
 
-	var target_look: Vector3 = global_position + direction * 1000
-	look_at(Vector3(-target_look.x, global_position.y, -target_look.z), Vector3.UP)
+	if direction.length_squared() > 0.001:
+		var target_yaw := atan2(direction.x, direction.z)
+		rotation.y = lerp_angle(rotation.y, target_yaw, 10.0 * delta)
+		rotation.x = 0.0
+		rotation.z = 0.0
 
 	move_and_slide()

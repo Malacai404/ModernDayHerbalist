@@ -163,11 +163,15 @@ func _handle_inventory():
 func _unhandled_input(event):
 	if _in_menu():
 		return
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
-
 		player_head.rotate_x(-event.relative.y * mouse_sensitivity)
 		player_head.rotation.x = clamp(player_head.rotation.x, deg_to_rad(-vertical_limit_deg), deg_to_rad(vertical_limit_deg))
+		player_head.rotation.y = 0.0
+		player_head.rotation.z = 0.0
+		rotation.z = 0.0
+		orthonormalize()
+		get_viewport().set_input_as_handled()
 
 func _phone_active():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

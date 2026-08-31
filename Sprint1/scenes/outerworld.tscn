@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://xjhue33k2xuw" path="res://textures/panorama_image.png" id="1_feypq"]
 [ext_resource type="Script" uid="uid://dah32l2nn2ky8" path="res://scripts/outerworld.gd" id="1_nx7vo"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="2_a4vy2"]
-[ext_resource type="PackedScene" uid="uid://406ot5bc41ou" path="res://objects/enemy.tscn" id="6_a4vy2"]
 [ext_resource type="NavigationMesh" uid="uid://c61a4y8hw5fix" path="res://terraininfo/nav_mesh.tres" id="7_g276e"]
 [ext_resource type="PackedScene" uid="uid://df2uw6clmp4id" path="res://objects/tree.tscn" id="8_g276e"]
 [ext_resource type="ArrayMesh" uid="uid://ck0ocdhobj8fq" path="res://terraininfo/floor_mesh.tres" id="8_w2m5x"]
@@ -26,22 +25,6 @@ glow_enabled = true
 script = ExtResource("1_nx7vo")
 
 [node name="enemies" type="Node3D" parent="." unique_id=1106203213]
-
-[node name="enemy" parent="enemies" unique_id=400256860 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -31.424383, 1.0368013)
-player_path = NodePath("../../playerCharacter")
-
-[node name="enemy2" parent="enemies" unique_id=1495598386 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 13.759041, -31.424383, -10.020795)
-player_path = NodePath("../../playerCharacter")
-
-[node name="enemy3" parent="enemies" unique_id=1538749417 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 5.678075, -31.424383, -10.020795)
-player_path = NodePath("../../playerCharacter")
-
-[node name="enemy4" parent="enemies" unique_id=570784155 instance=ExtResource("6_a4vy2")]
-transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, -5.898885, -33.146805, -10.020795)
-player_path = NodePath("../../playerCharacter")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1465787061]
 environment = SubResource("Environment_03uec")
