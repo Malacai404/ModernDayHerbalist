@@ -2,7 +2,8 @@ res://scenes/outerworld.tscn
 res://shaders/blink.gdshader
 res://shaders/explosion.gdshader
 res://objects/noise.gdshader
+res://terraininfo/nav_mesh.tres
 res://terraininfo/floor_mesh.tres
 res://shaders/crt.gdshader
 res://shaders/crt_gui.gdshader
-res://terraininfo/nav_mesh.tres
+res://scripts/outerworld.gd
