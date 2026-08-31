@@ -7,3 +7,12 @@ res://terraininfo/floor_mesh.tres
 res://shaders/crt.gdshader
 res://shaders/crt_gui.gdshader
 res://scripts/outerworld.gd
+res://objects/enemy_brute.tscn
+res://objects/enemy.tscn
+res://objects/enemy_spitter.tscn
+res://objects/enemy_sprinter.tscn
+res://scripts/enemy.gd
+res://scripts/player.gd
+res://scripts/enemies/enemy_brute.gd
+res://scripts/enemies/enemy_spitter.gd
+res://scripts/enemies/enemy_sprinter.gd

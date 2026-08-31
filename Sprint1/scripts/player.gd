@@ -5,6 +5,11 @@ const jump_force = 4.5
 const room_speed = 3.5
 const world_speed = 7.5
 
+var max_health := 100
+var health := 100
+var _dead := false
+var _hurt_iframe := 0.0
+
 var mouse_sensitivity = 0.005
 var current_speed = 5.0
 
@@ -104,10 +109,29 @@ var seedpouch = [
 	{"itemid": -1, "count": 0},
 	{"itemid": -1, "count": 0}
 ]
+func damage(amount: int) -> void:
+	if _dead: return
+	if _hurt_iframe > 0.0: return
+	health = max(0, health - amount)
+	_hurt_iframe = 0.5
+	print("player hurt: ", amount, " hp=", health)
+	if health <= 0:
+		_kill()
+
 func _kill():
+	if _dead: return
+	_dead = true
 	print("You died!")
+	await Transition.blink(func():
+		PlayerData.inventory = inventory
+		PlayerData.seedpouch = seedpouch
+		PlayerData.selected_slot = selected_slot
+		health = max_health
+		_dead = false
+		get_tree().change_scene_to_file("res://scenes/grow_world.tscn"))
 
 func _ready():
+	add_to_group("player")
 	shop_menu.visible = false
 	volume_slider.value = SettingsData.volume_settings
 	sens_slider.value = SettingsData.sens_settings  * 10
@@ -271,6 +295,8 @@ func _physics_process(delta):
 
 	attack_cooldown -= delta
 	interact_delay -= delta
+	if _hurt_iframe > 0.0:
+		_hurt_iframe -= delta
 
 	if _in_menu():
 		return

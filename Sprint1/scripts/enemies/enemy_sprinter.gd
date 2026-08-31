@@ -5,6 +5,8 @@ func _ready() -> void:
 	speed = 7.0
 	acceleration = 16.0
 	enemy_kind = "enemy_sprinter"
+	attack_damage = 8
+	attack_cooldown = 0.6
 	loot_rolls = 2
 	money_min = 1
 	money_max = 3

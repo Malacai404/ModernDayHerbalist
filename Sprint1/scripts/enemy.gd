@@ -29,12 +29,14 @@ func _tint_by_kind(kind: String) -> void:
 			continue
 		var mat := StandardMaterial3D.new()
 		mat.albedo_color = col
+		mat.albedo_texture = null
 		mat.roughness = 0.62
 		mi.material_override = mat
 	for c in get_children():
 		if c is MeshInstance3D and c.material_override == null:
 			var mat2 := StandardMaterial3D.new()
 			mat2.albedo_color = col
+			mat2.albedo_texture = null
 			c.material_override = mat2
 
 var player: Node3D
@@ -44,12 +46,20 @@ func _ready() -> void:
 	max_health = health
 	if has_node(player_path):
 		player = get_node(player_path) as Node3D
-
+	if player == null:
+		var cands := get_tree().get_nodes_in_group("player") if get_tree() else []
+		if not cands.is_empty():
+			player = cands[0] as Node3D
 	if healthbar:
 		healthbar.update_health(health, max_health)
 	_tint_by_kind(enemy_kind)
+	call_deferred("_tint_by_kind", enemy_kind)
 	set_physics_process(false)
 	await NavigationServer3D.map_changed
+	if player == null:
+		var cands2 := get_tree().get_nodes_in_group("player") if get_tree() else []
+		if not cands2.is_empty():
+			player = cands2[0] as Node3D
 	set_physics_process(true)
 
 func damage(hurt):
@@ -60,6 +70,10 @@ var _is_dead := false
 @export var enemy_kind: String = "enemy"
 @export var money_min: int = 2
 @export var money_max: int = 6
+@export var attack_damage: int = 10
+@export var attack_cooldown: float = 1.0
+var _attack_timer := 0.0
+@onready var _attack_area: Area3D = get_node_or_null("AttackArea") as Area3D
 
 func _die():
 	if _is_dead: return
@@ -169,15 +183,41 @@ func _notify_loot(kind: String, id: int, amount: int):
 			return
 	print("[loot] %s x%d (id %d)" % [kind, amount, id])
 
+
+
+func _try_attack() -> void:
+	if _attack_timer > 0.0: return
+	if _attack_area == null: return
+	var bodies := _attack_area.get_overlapping_bodies()
+	for b in bodies:
+		if b.has_method("damage") and b.is_in_group("player"):
+			b.damage(attack_damage)
+			_attack_timer = attack_cooldown
+			return
+		if b is player:
+			b.damage(attack_damage)
+			_attack_timer = attack_cooldown
+			return
+	# Also check player global distance as fallback if area not overlapping yet
+	if is_instance_valid(player) and player.has_method("damage"):
+		if global_position.distance_to(player.global_position) < 4.5:
+			player.damage(attack_damage)
+			_attack_timer = attack_cooldown
+
 func _physics_process(delta: float) -> void:
 	if healthbar: healthbar.update_health(health, max_health)
 	if health <= 0:
 		_die()
 		return
+	_attack_timer -= delta
+	_try_attack()
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+	if not is_instance_valid(player):
+		var cands3 := get_tree().get_nodes_in_group("player") if get_tree() else []
+		if not cands3.is_empty(): player = cands3[0] as Node3D
 	if is_instance_valid(player):
 		nav_agent.target_position = player.global_position
 
