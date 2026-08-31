@@ -70,14 +70,14 @@ transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 13.622498, -34.86
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 5.618391, -38.44978, -14.08191)
 navigation_mesh = ExtResource("7_g276e")
 
+[node name="floorBody" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1623980561]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floorBody" unique_id=1892393322]
+shape = ExtResource("9_1ws4m")
+
 [node name="hills" type="Node3D" parent="." unique_id=1292052402]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 5.618391, -38.44978, -14.08191)
 
 [node name="Plane" type="MeshInstance3D" parent="hills" unique_id=1968359917]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = ExtResource("8_w2m5x")
-
-[node name="floorBody" type="StaticBody3D" parent="hills/Plane" unique_id=1623980561]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hills/Plane/floorBody" unique_id=1892393322]
-shape = ExtResource("9_1ws4m")

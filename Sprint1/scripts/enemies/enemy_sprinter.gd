@@ -9,11 +9,6 @@ func _ready() -> void:
 	money_min = 1
 	money_max = 3
 	super._ready()
-	var mi = get_node_or_null("MeshInstance3D") as MeshInstance3D
-	if mi:
-		var mat = StandardMaterial3D.new()
-		mat.albedo_color = Color(0.35, 0.82, 0.4)
-		mi.material_override = mat
 
 func _physics_process(delta: float) -> void:
 	# lightly weave: add small lateral offset to target

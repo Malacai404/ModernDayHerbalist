@@ -13,8 +13,3 @@ func _ready() -> void:
 	# call parent ready for nav setup
 	super._ready()
 	# tint if mesh exists (best-effort)
-	var mi = get_node_or_null("MeshInstance3D") as MeshInstance3D
-	if mi and mi.mesh:
-		var mat = StandardMaterial3D.new()
-		mat.albedo_color = Color(0.72, 0.2, 0.2)
-		mi.material_override = mat

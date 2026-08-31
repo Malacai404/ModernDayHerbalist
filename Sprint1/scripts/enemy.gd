@@ -14,6 +14,29 @@ var health := 30
 
 const BLOODPARTICLE = preload("uid://i3mrnq0n7eyn")
 
+const _TINT_BY_KIND: Dictionary = {
+	"enemy": Color(0.92, 0.86, 0.72),
+	"enemy_brute": Color(0.82, 0.22, 0.18),
+	"enemy_sprinter": Color(0.32, 0.86, 0.42),
+	"enemy_spitter": Color(0.62, 0.52, 0.96),
+}
+
+func _tint_by_kind(kind: String) -> void:
+	var col: Color = _TINT_BY_KIND.get(kind, Color(1, 1, 1))
+	for child_name in ["Cube", "Sphere", "MeshInstance3D"]:
+		var mi := get_node_or_null(child_name) as MeshInstance3D
+		if mi == null:
+			continue
+		var mat := StandardMaterial3D.new()
+		mat.albedo_color = col
+		mat.roughness = 0.62
+		mi.material_override = mat
+	for c in get_children():
+		if c is MeshInstance3D and c.material_override == null:
+			var mat2 := StandardMaterial3D.new()
+			mat2.albedo_color = col
+			c.material_override = mat2
+
 var player: Node3D
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -24,6 +47,7 @@ func _ready() -> void:
 
 	if healthbar:
 		healthbar.update_health(health, max_health)
+	_tint_by_kind(enemy_kind)
 	set_physics_process(false)
 	await NavigationServer3D.map_changed
 	set_physics_process(true)

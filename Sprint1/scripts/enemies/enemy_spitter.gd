@@ -15,11 +15,6 @@ func _ready() -> void:
 	money_min = 4
 	money_max = 9
 	super._ready()
-	var mi = get_node_or_null("MeshInstance3D") as MeshInstance3D
-	if mi:
-		var mat = StandardMaterial3D.new()
-		mat.albedo_color = Color(0.65, 0.55, 0.95)
-		mi.material_override = mat
 
 func _physics_process(delta: float) -> void:
 	_shoot_timer -= delta
