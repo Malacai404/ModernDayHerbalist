@@ -8,7 +8,7 @@ var preferred_range := 9.0
 
 func _ready() -> void:
 	health = 30
-	speed = 3.8
+	speed = 2.8
 	acceleration = 9.0
 	enemy_kind = "enemy_spitter"
 	attack_damage = 10
@@ -41,8 +41,9 @@ func _try_shoot():
 	if not is_instance_valid(player): return
 	p.global_position = global_position + Vector3(0, 1.1, 0)
 	get_tree().root.add_child(p)
-	var dir := (player.global_position + Vector3(0, 0.8, 0) - p.global_position).normalized()
+	var dir: Vector3 = (player.global_position + Vector3(0, 0.8, 0) - p.global_position).normalized()
 	if dir.length_squared() > 0.001:
 		p.global_transform.basis = Basis.looking_at(-dir, Vector3.UP)
 	p.damage = 10
 	p.speed = 10.0
+	if "is_enemy_shot" in p: p.is_enemy_shot = true

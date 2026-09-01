@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://xjhue33k2xuw" path="res://textures/panorama_image.png" id="1_feypq"]
 [ext_resource type="Script" uid="uid://dah32l2nn2ky8" path="res://scripts/outerworld.gd" id="1_nx7vo"]
 [ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="2_a4vy2"]
-[ext_resource type="NavigationMesh" uid="uid://c61a4y8hw5fix" path="res://terraininfo/nav_mesh.tres" id="7_g276e"]
+[ext_resource type="NavigationMesh" uid="uid://mdkuq53wkexx" path="res://terraininfo/nav_mesh.tres" id="7_g276e"]
 [ext_resource type="PackedScene" uid="uid://df2uw6clmp4id" path="res://objects/tree.tscn" id="8_g276e"]
 [ext_resource type="ArrayMesh" uid="uid://ck0ocdhobj8fq" path="res://terraininfo/floor_mesh.tres" id="8_w2m5x"]
 [ext_resource type="Shape3D" uid="uid://decc3vs8nd1uw" path="res://terraininfo/floor_collider.tres" id="9_1ws4m"]
@@ -45,39 +45,39 @@ navigation_mesh = ExtResource("7_g276e")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/floorBody" unique_id=1892393322]
 shape = ExtResource("9_1ws4m")
 
-[node name="tree" parent="." unique_id=1566715744 instance=ExtResource("8_g276e")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.1181641, -35.66929, -23.539398)
+[node name="hills" type="Node3D" parent="NavigationRegion3D" unique_id=1292052402]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 
-[node name="tree4" parent="." unique_id=972002058 instance=ExtResource("8_g276e")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.1181641, -29.739563, 25.419922)
-
-[node name="tree5" parent="." unique_id=1709571534 instance=ExtResource("8_g276e")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 1.1181641, -31.672382, -54.38211)
-
-[node name="tree6" parent="." unique_id=2038930415 instance=ExtResource("8_g276e")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -39.76996, -36.467804, -54.38211)
-
-[node name="tree7" parent="." unique_id=1990005103 instance=ExtResource("8_g276e")]
-transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, -61.53653, -36.58826, -23.563507)
-
-[node name="tree2" parent="." unique_id=2126602960 instance=ExtResource("9_w2m5x")]
-transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, -6, -32.831474, -5)
-
-[node name="tree10" parent="." unique_id=1397449120 instance=ExtResource("9_w2m5x")]
-transform = Transform3D(3.175, 0, 0, 0, 3.175, 0, 0, 0, 3.175, 51.28441, -26.546886, -46.73047)
-
-[node name="tree3" parent="." unique_id=1636281996 instance=ExtResource("9_w2m5x")]
-transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, -37.348022, -36.234413, 2.6618652)
-
-[node name="tree8" parent="." unique_id=1064578284 instance=ExtResource("9_w2m5x")]
-transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, -47.91046, -36.1708, 27.385437)
-
-[node name="tree9" parent="." unique_id=891299915 instance=ExtResource("9_w2m5x")]
-transform = Transform3D(0.275, 0, 0, 0, 0.275, 0, 0, 0, 0.275, 13.622498, -34.864555, 10.561951)
-
-[node name="hills" type="Node3D" parent="." unique_id=1292052402]
-transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 5.618391, -38.44978, -14.08191)
-
-[node name="Plane" type="MeshInstance3D" parent="hills" unique_id=1968359917]
+[node name="Plane" type="MeshInstance3D" parent="NavigationRegion3D/hills" unique_id=1968359917]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 mesh = ExtResource("8_w2m5x")
+
+[node name="tree" parent="." unique_id=1566715744 instance=ExtResource("8_g276e")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -29.329237, -38.594284, -49.91803)
+
+[node name="tree4" parent="." unique_id=972002058 instance=ExtResource("8_g276e")]
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, -23.157913, -30.062706, 14.280792)
+
+[node name="tree5" parent="." unique_id=1709571534 instance=ExtResource("8_g276e")]
+transform = Transform3D(0.17, 0, 0, 0, 0.17, 0, 0, 0, 0.17, 16.636705, -34.110573, -44.83439)
+
+[node name="tree6" parent="." unique_id=2038930415 instance=ExtResource("8_g276e")]
+transform = Transform3D(0.14, 0, 0, 0, 0.14, 0, 0, 0, 0.14, -35.32078, -35.794327, 30.564386)
+
+[node name="tree7" parent="." unique_id=1990005103 instance=ExtResource("8_g276e")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 44.900784, -33.44374, -39.10947)
+
+[node name="tree2" parent="." unique_id=2126602960 instance=ExtResource("9_w2m5x")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -22.879204, -32.379505, -14.715761)
+
+[node name="tree10" parent="." unique_id=1397449120 instance=ExtResource("9_w2m5x")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.5708252, -35.619232, -25.809631)
+
+[node name="tree3" parent="." unique_id=1636281996 instance=ExtResource("9_w2m5x")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 30.770937, -35.233715, 0.20929721)
+
+[node name="tree8" parent="." unique_id=1064578284 instance=ExtResource("9_w2m5x")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.66911066, -31.137764, 40.148422)
+
+[node name="tree9" parent="." unique_id=891299915 instance=ExtResource("9_w2m5x")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -41.557808, -36.39356, 0.30804828)

@@ -2,7 +2,7 @@ extends "res://scripts/enemy.gd"
 # Sprinter — fragile, very fast, dodges by strafe (TODO: strafe logic)
 func _ready() -> void:
 	health = 14
-	speed = 7.0
+	speed = 3.0
 	acceleration = 16.0
 	enemy_kind = "enemy_sprinter"
 	attack_damage = 8

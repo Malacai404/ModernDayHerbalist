@@ -3,6 +3,7 @@ var damage := 18
 var speed := 14.0
 var lifetime := 4.0
 var split := false
+var is_enemy_shot := false
 var _has_split := false
 
 func _process(delta: float) -> void:
@@ -10,7 +11,8 @@ func _process(delta: float) -> void:
 	if lifetime <= 0: queue_free()
 	position += -global_transform.basis.z.normalized() * speed * delta
 	for b in get_overlapping_bodies():
-		if b.is_in_group("enemy") and b.has_method("damage"):
+		var is_target := (b.is_in_group("player") if is_enemy_shot else b.is_in_group("enemy")) and b.has_method("damage")
+		if is_target:
 			b.damage(damage)
 			if split and not _has_split:
 				_has_split = true
@@ -28,4 +30,5 @@ func _do_split():
 		c.damage = int(damage * 0.55)
 		c.split = false
 		c.speed = speed * 0.9
+		if "is_enemy_shot" in c: c.is_enemy_shot = is_enemy_shot
 		get_tree().root.add_child(c)

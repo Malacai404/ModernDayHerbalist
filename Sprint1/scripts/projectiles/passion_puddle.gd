@@ -3,6 +3,7 @@ extends Area3D
 var damage := 6
 var lifetime := 5.0
 var tick := 0.5
+var is_enemy_shot := false
 var _timer := 0.0
 var _cd := {}
 
@@ -18,7 +19,8 @@ func _process(delta: float) -> void:
 	if _timer <= 0:
 		_timer = tick
 		for b in get_overlapping_bodies():
-			if not b.is_in_group("enemy") or not b.has_method("damage"): continue
+			var target_group := "player" if is_enemy_shot else "enemy"
+			if not b.is_in_group(target_group) or not b.has_method("damage"): continue
 			if _cd.has(b): continue
 			b.damage(damage)
 			_cd[b] = tick * 0.9

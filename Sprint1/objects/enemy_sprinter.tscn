@@ -1,6 +1,6 @@
 [gd_scene format=4 uid="uid://bsvyt7p1rebcx"]
 
-[ext_resource type="Script" path="res://scripts/enemies/enemy_sprinter.gd" id="1_7k104"]
+[ext_resource type="Script" uid="uid://b2ovlhc85u5tp" path="res://scripts/enemies/enemy_sprinter.gd" id="1_7k104"]
 [ext_resource type="Texture2D" uid="uid://dhk4fjpog5ixe" path="res://models/enemy/enemy_Material.png" id="2_qi2p4"]
 [ext_resource type="Texture2D" uid="uid://bj6fh15ayeuf4" path="res://models/enemy/enemy_Sphere Base Color.png" id="3_iifgy"]
 [ext_resource type="PackedScene" uid="uid://3k4tpluy8syc" path="res://objects/healthbar.tscn" id="4_we7g8"]
@@ -90,7 +90,6 @@ shadow_mesh = SubResource("ArrayMesh_8eahr")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_we7g8"]
 radius = 0.94
 
-
 [node name="enemy_sprinter" type="CharacterBody3D" unique_id=400256860 groups=["enemy"]]
 transform = Transform3D(0.245, 0, 0, 0, 0.245, 0, 0, 0, 0.245, 0, 0, 0)
 script = ExtResource("1_7k104")
@@ -113,12 +112,9 @@ shape = SubResource("CapsuleShape3D_epg4t")
 transform = Transform3D(2.345, 0, 0, 0, 2.345, 0, 0, 0, 2.345, 0, 5.8437486, 0)
 
 [node name="AttackArea" type="Area3D" parent="." unique_id=318337143]
-monitoring = true
-monitorable = true
 collision_layer = 0
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea" unique_id=875042450]
 transform = Transform3D(2.92, 0, 0, 0, 2.92, 0, 0, 0, 2.92, 0, 2.6066499, 0)
 shape = SubResource("CapsuleShape3D_we7g8")
-
