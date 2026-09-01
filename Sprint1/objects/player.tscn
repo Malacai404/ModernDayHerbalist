@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://g32um0mltv5d" path="res://addons/dialogue_manager/dialogue_label.gd" id="8_vqq2l"]
 [ext_resource type="Texture2D" uid="uid://cyra2olqtx61j" path="res://textures/arrow.png" id="15_5esnd"]
 [ext_resource type="Texture2D" uid="uid://decxbg4qofpgt" path="res://textures/chrisbody.png" id="15_mqnmn"]
+[ext_resource type="Texture2D" uid="uid://cx55rt1iedtm2" path="res://textures/squarewhite.png" id="17_s4hvt"]
+[ext_resource type="Texture2D" uid="uid://w20bk7dnos6h" path="res://textures/squarered.png" id="18_2sux5"]
 [ext_resource type="Script" uid="uid://cfcs7c7srd7st" path="res://scripts/shop_controller.gd" id="99_shop"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_onrkg"]
@@ -201,6 +203,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Hurteffect" type="ColorRect" parent="UI" unique_id=1934765825]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.7607843, 0, 0, 0.5294118)
 
 [node name="CRT" type="CanvasLayer" parent="UI" unique_id=660291907]
 
@@ -3165,17 +3179,13 @@ offset_bottom = 1001.0
 theme = SubResource("Theme_w1o2u")
 
 [node name="shopSlots" type="Control" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=1012726620]
-
-anchors_preset = 15
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.0
-offset_top = 0.0
-offset_right = 0.0
-offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
 [node name="shopSlot_1" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=545093714]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3183,11 +3193,10 @@ offset_left = 65.0
 offset_top = 86.0
 offset_right = 298.1
 offset_bottom = 319.1
+mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
-mouse_filter = 2
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_1" unique_id=589979788]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3197,7 +3206,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_1" unique_id=1519612745]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3205,6 +3213,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_1" unique_id=927127243]
@@ -3224,7 +3233,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_2" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1049744069]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3232,11 +3240,10 @@ offset_left = 325.0
 offset_top = 86.0
 offset_right = 558.1
 offset_bottom = 319.1
+mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
-mouse_filter = 2
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_2" unique_id=1623253124]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3246,7 +3253,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_2" unique_id=1717902117]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3254,6 +3260,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_2" unique_id=674041532]
@@ -3273,7 +3280,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_3" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=2033647584]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3281,11 +3287,10 @@ offset_left = 585.0
 offset_top = 86.0
 offset_right = 818.1
 offset_bottom = 319.1
+mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
-mouse_filter = 2
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_3" unique_id=1252742088]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3295,7 +3300,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_3" unique_id=548136695]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3303,6 +3307,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_3" unique_id=1539257926]
@@ -3322,7 +3327,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_4" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1154269127]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3331,11 +3335,10 @@ offset_top = 474.0
 offset_right = 298.1
 offset_bottom = 707.1
 scale = Vector2(0.75, 0.75)
+mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
-mouse_filter = 2
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_4" unique_id=1095694]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3345,7 +3348,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_4" unique_id=36999864]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3353,6 +3355,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_4" unique_id=1359228611]
@@ -3372,7 +3375,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_5" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=661369048]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3385,7 +3387,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_5" unique_id=403380107]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3395,7 +3396,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_5" unique_id=928469320]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3403,6 +3403,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_5" unique_id=490360917]
@@ -3422,7 +3423,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_6" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=664547711]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3435,7 +3435,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_6" unique_id=1289331785]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3445,7 +3444,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_6" unique_id=171371020]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3453,6 +3451,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_6" unique_id=235256449]
@@ -3472,7 +3471,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_7" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1342860493]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3485,7 +3483,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_7" unique_id=408733956]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3495,7 +3492,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_7" unique_id=1170417744]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3503,6 +3499,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_7" unique_id=385731656]
@@ -3522,7 +3519,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_8" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1912337521]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3535,7 +3531,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_8" unique_id=1435074159]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3545,7 +3540,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_8" unique_id=1256691900]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3553,6 +3547,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_8" unique_id=2126349093]
@@ -3572,7 +3567,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_9" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=811394617]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3585,7 +3579,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_9" unique_id=1726680372]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3595,7 +3588,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_9" unique_id=210838060]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3603,6 +3595,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_9" unique_id=1464828383]
@@ -3622,7 +3615,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_10" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1689838595]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3635,7 +3627,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_10" unique_id=1991486955]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3645,7 +3636,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_10" unique_id=965763843]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3653,6 +3643,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_10" unique_id=939945478]
@@ -3672,7 +3663,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_11" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=1476545768]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3685,7 +3675,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_11" unique_id=305247231]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3695,7 +3684,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_11" unique_id=770682185]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3703,6 +3691,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_11" unique_id=2113276926]
@@ -3722,7 +3711,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_12" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=234675117]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3735,7 +3723,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_12" unique_id=228563103]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3745,7 +3732,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_12" unique_id=1055854723]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3753,6 +3739,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_12" unique_id=1634607999]
@@ -3772,7 +3759,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="shopSlot_13" type="Panel" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots" unique_id=284110844]
 custom_minimum_size = Vector2(233.1, 233.1)
 layout_mode = 0
@@ -3785,7 +3771,6 @@ mouse_filter = 2
 theme = SubResource("Theme_vuoe6")
 
 [node name="shopButton" type="Button" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_13" unique_id=1519704001]
-modulate = Color(1, 1, 1, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -3795,7 +3780,6 @@ grow_vertical = 2
 
 [node name="ItemIcon" type="TextureRect" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_13" unique_id=1751277936]
 texture_filter = 1
-mouse_filter = 2
 custom_minimum_size = Vector2(233.1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -3803,6 +3787,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("8_mqnmn")
 
 [node name="ItemPrice" type="Label" parent="UI/CanvasLayer/shopMenu/shopPanel/shopSlots/shopSlot_13" unique_id=1341261977]
@@ -3822,7 +3807,6 @@ text = "$9.99"
 label_settings = SubResource("LabelSettings_vuoe6")
 horizontal_alignment = 1
 
-mouse_filter = 2
 [node name="chrisSprite" type="Sprite2D" parent="UI/CanvasLayer/shopMenu/shopPanel" unique_id=1100915929]
 texture_filter = 1
 position = Vector2(1300, 671)
@@ -3887,6 +3871,18 @@ script = ExtResource("99_shop")
 [node name="shopAnimator" type="AnimationPlayer" parent="UI/CanvasLayer/shopMenu" unique_id=1883376578]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_iqfnf")
+
+[node name="healthbar" type="TextureProgressBar" parent="UI" unique_id=688610195]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 193.0
+offset_right = 110.0
+offset_bottom = 689.0333
+value = 6.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("17_s4hvt")
+texture_progress = ExtResource("18_2sux5")
 
 [connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button" to="UI/CanvasLayer/PhoneMenu" method="_talktony"]
 [connection signal="pressed" from="UI/CanvasLayer/PhoneMenu/IntialMenu/BoxContainer/MarginContainer/HBoxContainer/VBoxContainer/MarginContainer/GridContainer/Button2" to="UI/CanvasLayer/PhoneMenu" method="_talkchris"]

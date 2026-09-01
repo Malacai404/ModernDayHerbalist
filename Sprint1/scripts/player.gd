@@ -57,6 +57,9 @@ var attack_cooldown = 0
 var attack_cooldown_save = 0.5
 
 @onready var hovertext: RichTextLabel = $UI/CanvasLayer/Hovertext
+@onready var healthbar_ui: TextureProgressBar = $UI/healthbar
+@onready var hurt_effect: ColorRect = $UI/Hurteffect
+var _hurt_tween: Tween = null
 
 @onready var shop_animator: AnimationPlayer = $UI/CanvasLayer/shopMenu/shopAnimator
 
@@ -115,8 +118,25 @@ func damage(amount: int) -> void:
 	health = max(0, health - amount)
 	_hurt_iframe = 0.5
 	print("player hurt: ", amount, " hp=", health)
+	_flash_hurt()
+	_update_healthbar()
 	if health <= 0:
 		_kill()
+
+func _flash_hurt() -> void:
+	if hurt_effect == null: return
+	if _hurt_tween and _hurt_tween.is_valid():
+		_hurt_tween.kill()
+	hurt_effect.visible = true
+	hurt_effect.modulate.a = 1.0
+	_hurt_tween = create_tween()
+	_hurt_tween.tween_property(hurt_effect, "modulate:a", 0.0, 0.35).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	_hurt_tween.tween_callback(func(): hurt_effect.visible = false)
+
+func _update_healthbar() -> void:
+	if healthbar_ui == null: return
+	healthbar_ui.max_value = float(max_health)
+	healthbar_ui.value = float(health)
 
 func _kill():
 	if _dead: return
@@ -127,6 +147,9 @@ func _kill():
 		PlayerData.seedpouch = seedpouch
 		PlayerData.selected_slot = selected_slot
 		health = max_health
+		_update_healthbar()
+		if hurt_effect:
+			hurt_effect.visible = false
 		_dead = false
 		get_tree().change_scene_to_file("res://scenes/grow_world.tscn"))
 
@@ -141,6 +164,8 @@ func _ready():
 	update_slot_highlight()
 	_handle_inventory()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if hurt_effect: hurt_effect.visible = false
+	_update_healthbar()
 
 func _input(event):
 	if _in_menu():

@@ -606,6 +606,12 @@ size = Vector3(14.91, 21.36, 14.79)
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_byl5l"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuoe6"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vuoe6"]
+size = Vector3(1.6361084, 0.86083984, 1)
+
 [node name="grow_world" type="Node3D" unique_id=1431210748]
 script = ExtResource("1_lj70i")
 
@@ -789,4 +795,20 @@ data = ExtResource("5_lj70i")
 script = ExtResource("6_km63b")
 
 [node name="playerCharacter" parent="." unique_id=212589539 instance=ExtResource("7_w04e5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0197544, -2.1864424, 6.362625)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.2618723, -2.1864424, 6.362625)
+
+[node name="BoxSlot" type="CSGBox3D" parent="." unique_id=1397395467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.553886, -2.41723, 6.4722376)
+size = Vector3(1, 0.22753906, 1)
+material = SubResource("StandardMaterial3D_vuoe6")
+
+[node name="Label3D" type="Label3D" parent="BoxSlot" unique_id=199201356]
+transform = Transform3D(-2.7101061e-08, 0, 0.62, 0, 0.62, 0, -0.62, 0, -2.7101061e-08, 0.496212, 0.229254, 0)
+text = "Sell items here"
+
+[node name="Area3D" type="Area3D" parent="BoxSlot" unique_id=534924836]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1387906, 0.16594148, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BoxSlot/Area3D" unique_id=954456308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011047363, 0.06958008, 0)
+shape = SubResource("BoxShape3D_vuoe6")

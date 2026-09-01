@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 			if is_enemy_shot:
 				if b.is_in_group("player") and b.has_method("damage"):
 					b.damage(damage)
+					print("[PROJECTILE_HIT] plum_blob dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 					if sticky:
 						_stuck_target = b
 						_stuck_time = 1.2

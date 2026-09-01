@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		var target_group := "player" if is_enemy_shot else "enemy"
 		if b.is_in_group(target_group) and b.has_method("damage") and not _hit.has(b):
 			b.damage(damage)
+			print("[PROJECTILE_HIT] coconut_ball dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 			_hit[b] = true
 			if not slam and bounces == 0:
 				queue_free()

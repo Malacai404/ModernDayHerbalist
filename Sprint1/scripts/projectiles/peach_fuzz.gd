@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		var target_group := "player" if is_enemy_shot else "enemy"
 		if b.is_in_group(target_group) and b.has_method("damage") and not _hit.has(b):
 			b.damage(damage if not heavy else int(damage * 1.2))
+			print("[PROJECTILE_HIT] peach_fuzz dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 			_hit[b] = true
 		elif b.name == "floorBody" or b.is_in_group("wall"):
 			if bounces > 0:

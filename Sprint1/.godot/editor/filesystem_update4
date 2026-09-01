@@ -29,3 +29,6 @@ res://scripts/projectiles/dragon_orb.gd
 res://scripts/projectiles/passion_puddle.gd
 res://scripts/projectiles/passion_pulp.gd
 res://objects/projectiles/plum_blob.tscn
+res://objects/projectiles/strawberry_dart.tscn
+res://objects/player.tscn
+res://scenes/grow_world.tscn

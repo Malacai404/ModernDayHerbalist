@@ -25,6 +25,7 @@ func _process(delta: float) -> void:
 			if not b.is_in_group("enemy") or not b.has_method("damage"): continue
 		if _hit.has(b): continue
 		b.damage(damage)
+		print("[PROJECTILE_HIT] mango_slice dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 		_hit[b] = true
 		if not pierce:
 			queue_free()

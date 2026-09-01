@@ -1,25 +1,25 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://dme7ma0bfloti"]
 
-[ext_resource type="Script" path="res://scripts/projectiles/strawberry_dart.gd" id="1"]
+[ext_resource type="Script" uid="uid://c2u606yoki6up" path="res://scripts/projectiles/strawberry_dart.gd" id="1"]
 
 [sub_resource type="StandardMaterial3D" id="mat"]
-albedo_color = Color(1.000, 0.180, 0.388, 1)
+albedo_color = Color(1, 0.18, 0.388, 1)
 emission_enabled = true
-emission = Color(1.000, 0.180, 0.388, 1)
+emission = Color(1, 0.18, 0.388, 1)
 
 [sub_resource type="SphereMesh" id="mesh"]
 material = SubResource("mat")
 radius = 0.06
-height = 0.120
+height = 0.12
 
 [sub_resource type="SphereShape3D" id="shape"]
 radius = 0.06
 
-[node name="strawberry_dart" type="Area3D"]
+[node name="strawberry_dart" type="Area3D" unique_id=259096311]
 script = ExtResource("1")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=220344865]
 mesh = SubResource("mesh")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2105317697]
 shape = SubResource("shape")

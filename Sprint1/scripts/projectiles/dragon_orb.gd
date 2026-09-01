@@ -21,11 +21,13 @@ func _process(delta: float) -> void:
 		if is_enemy_shot:
 			if b.is_in_group("player") and b.has_method("damage"):
 				b.damage(damage)
+				print("[PROJECTILE_HIT] dragon_orb dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 				queue_free()
 				break
 		else:
 			if b.is_in_group("enemy") and b.has_method("damage"):
 				b.damage(damage)
+				print("[PROJECTILE_HIT] dragon_orb dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 				queue_free()
 				break
 

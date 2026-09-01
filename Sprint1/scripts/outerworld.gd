@@ -25,11 +25,16 @@ func _ready() -> void:
 	var nav_map := world.navigation_map if world else RID()
 	if nav_map.is_valid() and NavigationServer3D.map_get_iteration_id(nav_map) == 0:
 		await NavigationServer3D.map_changed
-	_spawn_wave()
+	await _spawn_wave()
 	_has_spawned = true
 	if enemies.is_empty():
 		for i in 6:
 			_spawn_one_fallback()
+		# ensure fallbacks also ground
+		await get_tree().physics_frame
+		for en in enemies:
+			if is_instance_valid(en) and en.has_method("snap_to_ground"):
+				en.snap_to_ground()
 
 func _spawn_wave() -> void:
 	for c in enemies_parent.get_children():
@@ -72,16 +77,16 @@ func _spawn_wave() -> void:
 		e.global_position = pos
 		# snap to ground instantly — don't drop from sky (nav-primary, ray fallback)
 		if e.has_method("snap_to_ground"):
-			e.snap_to_ground(0.55)
+			e.snap_to_ground()
 		else:
-			_snap_node_to_ground(e, 0.55)
+			_snap_node_to_ground(e)
 		placed.append(e.global_position)
 		enemies.append(e)
 	# second pass deferred snap covers case where physics server wasn't synced yet at add_child time
 	await get_tree().physics_frame
 	for en in enemies:
 		if is_instance_valid(en) and en.has_method("snap_to_ground"):
-			en.snap_to_ground(0.55)
+			en.snap_to_ground()
 
 func _weights_for_day(day: int) -> Dictionary:
 	if day <= 1:
@@ -105,7 +110,7 @@ func _pick_weighted(weights: Dictionary) -> String:
 			return str(k)
 	return str(weights.keys()[0])
 
-func _snap_node_to_ground(node: Node3D, margin: float = 0.5) -> void:
+func _snap_node_to_ground(node: Node3D, margin: float = 1.1) -> void:
 	var world := get_world_3d()
 	if world == null: world = get_tree().root.get_world_3d() if get_tree() else null
 	if world == null: return
@@ -152,26 +157,36 @@ func _snap_node_to_ground(node: Node3D, margin: float = 0.5) -> void:
 
 func _random_spawn_point(nav_region: NavigationRegion3D, center: Vector3, min_radius: float = 12.0, max_radius: float = 28.0, placed: Array[Vector3] = [], min_sep: float = 4.5, player_pos: Vector3 = Vector3.INF, player_exclude: float = 12.0) -> Vector3:
 	if nav_region == null or not nav_region.get_navigation_map().is_valid():
+		print("[SPAWN_DBG] nav_region null/invalid center=%s" % str(center))
 		for _t in 64:
 			var ang := rng.randf_range(0, TAU)
 			var rad := rng.randf_range(min_radius, max_radius)
-			var off := Vector3(cos(ang) * rad, 0.2, sin(ang) * rad)
+			var off := Vector3(cos(ang) * rad, 0, sin(ang) * rad)
 			var cand := center + off
+			cand.y = center.y
 			if not _is_far_enough(cand, placed, min_sep): continue
 			if player_pos != Vector3.INF and _dist2_xz(cand, player_pos) < player_exclude * player_exclude: continue
 			return cand
-		return center + Vector3(rng.randf_range(-max_radius, max_radius), 0.2, rng.randf_range(-max_radius, max_radius))
+		var fb2 := center + Vector3(rng.randf_range(-max_radius, max_radius), 0, rng.randf_range(-max_radius, max_radius))
+		fb2.y = center.y
+		return fb2
 	var nav_map := nav_region.get_navigation_map()
 	if NavigationServer3D.map_get_iteration_id(nav_map) == 0:
+		print("[SPAWN_DBG] iteration 0 fallback center=%s player=%s" % [str(center), str(player_pos)])
 		for _t in 64:
 			var ang2 := rng.randf_range(0, TAU)
 			var rad2 := rng.randf_range(min_radius, max_radius)
-			var off2 := Vector3(cos(ang2) * rad2, 0.2, sin(ang2) * rad2)
+			var off2 := Vector3(cos(ang2) * rad2, 0, sin(ang2) * rad2)
 			var cand2 := center + off2
+			# candidate y must be near floor, not 0.2
+			cand2.y = center.y
 			if not _is_far_enough(cand2, placed, min_sep): continue
 			if player_pos != Vector3.INF and _dist2_xz(cand2, player_pos) < player_exclude * player_exclude: continue
+			print("[SPAWN_DBG] iteration0 pick cand=%s" % str(cand2))
 			return cand2
-		return center + Vector3(rng.randf_range(-max_radius, max_radius), 0.2, rng.randf_range(-max_radius, max_radius))
+		var fb := center + Vector3(rng.randf_range(-max_radius, max_radius), 0, rng.randf_range(-max_radius, max_radius))
+		fb.y = center.y
+		return fb
 	var best: Vector3 = Vector3.ZERO
 	var best_dist := INF
 	var best_closest := Vector3.ZERO
@@ -194,17 +209,23 @@ func _random_spawn_point(nav_region: NavigationRegion3D, center: Vector3, min_ra
 		if d < best_dist:
 			best_dist = d
 			best_closest = closest
-	if best_dist < INF:
+	if best_dist < 8.0:
 		return Vector3(best_closest.x, best_closest.y + 0.25, best_closest.z)
+	# best was far off-mesh (>8) — ignore it, pick random on ring at correct y
 	for _t in 32:
 		var ang3 := rng.randf_range(0, TAU)
 		var rad3 := rng.randf_range(min_radius, max_radius)
 		var off3 := Vector3(cos(ang3) * rad3, 0.0, sin(ang3) * rad3)
 		var cand3 := center + off3
+		cand3.y = center.y
 		if not _is_far_enough(cand3, placed, min_sep): continue
 		if player_pos != Vector3.INF and _dist2_xz(cand3, player_pos) < player_exclude * player_exclude: continue
-		return cand3 + Vector3(0, 0.25, 0)
-	return center + Vector3(rng.randf_range(-max_radius, max_radius), 0.25, rng.randf_range(-max_radius, max_radius))
+		print("[SPAWN_DBG] fallback random cand3=%s (best was far %.1f)" % [str(cand3), best_dist])
+		return cand3
+	var fb3 := center + Vector3(rng.randf_range(-max_radius, max_radius), 0, rng.randf_range(-max_radius, max_radius))
+	fb3.y = center.y
+	print("[SPAWN_DBG] final fallback fb3=%s" % str(fb3))
+	return fb3
 
 func _dist2_xz(a: Vector3, b: Vector3) -> float:
 	var dx := a.x - b.x; var dz := a.z - b.z; return dx * dx + dz * dz
@@ -237,16 +258,38 @@ func _spawn_one_fallback() -> void:
 		e.player_path = NodePath("../../playerCharacter")
 	enemies_parent.add_child(e)
 	if e.has_method("snap_to_ground"):
-		e.snap_to_ground(0.55)
+		e.snap_to_ground()
 	else:
-		_snap_node_to_ground(e, 0.55)
+		_snap_node_to_ground(e)
 	enemies.append(e)
 
 func _process(delta: float) -> void:
-	enemies = enemies.filter(func(obj): return is_instance_valid(obj))
+	# Always cull dead/invalid + also kill any enemy that was removed from tree without queue_free
+	enemies = enemies.filter(func(obj): return is_instance_valid(obj) and is_instance_valid(obj) and obj.is_inside_tree())
+	# Also include live scene children that somehow aren't in array (paranoia: leash kills remove from array but child still under parent until freed)
+	var live_children := 0
+	for c in enemies_parent.get_children():
+		if c.is_in_group("enemy") and not c.is_queued_for_deletion():
+			live_children += 1
+	# Only auto-leave if we've finished spawning
 	if not _has_spawned:
 		return
-	if enemies.is_empty():
+	# Must check both tracking array AND actual scene children — tracking can desync if enemy freed elsewhere
+	var truly_empty := enemies.is_empty() and live_children == 0
+	# If tracking says empty but children remain, resync
+	if enemies.is_empty() and live_children > 0:
+		for c in enemies_parent.get_children():
+			if c.is_in_group("enemy") and not c.is_queued_for_deletion():
+				enemies.append(c)
+		return
+	if not truly_empty:
+		# Someone alive — reset leaving if it was triggered by a single-frame flicker
+		# (e.g. spawn race where array was briefly empty)
+		leaving = false
+		leavetimer = 2.0
+		return
+	# Truly empty for real — start/drive leavetimer
+	if truly_empty:
 		leaving = true
 	if leaving:
 		leavetimer -= delta

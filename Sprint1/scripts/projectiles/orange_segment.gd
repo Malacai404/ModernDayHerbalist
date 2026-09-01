@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 		var is_target := (b.is_in_group("player") if is_enemy_shot else b.is_in_group("enemy")) and b.has_method("damage")
 		if is_target:
 			b.damage(damage)
+			print("[PROJECTILE_HIT] orange_segment dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 			if split and not _has_split:
 				_has_split = true
 				_do_split()

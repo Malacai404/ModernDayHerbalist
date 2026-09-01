@@ -14,6 +14,7 @@ func _process(delta: float) -> void:
 		var target_group := "player" if is_enemy_shot else "enemy"
 		if b.is_in_group(target_group) and b.has_method("damage"):
 			b.damage(damage)
+			print("[PROJECTILE_HIT] passion_pulp dmg=%d is_enemy_shot=%s proj=%s player=%s" % [damage, str(is_enemy_shot), str(global_position), str(b.name)])
 			if spawn_puddle and puddle_scene:
 				var p = puddle_scene.instantiate()
 				p.global_position = b.global_position

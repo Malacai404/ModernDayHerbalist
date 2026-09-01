@@ -1,6 +1,9 @@
-Area3D
-MeshInstance3D
 CollisionShape3D
+Area3D
+Label3D
+CSGBox3D
+TextureProgressBar
+MeshInstance3D
 Node3D
 AnimationPlayer
 TextureRect
@@ -9,5 +12,3 @@ Control
 Label
 Panel
 CanvasLayer
-VBoxContainer
-Container
