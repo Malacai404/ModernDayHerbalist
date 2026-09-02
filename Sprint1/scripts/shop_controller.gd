@@ -5,8 +5,7 @@ var rng := RandomNumberGenerator.new()
 @export var max_seed_stock_per_slot := 5
 @export var max_fruit_stock_per_slot := 12
 
-var seed_prices :=  [6, 8, 10, 7, 12, 9,  5, 10, 9, 14, 7, 6, 8, 18, 16, 11]
-var fruit_prices := [8, 12, 14, 10, 18, 14, 7, 15, 12, 18, 10, 9, 11, 26, 22, 16]
+# Use shared prices from ShopData (allows autosell and centralized pricing)
 
 var stock: Array = []
 
@@ -51,12 +50,12 @@ func refresh_stock(force := false):
 		var price: int
 		var qty: int
 		if is_seed:
-			price = seed_prices[pick_id] if pick_id < seed_prices.size() else 8
+			price = ShopData.get_seed_price(pick_id)
 			price += rng.randi_range(-1, 2)
 			price = max(2, price)
 			qty = rng.randi_range(2, max_seed_stock_per_slot)
 		else:
-			price = fruit_prices[pick_id] if pick_id < fruit_prices.size() else 10
+			price = ShopData.get_plant_price(pick_id)
 			price += rng.randi_range(-2, 3)
 			price = max(3, price)
 			qty = rng.randi_range(3, max_fruit_stock_per_slot)
@@ -154,10 +153,23 @@ func _on_slot_pressed(slot_idx: int):
 	if slot_idx < 0 or slot_idx >= stock.size(): return
 	var entry: Dictionary = stock[slot_idx]
 	if int(entry.get("remaining", 0)) <= 0: return
+	var player = _find_player()
+	var res = null
+	if entry["type"] == "seed":
+		if entry["id"] >= 0 and entry["id"] < SeedData.seeds.size():
+			res = SeedData._get_seed(entry["id"])
+	else:
+		if entry["id"] >= 0 and entry["id"] < SeedData.plants.size():
+			res = SeedData._get_plant(entry["id"])
+
+	# If buying a fruit for a player and they have no space, auto-sell their selected slot to make room
+	if player and entry["type"] != "seed" and res != null:
+		if not _player_has_space_for(player, res):
+			_autosell_selected_slot(player)
+
 	var price = int(entry.get("price", 0))
 	if not _can_afford(price): return
 	if not _spend(price): return
-	var player = _find_player()
 	if entry["type"] == "seed":
 		if player and player.has_method("_collect_seed"):
 			player._collect_seed(entry["id"], 1)
@@ -185,6 +197,49 @@ func _on_slot_pressed(slot_idx: int):
 						break
 	entry["remaining"] -= 1
 	_apply_to_ui()
+
+func _player_has_space_for(player: Node, item_res: Resource) -> bool:
+	# returns true if player has an existing stack with space or an empty slot
+	if not ("inventory" in player):
+		return true
+	var name = item_res.get_display_name() if item_res.has_method("get_display_name") else str(item_res.get("name") or item_res.get("item_name"))
+	for slot in player.inventory:
+		if slot.get("item") != null:
+			var slot_name = slot["item"].get_display_name() if slot["item"].has_method("get_display_name") else str(slot["item"].get("name") or slot["item"].get("item_name"))
+			if slot_name == name and int(slot.get("count",0)) < 99:
+				return true
+		else:
+			return true
+	return false
+
+func _autosell_selected_slot(player: Node) -> void:
+	if not ("selected_slot" in player and "inventory" in player):
+		return
+	var idx = int(player.selected_slot)
+	if idx < 0 or idx >= player.inventory.size():
+		return
+	var slot = player.inventory[idx]
+	if slot == null or slot.get("item") == null or int(slot.get("count",0)) <= 0:
+		return
+	var item = slot["item"]
+	var cnt = int(slot["count"])
+	var display_name = item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name"))
+	var sell_price = 1
+	for i in range(SeedData.plants.size()):
+		var cand = SeedData._get_plant(i)
+		if cand.get_display_name() == display_name:
+			sell_price = ShopData.get_plant_price(i)
+			break
+	var total = sell_price * cnt
+	ShopData.add_money(total)
+	# show green pickup on player
+	if player.item_addition_container and player.item_addition_container.has_method("_item_collected"):
+		player.item_addition_container._item_collected("Coins", total, Color(0,1,0,1))
+	# clear the slot
+	slot["item"] = null
+	slot["count"] = 0
+	if player.has_method("_handle_inventory"):
+		player._handle_inventory()
 
 func _find_player() -> Node:
 	var n: Node = self

@@ -366,24 +366,63 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _pickup_item(item: Item, num: int):
-	item_addition_container._item_collected(item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name")), num)
+	var item_display_name = item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name"))
+	var remaining_to_place = int(num)
+	# First try to add to existing matching stack(s)
 	for slot in inventory:
 		if slot["item"] != null and item != null:
-			if (slot["item"].get_display_name() if slot["item"].has_method("get_display_name") else str(slot["item"].get("name") or slot["item"].get("item_name"))) == (item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name"))):
-
-				if(slot["count"] < 99):
+			var slot_name = slot["item"].get_display_name() if slot["item"].has_method("get_display_name") else str(slot["item"].get("name") or slot["item"].get("item_name"))
+			if slot_name == item_display_name:
+				if slot["count"] < 99:
+					var space = 99 - slot["count"]
+					var add_amount = min(space, remaining_to_place)
 					slot["item"] = item
-					slot["count"] += num
+					slot["count"] += add_amount
+					remaining_to_place -= add_amount
 					_handle_inventory()
+					if add_amount > 0:
+						item_addition_container._item_collected(item_display_name, add_amount)
+					# If there's overflow, sell it
+					if remaining_to_place > 0:
+						var overflow = remaining_to_place
+						remaining_to_place = 0
+						# determine plant id by matching display name in SeedData
+						var sell_price = 1
+						for i in range(SeedData.plants.size()):
+							var cand = SeedData._get_plant(i)
+							if cand.get_display_name() == item_display_name:
+								sell_price = ShopData.get_plant_price(i)
+								break
+						var total_money = sell_price * overflow
+						ShopData.add_money(total_money)
+						# show as green pickup with coins gained
+						item_addition_container._item_collected("Coins", total_money, Color(0,1,0,1))
 					return
 
+	# Then try to add to an empty slot
 	for slot in inventory:
 		if slot["item"] == null:
-			if(slot["count"] < 99):
-				slot["item"] = item
-				slot["count"] += num
-				_handle_inventory()
-				return
+			var add_amount = min(99, remaining_to_place)
+			slot["item"] = item
+			slot["count"] = add_amount
+			remaining_to_place -= add_amount
+			_handle_inventory()
+			if add_amount > 0:
+				item_addition_container._item_collected(item_display_name, add_amount)
+			# if any leftover, autosell
+			if remaining_to_place > 0:
+				var overflow = remaining_to_place
+				remaining_to_place = 0
+				var sell_price = 1
+				for i in range(SeedData.plants.size()):
+					var cand = SeedData._get_plant(i)
+					if cand.get_display_name() == item_display_name:
+						sell_price = ShopData.get_plant_price(i)
+						break
+				var total_money = sell_price * overflow
+				ShopData.add_money(total_money)
+				item_addition_container._item_collected("Coins", total_money, Color(0,1,0,1))
+			return
 
 func _collect_seed(seedid: int, num: int):
 	print("Found at:", find_seed_index(seedid))

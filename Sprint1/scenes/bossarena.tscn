@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://doe3vevhaotv5"]
+
+[ext_resource type="Texture2D" uid="uid://cy3fkt7kidvum" path="res://skybox-orion-16-4096.png" id="1_sxigo"]
+[ext_resource type="PackedScene" uid="uid://bb4xtar6hps1c" path="res://objects/player.tscn" id="2_leqiy"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_3jhfb"]
+panorama = ExtResource("1_sxigo")
+
+[sub_resource type="Sky" id="Sky_68frc"]
+sky_material = SubResource("PanoramaSkyMaterial_3jhfb")
+
+[sub_resource type="Environment" id="Environment_3kski"]
+background_mode = 2
+sky = SubResource("Sky_68frc")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuoe6"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="bossarena" type="Node3D" unique_id=106500779]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=839093679]
+environment = SubResource("Environment_3kski")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1954803833]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0048742294, 1.5568848)
+use_collision = true
+size = Vector3(128.08, 0.103, 111.004)
+material = SubResource("StandardMaterial3D_vuoe6")
+
+[node name="playerCharacter" parent="." unique_id=212589539 instance=ExtResource("2_leqiy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.164694, 0)
+
+[node name="Label3D" type="Label3D" parent="." unique_id=260670449]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6007605, -7.7776093)
+text = "You Win!
+Your Grandma is saved and your debts are paid off!
+Enjoy Space ig"

@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="seed" format=3]
+[gd_resource type="Resource" script_class="seed" format=3 uid="uid://db63x72du2ekn"]
 
 [ext_resource type="Script" uid="uid://cwe1ubw51liq8" path="res://scripts/seed.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://bdmpqy4o2suyi" path="res://textures/lemon.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://carypb1actxgu" path="res://textures/kiwifruit_seed.png" id="2_34ilj"]
 
 [resource]
 script = ExtResource("1")
 name = "Kiwi Seed"
-texture = ExtResource("2")
+texture = ExtResource("2_34ilj")
 seed_id = 8
 growthtime = 2

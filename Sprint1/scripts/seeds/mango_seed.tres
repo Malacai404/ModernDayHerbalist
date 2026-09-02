@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="seed" format=3]
+[gd_resource type="Resource" script_class="seed" format=3 uid="uid://clkf5ogm87qs8"]
 
 [ext_resource type="Script" uid="uid://cwe1ubw51liq8" path="res://scripts/seed.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://drp456v5buuiq" path="res://textures/apple_seed.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://dwdm0mq0evvr5" path="res://textures/mango_seed.png" id="2_r5wcj"]
 
 [resource]
 script = ExtResource("1")
 name = "Mango Seed"
-texture = ExtResource("2")
+texture = ExtResource("2_r5wcj")
 seed_id = 7
 growthtime = 2

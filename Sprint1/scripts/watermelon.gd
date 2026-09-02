@@ -1,7 +1,7 @@
 extends Item
 class_name Watermelon
 var tree = Engine.get_main_loop() as SceneTree
-@export var texture = preload("uid://buapvuu1baqpl")
+@export var texture = preload("res://textures/watermelon_fruit.png")
 @export var name = "Watermelon"
 @export var damage := 10
 @export var cooldown := 0.1

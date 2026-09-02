@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="seed" format=3]
+[gd_resource type="Resource" script_class="seed" format=3 uid="uid://caxbchj7l2rs3"]
 
 [ext_resource type="Script" uid="uid://cwe1ubw51liq8" path="res://scripts/seed.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://drp456v5buuiq" path="res://textures/apple_seed.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://ds448aciwn262" path="res://textures/strawberry_seed.png" id="2_3xjui"]
 
 [resource]
 script = ExtResource("1")
 name = "Strawberry Seed"
-texture = ExtResource("2")
+texture = ExtResource("2_3xjui")
 seed_id = 12
 growthtime = 1

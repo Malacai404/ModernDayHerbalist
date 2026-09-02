@@ -402,6 +402,37 @@ offset_bottom = 20.0
 min_value = -60.0
 max_value = 60.0
 
+[node name="Sens3" type="Control" parent="UI/CanvasLayer/Settings" unique_id=185622127]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 723.0
+offset_top = 418.585
+offset_right = 763.0
+offset_bottom = 458.585
+mouse_filter = 2
+
+[node name="Label2" type="Label" parent="UI/CanvasLayer/Settings/Sens3" unique_id=1121119419]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 31.0
+offset_top = -7.0
+offset_right = 206.0
+offset_bottom = 35.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 26
+text = "CRT Effect"
+
+[node name="VolumeSlider" type="HSlider" parent="UI/CanvasLayer/Settings/Sens3" unique_id=1843184073]
+layout_mode = 0
+offset_left = -212.0
+offset_top = 4.0
+offset_right = 32.0
+offset_bottom = 20.0
+min_value = -60.0
+max_value = 60.0
+
 [node name="PhoneMenu" type="CanvasLayer" parent="UI/CanvasLayer" unique_id=1671101504]
 layer = 18
 offset = Vector2(0, 48.415)

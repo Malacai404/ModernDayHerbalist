@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bq337813rmg1s" path="res://models/wallphone/old_wall_mounted_telephone_1.png" id="9_xoh7w"]
 [ext_resource type="Texture2D" uid="uid://beuxkspsfh0rm" path="res://models/wallphone/old_wall_mounted_telephone_2.png" id="10_vriwe"]
 [ext_resource type="Script" uid="uid://dexg0enxe7pek" path="res://scripts/phone.gd" id="11_xoh7w"]
+[ext_resource type="Script" uid="uid://rp23r6t6cv2j" path="res://scripts/sell_box.gd" id="12_sellbox"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxs24"]
 resource_name = "Material"
@@ -808,6 +809,7 @@ text = "Sell items here"
 
 [node name="Area3D" type="Area3D" parent="BoxSlot" unique_id=534924836]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1387906, 0.16594148, 0)
+script = ExtResource("12_sellbox")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoxSlot/Area3D" unique_id=954456308]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011047363, 0.06958008, 0)

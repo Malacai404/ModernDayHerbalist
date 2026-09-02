@@ -5,9 +5,9 @@ extends Node
 	preload("res://scripts/seeds/grape_seed.tres"),
 	preload("res://scripts/seeds/apple_seed.tres"),
 	preload("res://scripts/seeds/banana_seed.tres"),
-	preload("uid://b47nqw3us0lsk"), # lemon
-	preload("uid://dio5lel8oxjrk"), # pineapple
-	preload("uid://b60imja7agp5k"), # watermelon
+	preload("res://scripts/seeds/lemon_seed.tres"), # lemon
+	preload("res://scripts/seeds/pineapple_seed.tres"), # pineapple
+	preload("res://scripts/seeds/watermelon_seed.tres"), # watermelon
 	preload("res://scripts/seeds/cherry_seed.tres"),
 	preload("res://scripts/seeds/mango_seed.tres"),
 	preload("res://scripts/seeds/kiwi_seed.tres"),

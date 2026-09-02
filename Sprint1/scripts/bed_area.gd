@@ -11,4 +11,7 @@ func activate(playerobj):
 	PlayerData.seedpouch = playerobj.seedpouch
 	PotData._save_pots()
 	await Transition.blink(func():
-		get_tree().change_scene_to_file("res://scenes/outerworld.tscn"))
+		if(Daycycle.daycount < 20):
+			get_tree().change_scene_to_file("res://scenes/outerworld.tscn")
+		elif(Daycycle.daycount >= 20):
+			get_tree().change_scene_to_file("res://scenes/bossarena.tscn"))

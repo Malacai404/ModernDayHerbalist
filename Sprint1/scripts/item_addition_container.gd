@@ -14,7 +14,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-func _item_collected(itemname: String, num: int):
+func _item_collected(itemname: String, num: int, color := Color(1,1,1,1)):
 	var item_new = ITEM_ADDITION.instantiate()
 	item_new.text = str("[font_size=30px]+" + str(num) + "  " + itemname + "[/font_size]")
+	# apply optional color override (uses the same theme override used by the tscn)
+	if color != null:
+		item_new.set("theme_override_colors/default_color", color)
 	add_child(item_new)
