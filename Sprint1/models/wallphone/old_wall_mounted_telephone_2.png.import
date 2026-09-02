@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://beuxkspsfh0rm"
 path.s3tc="res://.godot/imported/old_wall_mounted_telephone_2.png-1fdb42d5901a70f150e2fe5834f3c231.s3tc.ctex"
+path.etc2="res://.godot/imported/old_wall_mounted_telephone_2.png-1fdb42d5901a70f150e2fe5834f3c231.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/wallphone/old_wall_mounted_telephone_2.png"
-dest_files=["res://.godot/imported/old_wall_mounted_telephone_2.png-1fdb42d5901a70f150e2fe5834f3c231.s3tc.ctex"]
+dest_files=["res://.godot/imported/old_wall_mounted_telephone_2.png-1fdb42d5901a70f150e2fe5834f3c231.s3tc.ctex", "res://.godot/imported/old_wall_mounted_telephone_2.png-1fdb42d5901a70f150e2fe5834f3c231.etc2.ctex"]
 
 [params]
 

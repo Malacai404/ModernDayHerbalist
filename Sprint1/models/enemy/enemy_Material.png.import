@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhk4fjpog5ixe"
 path.s3tc="res://.godot/imported/enemy_Material.png-8b84debbafef23f6152229e8ae58360f.s3tc.ctex"
+path.etc2="res://.godot/imported/enemy_Material.png-8b84debbafef23f6152229e8ae58360f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/enemy/enemy_Material.png"
-dest_files=["res://.godot/imported/enemy_Material.png-8b84debbafef23f6152229e8ae58360f.s3tc.ctex"]
+dest_files=["res://.godot/imported/enemy_Material.png-8b84debbafef23f6152229e8ae58360f.s3tc.ctex", "res://.godot/imported/enemy_Material.png-8b84debbafef23f6152229e8ae58360f.etc2.ctex"]
 
 [params]
 

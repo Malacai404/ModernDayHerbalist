@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd0jwmaxnac2x"
 path.s3tc="res://.godot/imported/apartment_plastered_wall_04_diff_4k.jpg-c7d9b9f19cef058a1af71d0b3c8f6ac9.s3tc.ctex"
+path.etc2="res://.godot/imported/apartment_plastered_wall_04_diff_4k.jpg-c7d9b9f19cef058a1af71d0b3c8f6ac9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/apartment/apartment_plastered_wall_04_diff_4k.jpg"
-dest_files=["res://.godot/imported/apartment_plastered_wall_04_diff_4k.jpg-c7d9b9f19cef058a1af71d0b3c8f6ac9.s3tc.ctex"]
+dest_files=["res://.godot/imported/apartment_plastered_wall_04_diff_4k.jpg-c7d9b9f19cef058a1af71d0b3c8f6ac9.s3tc.ctex", "res://.godot/imported/apartment_plastered_wall_04_diff_4k.jpg-c7d9b9f19cef058a1af71d0b3c8f6ac9.etc2.ctex"]
 
 [params]
 
