@@ -1,0 +1,10 @@
+res://scripts/bed_area.gd
+res://scripts/daycycle.gd
+res://scripts/enemy.gd
+res://scripts/grow_world.gd
+res://scripts/outerworld.gd
+res://scripts/player.gd
+res://scripts/PlayerData.gd
+res://scripts/pot_data.gd
+res://scripts/settingsdata.gd
+res://scripts/ShopData.gd

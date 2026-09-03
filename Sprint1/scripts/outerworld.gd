@@ -157,7 +157,6 @@ func _snap_node_to_ground(node: Node3D, margin: float = 1.1) -> void:
 
 func _random_spawn_point(nav_region: NavigationRegion3D, center: Vector3, min_radius: float = 12.0, max_radius: float = 28.0, placed: Array[Vector3] = [], min_sep: float = 4.5, player_pos: Vector3 = Vector3.INF, player_exclude: float = 12.0) -> Vector3:
 	if nav_region == null or not nav_region.get_navigation_map().is_valid():
-		print("[SPAWN_DBG] nav_region null/invalid center=%s" % str(center))
 		for _t in 64:
 			var ang := rng.randf_range(0, TAU)
 			var rad := rng.randf_range(min_radius, max_radius)
@@ -172,17 +171,14 @@ func _random_spawn_point(nav_region: NavigationRegion3D, center: Vector3, min_ra
 		return fb2
 	var nav_map := nav_region.get_navigation_map()
 	if NavigationServer3D.map_get_iteration_id(nav_map) == 0:
-		print("[SPAWN_DBG] iteration 0 fallback center=%s player=%s" % [str(center), str(player_pos)])
 		for _t in 64:
 			var ang2 := rng.randf_range(0, TAU)
 			var rad2 := rng.randf_range(min_radius, max_radius)
 			var off2 := Vector3(cos(ang2) * rad2, 0, sin(ang2) * rad2)
 			var cand2 := center + off2
-			# candidate y must be near floor, not 0.2
 			cand2.y = center.y
 			if not _is_far_enough(cand2, placed, min_sep): continue
 			if player_pos != Vector3.INF and _dist2_xz(cand2, player_pos) < player_exclude * player_exclude: continue
-			print("[SPAWN_DBG] iteration0 pick cand=%s" % str(cand2))
 			return cand2
 		var fb := center + Vector3(rng.randf_range(-max_radius, max_radius), 0, rng.randf_range(-max_radius, max_radius))
 		fb.y = center.y
@@ -211,7 +207,6 @@ func _random_spawn_point(nav_region: NavigationRegion3D, center: Vector3, min_ra
 			best_closest = closest
 	if best_dist < 8.0:
 		return Vector3(best_closest.x, best_closest.y + 0.25, best_closest.z)
-	# best was far off-mesh (>8) — ignore it, pick random on ring at correct y
 	for _t in 32:
 		var ang3 := rng.randf_range(0, TAU)
 		var rad3 := rng.randf_range(min_radius, max_radius)
@@ -220,11 +215,9 @@ func _random_spawn_point(nav_region: NavigationRegion3D, center: Vector3, min_ra
 		cand3.y = center.y
 		if not _is_far_enough(cand3, placed, min_sep): continue
 		if player_pos != Vector3.INF and _dist2_xz(cand3, player_pos) < player_exclude * player_exclude: continue
-		print("[SPAWN_DBG] fallback random cand3=%s (best was far %.1f)" % [str(cand3), best_dist])
 		return cand3
 	var fb3 := center + Vector3(rng.randf_range(-max_radius, max_radius), 0, rng.randf_range(-max_radius, max_radius))
 	fb3.y = center.y
-	print("[SPAWN_DBG] final fallback fb3=%s" % str(fb3))
 	return fb3
 
 func _dist2_xz(a: Vector3, b: Vector3) -> float:

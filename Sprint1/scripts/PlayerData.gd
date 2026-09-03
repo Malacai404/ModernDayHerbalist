@@ -1,5 +1,7 @@
 extends Node
 
+const SAVE_PATH := "user://playerdata_save.cfg"
+
 var selected_slot:= 0
 
 var inventory = [
@@ -49,11 +51,27 @@ var seedpouch = [
 	{"itemid": -1, "count": 0}
 ]
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	load_state()
 
+func save_state() -> void:
+	var config := ConfigFile.new()
+	config.set_value("player", "selected_slot", selected_slot)
+	config.set_value("player", "inventory", inventory)
+	config.set_value("player", "seedpouch", seedpouch)
+	config.save(SAVE_PATH)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func load_state() -> void:
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) != OK:
+		return
+	selected_slot = int(config.get_value("player", "selected_slot", 0))
+	var saved_inventory = config.get_value("player", "inventory", inventory)
+	if saved_inventory is Array:
+		inventory = saved_inventory
+	var saved_seedpouch = config.get_value("player", "seedpouch", seedpouch)
+	if saved_seedpouch is Array:
+		seedpouch = saved_seedpouch
+
 func _process(delta: float) -> void:
 	pass

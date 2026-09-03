@@ -1,5 +1,7 @@
 extends Node
 
+const SAVE_PATH := "user://shopdata_save.cfg"
+
 var shop_open := false
 var money: int = 120
 
@@ -11,6 +13,20 @@ signal shop_opened
 signal shop_closed
 signal shop_refreshed
 signal money_changed(new_amount: int)
+
+func _ready() -> void:
+	load_state()
+
+func save_state() -> void:
+	var config := ConfigFile.new()
+	config.set_value("shop", "money", money)
+	config.save(SAVE_PATH)
+
+func load_state() -> void:
+	var config := ConfigFile.new()
+	if config.load(SAVE_PATH) != OK:
+		return
+	money = int(config.get_value("shop", "money", money))
 
 func open_shop():
 	shop_open = true
@@ -30,11 +46,13 @@ func try_spend(price: int) -> bool:
 	if money < price:
 		return false
 	money -= price
+	save_state()
 	emit_signal("money_changed", money)
 	return true
 
 func add_money(amount: int):
 	money += amount
+	save_state()
 	emit_signal("money_changed", money)
 
 func get_seed_price(seed_id: int) -> int:
@@ -49,4 +67,5 @@ func get_plant_price(plant_id: int) -> int:
 
 func set_money(amount: int):
 	money = max(0, amount)
+	save_state()
 	emit_signal("money_changed", money)

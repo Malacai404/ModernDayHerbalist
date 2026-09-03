@@ -54,13 +54,20 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 const DESPAWN_Y := -200.0
 const MAX_LEASH := 75.0
+const AUTO_KILL_AIRBORNE_SEC := 20.0
+const AUTO_KILL_STUCK_SEC := 20.0
+const ENABLE_ENEMY_DEBUG := false
 var _airborne_time := 0.0
 var _ground_snap_retries := 0
 var _grounded := false
+var _last_position: Vector3 = Vector3.ZERO
+var _idle_timer: float = 0.0
 # --- DEBUG (lean) ---
 const _DBG_INTERVAL := 0.5
 var _dbg_t := 0.0
 func _dbg(msg: String) -> void:
+	if not ENABLE_ENEMY_DEBUG:
+		return
 	print("[ENEMY_DBG %s#%d pos=%s vel=%s on_floor=%s] %s" % [enemy_kind, get_instance_id(), str(global_position).substr(0,28), str(velocity).substr(0,22), str(is_on_floor()), msg])
 
 func _get_desired_nav_target() -> Vector3:
@@ -178,6 +185,8 @@ func _ready() -> void:
 	# immediate snap_to_ground runs before nav/physics is ready and fails.
 	# Disable movement while airborne; retry snap each frame until on_floor.
 	_airborne_time = 0.0
+	_idle_timer = 0.0
+	_last_position = global_position
 	_ground_snap_retries = 0
 	velocity = Vector3.ZERO
 	set_physics_process(false)
@@ -330,46 +339,27 @@ func _notify_loot(kind: String, id: int, amount: int):
 
 func _try_attack() -> void:
 	if _attack_timer > 0.0: return
-	# Log attack checks so we can see if range check is too generous
-	if is_instance_valid(player) and _attack_timer <= 0.0:
-		var d_to_player := global_position.distance_to(player.global_position)
-		if d_to_player < 3.0:
-			print("[ENEMY_ATTACK_CHECK] %s dist=%.1f area_overlaps=%d timer=%.2f pos=%s player=%s" % [enemy_kind, d_to_player, _attack_area.get_overlapping_bodies().size() if _attack_area else -1, _attack_timer, str(global_position), str(player.global_position)])
 	if _attack_area == null: return
 	var bodies := _attack_area.get_overlapping_bodies()
 	for b in bodies:
 		if b.has_method("damage") and b.is_in_group("player"):
-			# Real Area contact — verify it's actually close, not a stale overlap list
 			var real_dist := b.global_position.distance_to(global_position)
 			if real_dist > 3.0:
-				print("[ENEMY_HIT_REJECTED_STALE] %s bodies=%s real_dist=%.1f" % [enemy_kind, str(bodies.size()), real_dist])
 				continue
-			var hp_before: int = int(b.health) if "health" in b else -1
 			b.damage(attack_damage)
-			var hp_after: int = int(b.health) if "health" in b else -1
-			print("[ENEMY_HIT] %s -> player dmg=%d hp %d->%d player_pos=%s enemy_pos=%s" % [enemy_kind, attack_damage, hp_before, hp_after, str(b.global_position), str(global_position)])
 			_attack_timer = attack_cooldown
 			return
 		if b is player:
-			var hp2_before: int = int(b.health) if "health" in b else -1
 			b.damage(attack_damage)
-			var hp2_after: int = int(b.health) if "health" in b else -1
-			print("[ENEMY_HIT] %s -> player(direct) dmg=%d hp %d->%d player_pos=%s enemy_pos=%s" % [enemy_kind, attack_damage, hp2_before, hp2_after, str(b.global_position), str(global_position)])
 			_attack_timer = attack_cooldown
 			return
-	# Also check player global distance as fallback — MUST be tight and only if already near floor contact
-	# Old 4.5 was half the arena and hit through walls. Keep it barely larger than AttackArea capsule.
 	if is_instance_valid(player) and player.has_method("damage"):
 		if global_position.distance_to(player.global_position) < 1.9:
-			var hp3_before: int = int(player.health) if "health" in player else -1
 			player.damage(attack_damage)
-			var hp3_after: int = int(player.health) if "health" in player else -1
-			print("[ENEMY_HIT] %s -> player(distance fallback dist=%.1f) dmg=%d hp %d->%d player_pos=%s enemy_pos=%s" % [enemy_kind, global_position.distance_to(player.global_position), attack_damage, hp3_before, hp3_after, str(player.global_position), str(global_position)])
 			_attack_timer = attack_cooldown
 
 func _physics_process(delta: float) -> void:
 	var center_dbg := _get_nav_center()
-	# periodic heartbeat so you can see which enemies are alive/moving
 	_dbg_t += delta
 	if _dbg_t >= _DBG_INTERVAL:
 		_dbg_t = 0.0
@@ -383,6 +373,25 @@ func _physics_process(delta: float) -> void:
 	if health <= 0:
 		_die()
 		return
+	var position_delta := global_position.distance_to(_last_position)
+	if position_delta > 0.05:
+		_last_position = global_position
+		_idle_timer = 0.0
+	else:
+		_idle_timer += delta
+	if _idle_timer >= AUTO_KILL_STUCK_SEC:
+		_dbg("KILL STUCK idle=%.1f pos=%s" % [_idle_timer, str(global_position)])
+		_die()
+		return
+
+	if not is_on_floor():
+		_airborne_time += delta
+		if _airborne_time >= AUTO_KILL_AIRBORNE_SEC:
+			_dbg("KILL AIRBORNE airborne=%.1f pos=%s" % [_airborne_time, str(global_position)])
+			_die()
+			return
+	else:
+		_airborne_time = 0.0
 
 	# Leash + sanitize: if somehow flung far off-map, kill instead of skating forever.
 	var center := _get_nav_center()

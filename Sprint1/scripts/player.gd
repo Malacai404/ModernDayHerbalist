@@ -146,6 +146,24 @@ func _kill():
 		PlayerData.inventory = inventory
 		PlayerData.seedpouch = seedpouch
 		PlayerData.selected_slot = selected_slot
+		PlayerData.save_state()
+		health = max_health
+		_update_healthbar()
+		if hurt_effect:
+			hurt_effect.visible = false
+		_dead = false
+		get_tree().change_scene_to_file("res://scenes/grow_world.tscn"))
+
+func _kill_from_fall() -> void:
+	if _dead: return
+	_dead = true
+	print("Player fell off the overworld.")
+	await Transition.blink(func():
+		Daycycle._day_failed()
+		PlayerData.inventory = inventory
+		PlayerData.seedpouch = seedpouch
+		PlayerData.selected_slot = selected_slot
+		PlayerData.save_state()
 		health = max_health
 		_update_healthbar()
 		if hurt_effect:
@@ -364,6 +382,9 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("escape"):
 		get_tree().quit()
 	move_and_slide()
+	if in_outerworld and global_position.y < -45.0:
+		_kill_from_fall()
+		return
 
 func _pickup_item(item: Item, num: int):
 	var item_display_name = item.get_display_name() if item.has_method("get_display_name") else str(item.get("name") or item.get("item_name"))
@@ -397,23 +418,8 @@ func _pickup_item(item: Item, num: int):
 						ShopData.add_money(total_money)
 						# show as green pickup with coins gained
 						item_addition_container._item_collected("Coins", total_money, Color(0,1,0,1))
-					return
-
-	# Then try to add to an empty slot
-	for slot in inventory:
-		if slot["item"] == null:
-			var add_amount = min(99, remaining_to_place)
-			slot["item"] = item
-			slot["count"] = add_amount
-			remaining_to_place -= add_amount
-			_handle_inventory()
-			if add_amount > 0:
-				item_addition_container._item_collected(item_display_name, add_amount)
-			# if any leftover, autosell
-			if remaining_to_place > 0:
-				var overflow = remaining_to_place
-				remaining_to_place = 0
-				var sell_price = 1
+									PlayerData.inventory = inventory
+									PlayerData.save_state()
 				for i in range(SeedData.plants.size()):
 					var cand = SeedData._get_plant(i)
 					if cand.get_display_name() == item_display_name:
@@ -422,21 +428,8 @@ func _pickup_item(item: Item, num: int):
 				var total_money = sell_price * overflow
 				ShopData.add_money(total_money)
 				item_addition_container._item_collected("Coins", total_money, Color(0,1,0,1))
-			return
-
-func _collect_seed(seedid: int, num: int):
-	print("Found at:", find_seed_index(seedid))
-	item_addition_container._item_collected(SeedData._get_seed(seedid).name, num)
-
-	var slot_index = find_seed_index(seedid)
-
-	if slot_index != -1:
-		seedpouch[slot_index]["count"] += num
-		if seedpouch[slot_index]["count"] > 99:
-			seedpouch[slot_index]["count"] = 99
-
-	else:
-		var empty_index = find_empty_seed_slot()
+									PlayerData.inventory = inventory
+									PlayerData.save_state()
 
 		if empty_index != -1:
 			seedpouch[empty_index]["itemid"] = seedid
@@ -445,6 +438,10 @@ func _collect_seed(seedid: int, num: int):
 			print("No space for seed!")
 
 	_enforce_single_seed_slots()
+	PlayerData.inventory = inventory
+	PlayerData.seedpouch = seedpouch
+	PlayerData.selected_slot = selected_slot
+	PlayerData.save_state()
 
 	seed_menu.seed_pouch = seedpouch
 

@@ -6,7 +6,6 @@ func _ready() -> void:
 	MusicManager.play_playlist("grow_world")
 	print("LoadingPots")
 	PotData._load_pots()
-	Daycycle._daypassed()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
